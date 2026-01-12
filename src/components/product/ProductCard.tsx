@@ -1,9 +1,10 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Star, ShoppingBag, Heart, Eye } from 'lucide-react';
+import { Star, ShoppingBag, Heart, Eye, GitCompare } from 'lucide-react';
 import { Product } from '@/types/product';
 import { useCart } from '@/contexts/CartContext';
 import { useWishlist } from '@/contexts/WishlistContext';
+import { useCompare } from '@/contexts/CompareContext';
 import { useState } from 'react';
 import { QuickViewModal } from './QuickViewModal';
 
@@ -15,10 +16,13 @@ interface ProductCardProps {
 export function ProductCard({ product, index = 0 }: ProductCardProps) {
   const { addItem } = useCart();
   const { toggleItem, isInWishlist } = useWishlist();
+  const { toggleItem: toggleCompare, isInCompare, itemCount: compareCount, maxItems } = useCompare();
   const [isNightMode, setIsNightMode] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const [quickViewOpen, setQuickViewOpen] = useState(false);
   const inWishlist = isInWishlist(product.id);
+  const inCompare = isInCompare(product.id);
+  const canAddToCompare = compareCount < maxItems || inCompare;
 
   const formatPrice = (price: number) => {
     return new Intl.NumberFormat('en-IN', {
@@ -81,7 +85,7 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
           )}
         </div>
 
-        {/* Wishlist & Night/Day Toggle Buttons */}
+        {/* Wishlist, Compare & Night/Day Toggle Buttons */}
         <div className="absolute top-3 right-3 flex flex-col gap-2">
           <motion.button
             whileTap={{ scale: 0.9 }}
@@ -96,6 +100,24 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
             }`}
           >
             <Heart className={`h-4 w-4 ${inWishlist ? 'fill-current' : ''}`} />
+          </motion.button>
+
+          <motion.button
+            whileTap={{ scale: 0.9 }}
+            onClick={(e) => {
+              e.preventDefault();
+              if (canAddToCompare) toggleCompare(product);
+            }}
+            className={`w-8 h-8 rounded-full flex items-center justify-center transition-all ${
+              inCompare 
+                ? 'bg-accent text-accent-foreground' 
+                : canAddToCompare
+                  ? 'bg-background/80 text-foreground hover:bg-accent/20'
+                  : 'bg-background/50 text-muted-foreground cursor-not-allowed'
+            }`}
+            title={inCompare ? 'Remove from compare' : canAddToCompare ? 'Add to compare' : 'Compare limit reached'}
+          >
+            <GitCompare className="h-4 w-4" />
           </motion.button>
           
           <button
