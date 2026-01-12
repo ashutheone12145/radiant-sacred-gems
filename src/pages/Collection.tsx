@@ -1,0 +1,297 @@
+import { useState, useMemo } from "react";
+import { useParams, Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import { SlidersHorizontal, X, ChevronDown } from "lucide-react";
+import { Header } from "@/components/layout/Header";
+import { Footer } from "@/components/layout/Footer";
+import { ProductCard } from "@/components/product/ProductCard";
+import { Button } from "@/components/ui/button";
+import { Checkbox } from "@/components/ui/checkbox";
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
+import { products, collections } from "@/data/products";
+import type { Product } from "@/types/product";
+
+type SortOption = "featured" | "price-asc" | "price-desc" | "rating" | "newest";
+
+const deityOptions = [
+  { value: "ganesha", label: "Lord Ganesha" },
+  { value: "krishna", label: "Lord Krishna" },
+  { value: "shiva", label: "Lord Shiva" },
+  { value: "hanuman", label: "Lord Hanuman" },
+  { value: "lakshmi", label: "Goddess Lakshmi" },
+  { value: "durga", label: "Goddess Durga" },
+];
+
+const Collection = () => {
+  const { slug } = useParams<{ slug: string }>();
+  const [sortBy, setSortBy] = useState<SortOption>("featured");
+  const [selectedDeities, setSelectedDeities] = useState<string[]>([]);
+  const [inStockOnly, setInStockOnly] = useState(false);
+  const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
+
+  const collection = collections.find((c) => c.slug === slug);
+  const collectionName = collection?.name || "All Products";
+  const collectionDescription = collection?.description || "Browse our complete collection of divine crystal lamps";
+
+  // Filter products
+  const filteredProducts = useMemo(() => {
+    let result = [...products];
+    
+    // Filter by collection/category
+    if (slug && slug !== "all") {
+      result = result.filter((p) => p.category === slug);
+    }
+    
+    // Filter by deity
+    if (selectedDeities.length > 0) {
+      result = result.filter((p) => p.deity && selectedDeities.includes(p.deity));
+    }
+    
+    // Filter by stock
+    if (inStockOnly) {
+      result = result.filter((p) => p.inStock);
+    }
+    
+    // Sort
+    switch (sortBy) {
+      case "price-asc":
+        result.sort((a, b) => a.price - b.price);
+        break;
+      case "price-desc":
+        result.sort((a, b) => b.price - a.price);
+        break;
+      case "rating":
+        result.sort((a, b) => b.rating - a.rating);
+        break;
+      case "newest":
+        result.reverse();
+        break;
+      default:
+        // Featured - keep original order
+        break;
+    }
+    
+    return result;
+  }, [slug, selectedDeities, inStockOnly, sortBy]);
+
+  const handleDeityToggle = (deity: string) => {
+    setSelectedDeities((prev) =>
+      prev.includes(deity)
+        ? prev.filter((d) => d !== deity)
+        : [...prev, deity]
+    );
+  };
+
+  const clearFilters = () => {
+    setSelectedDeities([]);
+    setInStockOnly(false);
+    setSortBy("featured");
+  };
+
+  const hasActiveFilters = selectedDeities.length > 0 || inStockOnly;
+
+  const FilterContent = () => (
+    <div className="space-y-6">
+      {/* Deity Filter */}
+      <div>
+        <h3 className="font-medium text-foreground mb-3">Deity</h3>
+        <div className="space-y-2">
+          {deityOptions.map((deity) => (
+            <div key={deity.value} className="flex items-center gap-2">
+              <Checkbox
+                id={`deity-${deity.value}`}
+                checked={selectedDeities.includes(deity.value)}
+                onCheckedChange={() => handleDeityToggle(deity.value)}
+              />
+              <label
+                htmlFor={`deity-${deity.value}`}
+                className="text-sm text-muted-foreground cursor-pointer"
+              >
+                {deity.label}
+              </label>
+            </div>
+          ))}
+        </div>
+      </div>
+      
+      {/* Availability Filter */}
+      <div>
+        <h3 className="font-medium text-foreground mb-3">Availability</h3>
+        <div className="flex items-center gap-2">
+          <Checkbox
+            id="in-stock"
+            checked={inStockOnly}
+            onCheckedChange={(checked) => setInStockOnly(!!checked)}
+          />
+          <label
+            htmlFor="in-stock"
+            className="text-sm text-muted-foreground cursor-pointer"
+          >
+            In Stock Only
+          </label>
+        </div>
+      </div>
+      
+      {/* Clear Filters */}
+      {hasActiveFilters && (
+        <Button
+          variant="outline"
+          size="sm"
+          onClick={clearFilters}
+          className="w-full"
+        >
+          Clear All Filters
+        </Button>
+      )}
+    </div>
+  );
+
+  return (
+    <div className="min-h-screen bg-background">
+      <Header />
+      
+      <main className="container py-8">
+        {/* Breadcrumb */}
+        <Breadcrumb className="mb-8">
+          <BreadcrumbList>
+            <BreadcrumbItem>
+              <BreadcrumbLink asChild>
+                <Link to="/">Home</Link>
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbLink asChild>
+                <Link to="/collections">Collections</Link>
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+            {slug && (
+              <>
+                <BreadcrumbSeparator />
+                <BreadcrumbItem>
+                  <BreadcrumbPage>{collectionName}</BreadcrumbPage>
+                </BreadcrumbItem>
+              </>
+            )}
+          </BreadcrumbList>
+        </Breadcrumb>
+        
+        {/* Page Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="text-center mb-12"
+        >
+          <h1 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
+            {collectionName}
+          </h1>
+          <p className="text-muted-foreground max-w-2xl mx-auto">
+            {collectionDescription}
+          </p>
+        </motion.div>
+        
+        {/* Toolbar */}
+        <div className="flex items-center justify-between gap-4 mb-8 pb-4 border-b border-border/50">
+          <p className="text-sm text-muted-foreground">
+            {filteredProducts.length} products
+          </p>
+          
+          <div className="flex items-center gap-3">
+            {/* Mobile Filter Button */}
+            <Sheet open={mobileFiltersOpen} onOpenChange={setMobileFiltersOpen}>
+              <SheetTrigger asChild>
+                <Button variant="outline" size="sm" className="lg:hidden gap-2">
+                  <SlidersHorizontal className="h-4 w-4" />
+                  Filters
+                  {hasActiveFilters && (
+                    <span className="ml-1 h-5 w-5 rounded-full bg-primary text-primary-foreground text-xs flex items-center justify-center">
+                      {selectedDeities.length + (inStockOnly ? 1 : 0)}
+                    </span>
+                  )}
+                </Button>
+              </SheetTrigger>
+              <SheetContent side="left">
+                <SheetHeader>
+                  <SheetTitle>Filters</SheetTitle>
+                </SheetHeader>
+                <div className="mt-6">
+                  <FilterContent />
+                </div>
+              </SheetContent>
+            </Sheet>
+            
+            {/* Sort Dropdown */}
+            <Select value={sortBy} onValueChange={(value) => setSortBy(value as SortOption)}>
+              <SelectTrigger className="w-[160px]">
+                <SelectValue placeholder="Sort by" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="featured">Featured</SelectItem>
+                <SelectItem value="price-asc">Price: Low to High</SelectItem>
+                <SelectItem value="price-desc">Price: High to Low</SelectItem>
+                <SelectItem value="rating">Highest Rated</SelectItem>
+                <SelectItem value="newest">Newest</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+        </div>
+        
+        {/* Main Content */}
+        <div className="flex gap-8">
+          {/* Desktop Sidebar */}
+          <aside className="hidden lg:block w-64 flex-shrink-0">
+            <div className="sticky top-24">
+              <h2 className="font-semibold text-foreground mb-4">Filters</h2>
+              <FilterContent />
+            </div>
+          </aside>
+          
+          {/* Product Grid */}
+          <div className="flex-1">
+            {filteredProducts.length > 0 ? (
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
+                {filteredProducts.map((product, index) => (
+                  <ProductCard key={product.id} product={product} index={index} />
+                ))}
+              </div>
+            ) : (
+              <div className="text-center py-16">
+                <p className="text-lg text-muted-foreground mb-4">
+                  No products match your filters
+                </p>
+                <Button variant="outline" onClick={clearFilters}>
+                  Clear Filters
+                </Button>
+              </div>
+            )}
+          </div>
+        </div>
+      </main>
+      
+      <Footer />
+    </div>
+  );
+};
+
+export default Collection;
