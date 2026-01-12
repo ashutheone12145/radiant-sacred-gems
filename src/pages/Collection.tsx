@@ -7,6 +7,7 @@ import { Footer } from "@/components/layout/Footer";
 import { ProductCard } from "@/components/product/ProductCard";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
+import { Slider } from "@/components/ui/slider";
 import {
   Sheet,
   SheetContent,
@@ -43,11 +44,17 @@ const deityOptions = [
   { value: "durga", label: "Goddess Durga" },
 ];
 
+// Get min and max prices from products
+const allPrices = products.map(p => p.price);
+const MIN_PRICE = Math.min(...allPrices);
+const MAX_PRICE = Math.max(...allPrices);
+
 const Collection = () => {
   const { slug } = useParams<{ slug: string }>();
   const [sortBy, setSortBy] = useState<SortOption>("featured");
   const [selectedDeities, setSelectedDeities] = useState<string[]>([]);
   const [inStockOnly, setInStockOnly] = useState(false);
+  const [priceRange, setPriceRange] = useState<[number, number]>([MIN_PRICE, MAX_PRICE]);
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
 
   const collection = collections.find((c) => c.slug === slug);
@@ -67,6 +74,9 @@ const Collection = () => {
     if (selectedDeities.length > 0) {
       result = result.filter((p) => p.deity && selectedDeities.includes(p.deity));
     }
+
+    // Filter by price range
+    result = result.filter((p) => p.price >= priceRange[0] && p.price <= priceRange[1]);
     
     // Filter by stock
     if (inStockOnly) {
@@ -93,7 +103,7 @@ const Collection = () => {
     }
     
     return result;
-  }, [slug, selectedDeities, inStockOnly, sortBy]);
+  }, [slug, selectedDeities, inStockOnly, priceRange, sortBy]);
 
   const handleDeityToggle = (deity: string) => {
     setSelectedDeities((prev) =>
@@ -106,13 +116,42 @@ const Collection = () => {
   const clearFilters = () => {
     setSelectedDeities([]);
     setInStockOnly(false);
+    setPriceRange([MIN_PRICE, MAX_PRICE]);
     setSortBy("featured");
   };
 
-  const hasActiveFilters = selectedDeities.length > 0 || inStockOnly;
+  const isPriceFiltered = priceRange[0] !== MIN_PRICE || priceRange[1] !== MAX_PRICE;
+  const hasActiveFilters = selectedDeities.length > 0 || inStockOnly || isPriceFiltered;
+
+  const formatPrice = (price: number) => {
+    return new Intl.NumberFormat('en-IN', {
+      style: 'currency',
+      currency: 'INR',
+      maximumFractionDigits: 0,
+    }).format(price);
+  };
 
   const FilterContent = () => (
     <div className="space-y-6">
+      {/* Price Range Filter */}
+      <div>
+        <h3 className="font-medium text-foreground mb-3">Price Range</h3>
+        <div className="px-1">
+          <Slider
+            value={priceRange}
+            onValueChange={(value) => setPriceRange(value as [number, number])}
+            min={MIN_PRICE}
+            max={MAX_PRICE}
+            step={100}
+            className="mb-4"
+          />
+          <div className="flex items-center justify-between text-sm">
+            <span className="text-muted-foreground">{formatPrice(priceRange[0])}</span>
+            <span className="text-muted-foreground">{formatPrice(priceRange[1])}</span>
+          </div>
+        </div>
+      </div>
+
       {/* Deity Filter */}
       <div>
         <h3 className="font-medium text-foreground mb-3">Deity</h3>
@@ -226,7 +265,7 @@ const Collection = () => {
                   Filters
                   {hasActiveFilters && (
                     <span className="ml-1 h-5 w-5 rounded-full bg-primary text-primary-foreground text-xs flex items-center justify-center">
-                      {selectedDeities.length + (inStockOnly ? 1 : 0)}
+                      {selectedDeities.length + (inStockOnly ? 1 : 0) + (isPriceFiltered ? 1 : 0)}
                     </span>
                   )}
                 </Button>
