@@ -9,6 +9,7 @@ import { CompareProvider } from "@/contexts/CompareContext";
 import { RecentlyViewedProvider } from "@/contexts/RecentlyViewedContext";
 import { CartDrawer } from "@/components/cart/CartDrawer";
 import { CompareBar } from "@/components/product/CompareBar";
+import { BackToTop } from "@/components/ui/back-to-top";
 import Index from "./pages/Index";
 import ProductDetail from "./pages/ProductDetail";
 import Collection from "./pages/Collection";
@@ -35,6 +36,7 @@ const App = () => (
               <Sonner />
               <CartDrawer />
               <CompareBar />
+              <BackToTop />
               <BrowserRouter>
                 <Routes>
                   <Route path="/" element={<Index />} />
