@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Star, Minus, Plus, Gift, Check, Truck, ShieldCheck, RotateCcw } from "lucide-react";
@@ -9,6 +9,7 @@ import { SizeComparison } from "@/components/product/SizeComparison";
 import { ReviewCard } from "@/components/product/ReviewCard";
 import { ProductFAQ } from "@/components/product/ProductFAQ";
 import { ProductCard } from "@/components/product/ProductCard";
+import { RecentlyViewed } from "@/components/product/RecentlyViewed";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -27,16 +28,25 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { useCart } from "@/contexts/CartContext";
+import { useRecentlyViewed } from "@/contexts/RecentlyViewedContext";
 import { getProductBySlug, getRelatedProducts, getProductReviews } from "@/data/products";
 
 const ProductDetail = () => {
   const { slug } = useParams<{ slug: string }>();
   const product = getProductBySlug(slug || "");
   const { addItem, openCart } = useCart();
+  const { addItem: addToRecentlyViewed } = useRecentlyViewed();
   
   const [quantity, setQuantity] = useState(1);
   const [showGiftMessage, setShowGiftMessage] = useState(false);
   const [giftMessage, setGiftMessage] = useState("");
+
+  // Track product view
+  useEffect(() => {
+    if (product) {
+      addToRecentlyViewed(product);
+    }
+  }, [product, addToRecentlyViewed]);
 
   if (!product) {
     return (
@@ -392,6 +402,9 @@ const ProductDetail = () => {
           </Button>
         </div>
       </div>
+      
+      {/* Recently Viewed */}
+      <RecentlyViewed excludeProductId={product.id} />
       
       <Footer />
     </div>
