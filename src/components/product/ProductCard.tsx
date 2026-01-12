@@ -1,8 +1,9 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Star, ShoppingBag } from 'lucide-react';
+import { Star, ShoppingBag, Heart } from 'lucide-react';
 import { Product } from '@/types/product';
 import { useCart } from '@/contexts/CartContext';
+import { useWishlist } from '@/contexts/WishlistContext';
 import { useState } from 'react';
 
 interface ProductCardProps {
@@ -12,8 +13,10 @@ interface ProductCardProps {
 
 export function ProductCard({ product, index = 0 }: ProductCardProps) {
   const { addItem } = useCart();
+  const { toggleItem, isInWishlist } = useWishlist();
   const [isNightMode, setIsNightMode] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
+  const inWishlist = isInWishlist(product.id);
 
   const formatPrice = (price: number) => {
     return new Intl.NumberFormat('en-IN', {
@@ -76,20 +79,37 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
           )}
         </div>
 
-        {/* Night/Day Toggle Button */}
-        <button
-          onClick={(e) => {
-            e.preventDefault();
-            setIsNightMode(!isNightMode);
-          }}
-          className={`absolute top-3 right-3 w-8 h-8 rounded-full flex items-center justify-center transition-all ${
-            isNightMode 
-              ? 'bg-primary text-primary-foreground' 
-              : 'bg-background/80 text-foreground'
-          }`}
-        >
-          {isNightMode ? '🌙' : '☀️'}
-        </button>
+        {/* Wishlist & Night/Day Toggle Buttons */}
+        <div className="absolute top-3 right-3 flex flex-col gap-2">
+          <motion.button
+            whileTap={{ scale: 0.9 }}
+            onClick={(e) => {
+              e.preventDefault();
+              toggleItem(product);
+            }}
+            className={`w-8 h-8 rounded-full flex items-center justify-center transition-all ${
+              inWishlist 
+                ? 'bg-primary text-primary-foreground' 
+                : 'bg-background/80 text-foreground hover:bg-primary/20'
+            }`}
+          >
+            <Heart className={`h-4 w-4 ${inWishlist ? 'fill-current' : ''}`} />
+          </motion.button>
+          
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              setIsNightMode(!isNightMode);
+            }}
+            className={`w-8 h-8 rounded-full flex items-center justify-center transition-all ${
+              isNightMode 
+                ? 'bg-primary text-primary-foreground' 
+                : 'bg-background/80 text-foreground'
+            }`}
+          >
+            {isNightMode ? '🌙' : '☀️'}
+          </button>
+        </div>
 
         {/* Quick Add Button */}
         <motion.button
