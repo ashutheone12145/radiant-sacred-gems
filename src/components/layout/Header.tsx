@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ShoppingBag, Menu, X, Search, Heart } from 'lucide-react';
 import { useState, useRef, useEffect } from 'react';
 import { useCart } from '@/contexts/CartContext';
+import { useWishlist } from '@/contexts/WishlistContext';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
@@ -18,6 +19,7 @@ const navLinks = [
 
 export function Header() {
   const { itemCount, toggleCart } = useCart();
+  const { itemCount: wishlistCount } = useWishlist();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
@@ -132,9 +134,20 @@ export function Header() {
               <span className="sr-only">Search</span>
             </Button>
             
-            <Button variant="ghost" size="icon" className="hidden md:flex">
-              <Heart className="h-5 w-5" />
-              <span className="sr-only">Wishlist</span>
+            <Button variant="ghost" size="icon" className="hidden md:flex relative" asChild>
+              <Link to="/wishlist">
+                <Heart className="h-5 w-5" />
+                {wishlistCount > 0 && (
+                  <motion.span
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1 }}
+                    className="absolute -top-1 -right-1 h-5 w-5 rounded-full bg-primary text-primary-foreground text-xs flex items-center justify-center font-medium"
+                  >
+                    {wishlistCount}
+                  </motion.span>
+                )}
+                <span className="sr-only">Wishlist</span>
+              </Link>
             </Button>
             
             <Button 
