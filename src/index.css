@@ -1,96 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
+/* Divine Crystal Lamps - Premium Spiritual Ecommerce Design System
+   Aesthetic: Luxurious, calm, devotional, modern
+   Colors: Warm neutrals (cream, sand, soft gold, deep navy)
 */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-
+    /* Core brand colors */
+    --background: 40 33% 98%; /* Warm cream */
+    --foreground: 220 30% 15%; /* Deep navy text */
+    
+    --card: 40 25% 96%; /* Soft sand */
+    --card-foreground: 220 30% 15%;
+    
+    --popover: 40 33% 98%;
+    --popover-foreground: 220 30% 15%;
+    
+    /* Gold accents - primary brand color */
+    --primary: 43 74% 49%; /* Rich gold */
+    --primary-foreground: 40 33% 98%;
+    
+    /* Sand/cream secondary */
+    --secondary: 40 20% 92%; /* Light sand */
+    --secondary-foreground: 220 30% 15%;
+    
+    --muted: 40 15% 90%;
+    --muted-foreground: 220 10% 45%;
+    
+    /* Deep navy accent */
+    --accent: 220 40% 20%; /* Deep navy */
+    --accent-foreground: 40 33% 98%;
+    
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 40 33% 98%;
+    
+    --border: 40 20% 88%;
+    --input: 40 20% 88%;
+    --ring: 43 74% 49%;
+    
     --radius: 0.5rem;
-
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    
+    /* Custom brand tokens */
+    --gold-glow: 43 90% 60%;
+    --gold-shimmer: 43 100% 75%;
+    --cream: 40 33% 98%;
+    --sand: 40 25% 92%;
+    --navy: 220 40% 20%;
+    --navy-light: 220 30% 35%;
+    
+    /* Sidebar tokens */
+    --sidebar-background: 40 25% 96%;
+    --sidebar-foreground: 220 30% 15%;
+    --sidebar-primary: 43 74% 49%;
+    --sidebar-primary-foreground: 40 33% 98%;
+    --sidebar-accent: 40 20% 92%;
+    --sidebar-accent-foreground: 220 30% 15%;
+    --sidebar-border: 40 20% 88%;
+    --sidebar-ring: 43 74% 49%;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --background: 220 35% 8%; /* Deep navy background */
+    --foreground: 40 25% 92%; /* Cream text */
+    
+    --card: 220 30% 12%;
+    --card-foreground: 40 25% 92%;
+    
+    --popover: 220 30% 12%;
+    --popover-foreground: 40 25% 92%;
+    
+    --primary: 43 80% 55%; /* Brighter gold for dark mode */
+    --primary-foreground: 220 35% 8%;
+    
+    --secondary: 220 25% 18%;
+    --secondary-foreground: 40 25% 92%;
+    
+    --muted: 220 20% 20%;
+    --muted-foreground: 40 15% 65%;
+    
+    --accent: 43 80% 55%;
+    --accent-foreground: 220 35% 8%;
+    
+    --destructive: 0 62% 45%;
+    --destructive-foreground: 40 25% 92%;
+    
+    --border: 220 25% 20%;
+    --input: 220 25% 20%;
+    --ring: 43 80% 55%;
+    
+    --gold-glow: 43 90% 65%;
+    --gold-shimmer: 43 100% 80%;
+    
+    --sidebar-background: 220 30% 10%;
+    --sidebar-foreground: 40 25% 92%;
+    --sidebar-primary: 43 80% 55%;
+    --sidebar-primary-foreground: 220 35% 8%;
+    --sidebar-accent: 220 25% 18%;
+    --sidebar-accent-foreground: 40 25% 92%;
+    --sidebar-border: 220 25% 20%;
+    --sidebar-ring: 43 80% 55%;
   }
 }
 
@@ -99,7 +112,121 @@ All colors MUST be HSL.
     @apply border-border;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', sans-serif;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Cormorant Garamond', serif;
+    @apply font-semibold tracking-tight;
+  }
+}
+
+@layer components {
+  /* Golden glow effect for crystals */
+  .crystal-glow {
+    @apply relative;
+  }
+  
+  .crystal-glow::after {
+    content: '';
+    @apply absolute inset-0 rounded-lg opacity-0 transition-opacity duration-500;
+    background: radial-gradient(circle at center, hsl(var(--gold-shimmer) / 0.4) 0%, transparent 70%);
+  }
+  
+  .crystal-glow:hover::after {
+    @apply opacity-100;
+  }
+  
+  /* Shimmer overlay animation */
+  .shimmer-overlay {
+    @apply relative overflow-hidden;
+  }
+  
+  .shimmer-overlay::before {
+    content: '';
+    @apply absolute inset-0 -translate-x-full;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      hsl(var(--gold-shimmer) / 0.2) 50%,
+      transparent 100%
+    );
+    animation: shimmer 3s infinite;
+  }
+  
+  @keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+  }
+  
+  /* Premium button styles */
+  .btn-premium {
+    @apply relative overflow-hidden bg-primary text-primary-foreground px-8 py-4 rounded-sm font-medium tracking-wide uppercase text-sm;
+    @apply transition-all duration-300 hover:shadow-lg;
+    box-shadow: 0 4px 20px hsl(var(--primary) / 0.3);
+  }
+  
+  .btn-premium:hover {
+    box-shadow: 0 8px 30px hsl(var(--primary) / 0.5);
+    transform: translateY(-2px);
+  }
+  
+  /* Product card hover effects */
+  .product-card {
+    @apply bg-card rounded-lg overflow-hidden transition-all duration-500;
+    @apply hover:shadow-2xl hover:-translate-y-2;
+  }
+  
+  .product-card:hover {
+    box-shadow: 0 20px 50px hsl(var(--primary) / 0.15);
+  }
+  
+  /* Trust badge styling */
+  .trust-badge {
+    @apply flex items-center gap-2 px-4 py-2 bg-secondary/50 rounded-full text-sm;
+    @apply border border-primary/20;
+  }
+  
+  /* Section divider with gold accent */
+  .section-divider {
+    @apply w-16 h-0.5 bg-gradient-to-r from-transparent via-primary to-transparent mx-auto my-8;
+  }
+  
+  /* Night mode toggle for product images */
+  .night-mode-image {
+    @apply transition-all duration-700;
+    filter: brightness(1) contrast(1);
+  }
+  
+  .night-mode-image.is-night {
+    filter: brightness(0.4) contrast(1.2);
+  }
+}
+
+@layer utilities {
+  /* Text gradient for headings */
+  .text-gradient-gold {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--gold-shimmer)) 100%);
+  }
+  
+  /* Soft golden shadow */
+  .shadow-gold {
+    box-shadow: 0 10px 40px hsl(var(--primary) / 0.2);
+  }
+  
+  .shadow-gold-lg {
+    box-shadow: 0 20px 60px hsl(var(--primary) / 0.25);
+  }
+  
+  /* Devotional pattern background */
+  .bg-pattern-subtle {
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0L30 60M0 30L60 30' stroke='%23d4a94820' stroke-width='1' fill='none'/%3E%3C/svg%3E");
   }
 }
