@@ -1,10 +1,11 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { SlidersHorizontal, X, ChevronDown } from "lucide-react";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { ProductCard } from "@/components/product/ProductCard";
+import { ProductGridSkeleton } from "@/components/product/ProductCardSkeleton";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Slider } from "@/components/ui/slider";
@@ -56,6 +57,21 @@ const Collection = () => {
   const [inStockOnly, setInStockOnly] = useState(false);
   const [priceRange, setPriceRange] = useState<[number, number]>([MIN_PRICE, MAX_PRICE]);
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+
+  // Simulate initial loading
+  useEffect(() => {
+    setIsLoading(true);
+    const timer = setTimeout(() => setIsLoading(false), 800);
+    return () => clearTimeout(timer);
+  }, [slug]);
+
+  // Simulate loading when filters change
+  useEffect(() => {
+    setIsLoading(true);
+    const timer = setTimeout(() => setIsLoading(false), 300);
+    return () => clearTimeout(timer);
+  }, [selectedDeities, inStockOnly, priceRange, sortBy]);
 
   const collection = collections.find((c) => c.slug === slug);
   const collectionName = collection?.name || "All Products";
@@ -308,7 +324,9 @@ const Collection = () => {
           
           {/* Product Grid */}
           <div className="flex-1">
-            {filteredProducts.length > 0 ? (
+            {isLoading ? (
+              <ProductGridSkeleton count={6} />
+            ) : filteredProducts.length > 0 ? (
               <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
                 {filteredProducts.map((product, index) => (
                   <ProductCard key={product.id} product={product} index={index} />
