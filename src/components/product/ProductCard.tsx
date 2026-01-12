@@ -1,10 +1,11 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Star, ShoppingBag, Heart } from 'lucide-react';
+import { Star, ShoppingBag, Heart, Eye } from 'lucide-react';
 import { Product } from '@/types/product';
 import { useCart } from '@/contexts/CartContext';
 import { useWishlist } from '@/contexts/WishlistContext';
 import { useState } from 'react';
+import { QuickViewModal } from './QuickViewModal';
 
 interface ProductCardProps {
   product: Product;
@@ -16,6 +17,7 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
   const { toggleItem, isInWishlist } = useWishlist();
   const [isNightMode, setIsNightMode] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
+  const [quickViewOpen, setQuickViewOpen] = useState(false);
   const inWishlist = isInWishlist(product.id);
 
   const formatPrice = (price: number) => {
@@ -111,20 +113,34 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
           </button>
         </div>
 
-        {/* Quick Add Button */}
-        <motion.button
+        {/* Quick View & Quick Add Buttons */}
+        <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: isHovered ? 1 : 0, y: isHovered ? 0 : 10 }}
           transition={{ duration: 0.2 }}
-          onClick={(e) => {
-            e.preventDefault();
-            addItem(product);
-          }}
-          className="absolute bottom-4 left-4 right-4 bg-primary text-primary-foreground py-3 rounded-sm font-medium text-sm flex items-center justify-center gap-2 hover:bg-primary/90 transition-colors"
+          className="absolute bottom-4 left-4 right-4 flex gap-2"
         >
-          <ShoppingBag className="h-4 w-4" />
-          Quick Add
-        </motion.button>
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              setQuickViewOpen(true);
+            }}
+            className="flex-1 bg-background/95 backdrop-blur-sm text-foreground py-3 rounded-sm font-medium text-sm flex items-center justify-center gap-2 hover:bg-background transition-colors border border-border"
+          >
+            <Eye className="h-4 w-4" />
+            Quick View
+          </button>
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              addItem(product);
+            }}
+            className="flex-1 bg-primary text-primary-foreground py-3 rounded-sm font-medium text-sm flex items-center justify-center gap-2 hover:bg-primary/90 transition-colors"
+          >
+            <ShoppingBag className="h-4 w-4" />
+            Add
+          </button>
+        </motion.div>
       </Link>
 
       {/* Product Info */}
@@ -166,6 +182,13 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
           )}
         </div>
       </div>
+
+      {/* Quick View Modal */}
+      <QuickViewModal
+        product={product}
+        open={quickViewOpen}
+        onOpenChange={setQuickViewOpen}
+      />
     </motion.div>
   );
 }
