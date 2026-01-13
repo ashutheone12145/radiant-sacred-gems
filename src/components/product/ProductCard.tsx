@@ -147,9 +147,9 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
               e.preventDefault();
               setQuickViewOpen(true);
             }}
-            className="flex-1 bg-background/95 backdrop-blur-sm text-foreground py-3 rounded-sm font-medium text-sm flex items-center justify-center gap-2 hover:bg-background transition-colors border border-border"
+            className="w-1/2 bg-background/95 backdrop-blur-sm text-foreground py-2.5 rounded-sm font-medium text-xs flex items-center justify-center gap-1.5 hover:bg-background transition-colors border border-border"
           >
-            <Eye className="h-4 w-4" />
+            <Eye className="h-3.5 w-3.5" />
             Quick View
           </button>
           <button
@@ -157,9 +157,9 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
               e.preventDefault();
               addItem(product);
             }}
-            className="flex-1 bg-primary text-primary-foreground py-3 rounded-sm font-medium text-sm flex items-center justify-center gap-2 hover:bg-primary/90 transition-colors"
+            className="w-1/2 bg-primary text-primary-foreground py-2.5 rounded-sm font-medium text-xs flex items-center justify-center gap-1.5 hover:bg-primary/90 transition-colors"
           >
-            <ShoppingBag className="h-4 w-4" />
+            <ShoppingBag className="h-3.5 w-3.5" />
             Add
           </button>
         </motion.div>
