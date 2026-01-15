@@ -1,7 +1,18 @@
 import { Product, Collection, Review } from '@/types/product';
 
-// Placeholder images - will be replaced with user uploads
-const PLACEHOLDER = '/placeholder.svg';
+// Product images
+import ganeshaDay from '@/assets/products/ganesha-day.png';
+import ganeshaNight from '@/assets/products/ganesha-night.png';
+import krishnaDay from '@/assets/products/krishna-day.png';
+import krishnaNight from '@/assets/products/krishna-night.png';
+import shivaDay from '@/assets/products/shiva-day.png';
+import shivaNight from '@/assets/products/shiva-night.png';
+import hanumanDay from '@/assets/products/hanuman-day.png';
+import hanumanNight from '@/assets/products/hanuman-night.png';
+import galaxyDay from '@/assets/products/galaxy-day.png';
+import galaxyNight from '@/assets/products/galaxy-night.png';
+import woodenBaseDay from '@/assets/products/wooden-base-day.png';
+import woodenBaseNight from '@/assets/products/wooden-base-night.png';
 
 export const collections: Collection[] = [
   {
@@ -9,7 +20,7 @@ export const collections: Collection[] = [
     name: 'Divine Deity Collection',
     slug: 'deity-lamps',
     description: 'Sacred crystal lamps featuring beloved Hindu deities',
-    image: PLACEHOLDER,
+    image: ganeshaNight,
     productCount: 12,
   },
   {
@@ -17,7 +28,7 @@ export const collections: Collection[] = [
     name: 'Cosmic Galaxy Series',
     slug: 'galaxy-collection',
     description: 'Mesmerizing galaxy crystal balls that bring the cosmos home',
-    image: PLACEHOLDER,
+    image: galaxyNight,
     productCount: 6,
   },
   {
@@ -25,7 +36,7 @@ export const collections: Collection[] = [
     name: 'Bases & Accessories',
     slug: 'accessories',
     description: 'Premium wooden LED bases and USB cables',
-    image: PLACEHOLDER,
+    image: woodenBaseNight,
     productCount: 8,
   },
 ];
@@ -40,9 +51,9 @@ export const products: Product[] = [
     price: 2499,
     compareAtPrice: 3499,
     images: {
-      day: PLACEHOLDER,
-      night: PLACEHOLDER,
-      gallery: [PLACEHOLDER, PLACEHOLDER, PLACEHOLDER, PLACEHOLDER],
+      day: ganeshaDay,
+      night: ganeshaNight,
+      gallery: [ganeshaDay, ganeshaNight, ganeshaDay, ganeshaNight],
     },
     category: 'deity',
     deity: 'ganesha',
@@ -75,9 +86,9 @@ export const products: Product[] = [
     price: 2499,
     compareAtPrice: 3499,
     images: {
-      day: PLACEHOLDER,
-      night: PLACEHOLDER,
-      gallery: [PLACEHOLDER, PLACEHOLDER, PLACEHOLDER, PLACEHOLDER],
+      day: krishnaDay,
+      night: krishnaNight,
+      gallery: [krishnaDay, krishnaNight, krishnaDay, krishnaNight],
     },
     category: 'deity',
     deity: 'krishna',
@@ -110,9 +121,9 @@ export const products: Product[] = [
     price: 2699,
     compareAtPrice: 3799,
     images: {
-      day: PLACEHOLDER,
-      night: PLACEHOLDER,
-      gallery: [PLACEHOLDER, PLACEHOLDER, PLACEHOLDER, PLACEHOLDER],
+      day: shivaDay,
+      night: shivaNight,
+      gallery: [shivaDay, shivaNight, shivaDay, shivaNight],
     },
     category: 'deity',
     deity: 'shiva',
@@ -145,9 +156,9 @@ export const products: Product[] = [
     price: 2499,
     compareAtPrice: 3499,
     images: {
-      day: PLACEHOLDER,
-      night: PLACEHOLDER,
-      gallery: [PLACEHOLDER, PLACEHOLDER, PLACEHOLDER, PLACEHOLDER],
+      day: hanumanDay,
+      night: hanumanNight,
+      gallery: [hanumanDay, hanumanNight, hanumanDay, hanumanNight],
     },
     category: 'deity',
     deity: 'hanuman',
@@ -180,9 +191,9 @@ export const products: Product[] = [
     price: 1999,
     compareAtPrice: 2799,
     images: {
-      day: PLACEHOLDER,
-      night: PLACEHOLDER,
-      gallery: [PLACEHOLDER, PLACEHOLDER, PLACEHOLDER, PLACEHOLDER],
+      day: galaxyDay,
+      night: galaxyNight,
+      gallery: [galaxyDay, galaxyNight, galaxyDay, galaxyNight],
     },
     category: 'galaxy',
     features: [
@@ -214,9 +225,9 @@ export const products: Product[] = [
     price: 699,
     compareAtPrice: 999,
     images: {
-      day: PLACEHOLDER,
-      night: PLACEHOLDER,
-      gallery: [PLACEHOLDER, PLACEHOLDER, PLACEHOLDER],
+      day: woodenBaseDay,
+      night: woodenBaseNight,
+      gallery: [woodenBaseDay, woodenBaseNight, woodenBaseDay],
     },
     category: 'accessories',
     features: [
