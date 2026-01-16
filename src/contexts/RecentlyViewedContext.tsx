@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState, useCallback, ReactNode, useEffect } from 'react';
 import { Product } from '@/types/product';
+import { parseStoredProducts } from '@/lib/validations';
 
 interface RecentlyViewedContextType {
   items: Product[];
@@ -16,14 +17,17 @@ const MAX_ITEMS = 8;
 export function RecentlyViewedProvider({ children }: { children: ReactNode }) {
   const [items, setItems] = useState<Product[]>(() => {
     if (typeof window !== 'undefined') {
-      const stored = localStorage.getItem(STORAGE_KEY);
-      return stored ? JSON.parse(stored) : [];
+      return parseStoredProducts(STORAGE_KEY);
     }
     return [];
   });
 
   useEffect(() => {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
+    } catch (error) {
+      console.warn('Failed to save recently viewed to localStorage');
+    }
   }, [items]);
 
   const addItem = useCallback((product: Product) => {

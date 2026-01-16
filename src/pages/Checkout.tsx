@@ -19,6 +19,7 @@ import {
 } from "@/components/ui/breadcrumb";
 import { useCart } from "@/contexts/CartContext";
 import { useToast } from "@/hooks/use-toast";
+import { checkoutSchema, CheckoutFormData } from "@/lib/validations";
 
 type CheckoutStep = "information" | "shipping" | "payment";
 
@@ -48,7 +49,7 @@ const Checkout = () => {
   const { toast } = useToast();
   const [currentStep, setCurrentStep] = useState<CheckoutStep>("information");
   const [shippingMethod, setShippingMethod] = useState("standard");
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<CheckoutFormData>({
     email: "",
     firstName: "",
     lastName: "",
@@ -58,6 +59,7 @@ const Checkout = () => {
     state: "",
     pincode: "",
   });
+  const [formErrors, setFormErrors] = useState<Partial<Record<keyof CheckoutFormData, string>>>({});
 
   const formatPrice = (price: number) => {
     return new Intl.NumberFormat("en-IN", {
@@ -74,14 +76,49 @@ const Checkout = () => {
   const total = subtotal + finalShipping;
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
-      [e.target.name]: e.target.value,
+      [name]: value,
     }));
+    // Clear error for this field when user starts typing
+    if (formErrors[name as keyof CheckoutFormData]) {
+      setFormErrors((prev) => ({
+        ...prev,
+        [name]: undefined,
+      }));
+    }
+  };
+
+  const validateForm = (): boolean => {
+    const result = checkoutSchema.safeParse(formData);
+    
+    if (!result.success) {
+      const errors: Partial<Record<keyof CheckoutFormData, string>> = {};
+      result.error.errors.forEach((error) => {
+        const field = error.path[0] as keyof CheckoutFormData;
+        if (!errors[field]) {
+          errors[field] = error.message;
+        }
+      });
+      setFormErrors(errors);
+      return false;
+    }
+    
+    setFormErrors({});
+    return true;
   };
 
   const handleNextStep = () => {
     if (currentStep === "information") {
+      if (!validateForm()) {
+        toast({
+          title: "Please fix the errors",
+          description: "Some fields have invalid or missing information.",
+          variant: "destructive",
+        });
+        return;
+      }
       setCurrentStep("shipping");
     } else if (currentStep === "shipping") {
       setCurrentStep("payment");
@@ -193,7 +230,12 @@ const Checkout = () => {
                       placeholder="your@email.com"
                       value={formData.email}
                       onChange={handleInputChange}
+                      maxLength={255}
+                      className={formErrors.email ? "border-destructive" : ""}
                     />
+                    {formErrors.email && (
+                      <p className="text-sm text-destructive">{formErrors.email}</p>
+                    )}
                   </div>
                   
                   <div className="grid sm:grid-cols-2 gap-4">
@@ -205,7 +247,12 @@ const Checkout = () => {
                         placeholder="First name"
                         value={formData.firstName}
                         onChange={handleInputChange}
+                        maxLength={50}
+                        className={formErrors.firstName ? "border-destructive" : ""}
                       />
+                      {formErrors.firstName && (
+                        <p className="text-sm text-destructive">{formErrors.firstName}</p>
+                      )}
                     </div>
                     <div className="space-y-2">
                       <Label htmlFor="lastName">Last Name</Label>
@@ -215,7 +262,12 @@ const Checkout = () => {
                         placeholder="Last name"
                         value={formData.lastName}
                         onChange={handleInputChange}
+                        maxLength={50}
+                        className={formErrors.lastName ? "border-destructive" : ""}
                       />
+                      {formErrors.lastName && (
+                        <p className="text-sm text-destructive">{formErrors.lastName}</p>
+                      )}
                     </div>
                   </div>
                   
@@ -228,7 +280,12 @@ const Checkout = () => {
                       placeholder="+91 98765 43210"
                       value={formData.phone}
                       onChange={handleInputChange}
+                      maxLength={15}
+                      className={formErrors.phone ? "border-destructive" : ""}
                     />
+                    {formErrors.phone && (
+                      <p className="text-sm text-destructive">{formErrors.phone}</p>
+                    )}
                   </div>
                   
                   <Separator />
@@ -243,7 +300,12 @@ const Checkout = () => {
                       placeholder="Street address"
                       value={formData.address}
                       onChange={handleInputChange}
+                      maxLength={200}
+                      className={formErrors.address ? "border-destructive" : ""}
                     />
+                    {formErrors.address && (
+                      <p className="text-sm text-destructive">{formErrors.address}</p>
+                    )}
                   </div>
                   
                   <div className="grid sm:grid-cols-2 gap-4">
@@ -255,7 +317,12 @@ const Checkout = () => {
                         placeholder="City"
                         value={formData.city}
                         onChange={handleInputChange}
+                        maxLength={100}
+                        className={formErrors.city ? "border-destructive" : ""}
                       />
+                      {formErrors.city && (
+                        <p className="text-sm text-destructive">{formErrors.city}</p>
+                      )}
                     </div>
                     <div className="space-y-2">
                       <Label htmlFor="state">State</Label>
@@ -265,7 +332,12 @@ const Checkout = () => {
                         placeholder="State"
                         value={formData.state}
                         onChange={handleInputChange}
+                        maxLength={100}
+                        className={formErrors.state ? "border-destructive" : ""}
                       />
+                      {formErrors.state && (
+                        <p className="text-sm text-destructive">{formErrors.state}</p>
+                      )}
                     </div>
                   </div>
                   
@@ -277,7 +349,12 @@ const Checkout = () => {
                       placeholder="400001"
                       value={formData.pincode}
                       onChange={handleInputChange}
+                      maxLength={6}
+                      className={formErrors.pincode ? "border-destructive" : ""}
                     />
+                    {formErrors.pincode && (
+                      <p className="text-sm text-destructive">{formErrors.pincode}</p>
+                    )}
                   </div>
                 </div>
                 
