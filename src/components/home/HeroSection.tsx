@@ -3,16 +3,10 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-import heroLamp from "@/assets/products/hero-lamp.jpg";
-import krishnaLamp from "@/assets/products/krishna-lamp.jpg";
-import ganeshaLamp1 from "@/assets/products/ganesha-lamp-1.jpg";
-import ganeshaLamp2 from "@/assets/products/ganesha-lamp-2.jpg";
+import heroLamp from "@/assets/products/hero-lamp.png";
 
 const heroImages = [
-  { src: heroLamp, alt: "Divine Crystal Lamp with spiritual ambiance" },
-  { src: ganeshaLamp1, alt: "Lord Ganesha Crystal Lamp" },
-  { src: krishnaLamp, alt: "Radha Krishna Crystal Lamp" },
-  { src: ganeshaLamp2, alt: "Lord Ganesha Crystal Lamp - Illuminated" },
+  { src: heroLamp, alt: "Divine Ganesha Crystal Lamp with spiritual ambiance" },
 ];
 
 export const HeroSection = () => {
