@@ -4,20 +4,18 @@ import { X, ChevronLeft, ChevronRight, Instagram, Heart, ShoppingBag } from "luc
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import heroLamp from "@/assets/products/hero-lamp.jpg";
-import krishnaLamp from "@/assets/products/krishna-lamp.jpg";
-import ganeshaLamp1 from "@/assets/products/ganesha-lamp-1.jpg";
-import ganeshaLamp2 from "@/assets/products/ganesha-lamp-2.jpg";
+import ganeshaLampDay from "@/assets/products/hero-lamp.png";
+import ganeshaLampNight from "@/assets/products/hero-lamp-night.png";
 
 const galleryImages = [
-  { src: heroLamp, alt: "Divine Crystal Lamp", likes: 1247, productSlug: "shiva-crystal-lamp" },
-  { src: ganeshaLamp1, alt: "Lord Ganesha Crystal Lamp", likes: 982, productSlug: "ganesha-crystal-lamp" },
-  { src: krishnaLamp, alt: "Radha Krishna Crystal Lamp", likes: 1456, productSlug: "krishna-crystal-lamp" },
-  { src: ganeshaLamp2, alt: "Ganesha Lamp Illuminated", likes: 867, productSlug: "ganesha-crystal-lamp" },
-  { src: heroLamp, alt: "Spiritual Ambiance Lamp", likes: 1123, productSlug: "shiva-crystal-lamp" },
-  { src: krishnaLamp, alt: "Krishna Playing Flute", likes: 934, productSlug: "krishna-crystal-lamp" },
-  { src: ganeshaLamp1, alt: "Ganesha Blessing Pose", likes: 1089, productSlug: "ganesha-crystal-lamp" },
-  { src: ganeshaLamp2, alt: "Crystal Lamp Night Glow", likes: 756, productSlug: "ganesha-crystal-lamp" },
+  { src: ganeshaLampDay, alt: "Lord Ganesha Crystal Lamp", likes: 1247, productSlug: "ganesha-crystal-lamp" },
+  { src: ganeshaLampNight, alt: "Ganesha Lamp Night Glow", likes: 982, productSlug: "ganesha-crystal-lamp" },
+  { src: ganeshaLampDay, alt: "Divine Ganesha Blessing", likes: 1456, productSlug: "ganesha-crystal-lamp" },
+  { src: ganeshaLampNight, alt: "Ganesha Lamp Illuminated", likes: 867, productSlug: "ganesha-crystal-lamp" },
+  { src: ganeshaLampDay, alt: "Crystal Ganesha Daylight", likes: 1123, productSlug: "ganesha-crystal-lamp" },
+  { src: ganeshaLampNight, alt: "Ganesha Spiritual Ambiance", likes: 934, productSlug: "ganesha-crystal-lamp" },
+  { src: ganeshaLampDay, alt: "Ganesha Blessing Pose", likes: 1089, productSlug: "ganesha-crystal-lamp" },
+  { src: ganeshaLampNight, alt: "Ganesha Night Crystal Glow", likes: 756, productSlug: "ganesha-crystal-lamp" },
 ];
 
 interface InstagramGalleryProps {
