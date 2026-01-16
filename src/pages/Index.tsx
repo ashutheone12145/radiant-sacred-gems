@@ -5,6 +5,7 @@ import { TrustBadges } from "@/components/home/TrustBadges";
 import { CollectionCard } from "@/components/home/CollectionCard";
 import { FeatureShowcase } from "@/components/home/FeatureShowcase";
 import { TestimonialCard } from "@/components/home/TestimonialCard";
+import { InstagramGallery } from "@/components/home/InstagramGallery";
 import { ProductCard } from "@/components/product/ProductCard";
 import { products, collections, reviews } from "@/data/products";
 import { motion } from "framer-motion";
@@ -140,6 +141,9 @@ const Index = () => {
             </div>
           </div>
         </section>
+        
+        {/* Instagram Gallery */}
+        <InstagramGallery />
         
         {/* CTA Section */}
         <section className="py-16 md:py-24 bg-gradient-to-br from-primary/10 via-background to-sand/30">
