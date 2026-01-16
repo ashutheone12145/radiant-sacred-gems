@@ -1,10 +1,30 @@
 import { Button } from "@/components/ui/button";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
 import heroLamp from "@/assets/products/hero-lamp.jpg";
+import krishnaLamp from "@/assets/products/krishna-lamp.jpg";
+import ganeshaLamp1 from "@/assets/products/ganesha-lamp-1.jpg";
+import ganeshaLamp2 from "@/assets/products/ganesha-lamp-2.jpg";
+
+const heroImages = [
+  { src: heroLamp, alt: "Divine Crystal Lamp with spiritual ambiance" },
+  { src: ganeshaLamp1, alt: "Lord Ganesha Crystal Lamp" },
+  { src: krishnaLamp, alt: "Radha Krishna Crystal Lamp" },
+  { src: ganeshaLamp2, alt: "Lord Ganesha Crystal Lamp - Illuminated" },
+];
 
 export const HeroSection = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % heroImages.length);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <section className="relative min-h-[90vh] flex items-center overflow-hidden bg-gradient-to-br from-cream via-background to-sand/30">
       {/* Background pattern */}
@@ -73,7 +93,7 @@ export const HeroSection = () => {
             </motion.div>
           </motion.div>
           
-          {/* Hero Image */}
+          {/* Hero Image Carousel */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -84,13 +104,36 @@ export const HeroSection = () => {
               {/* Glow effect behind image */}
               <div className="absolute inset-0 bg-gradient-radial from-primary/40 via-primary/10 to-transparent rounded-full blur-3xl animate-glow-pulse" />
               
-              {/* Hero product image */}
+              {/* Image Carousel */}
               <div className="relative z-10 aspect-square rounded-3xl overflow-hidden border border-primary/20 shadow-gold">
-                <img 
-                  src={heroLamp} 
-                  alt="Premium Crystal Lamp featuring divine deity" 
-                  className="w-full h-full object-cover"
-                />
+                <AnimatePresence mode="wait">
+                  <motion.img
+                    key={currentIndex}
+                    src={heroImages[currentIndex].src}
+                    alt={heroImages[currentIndex].alt}
+                    className="w-full h-full object-cover"
+                    initial={{ opacity: 0, scale: 1.1 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.95 }}
+                    transition={{ duration: 0.7, ease: "easeInOut" }}
+                  />
+                </AnimatePresence>
+              </div>
+
+              {/* Carousel Indicators */}
+              <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 flex gap-2 z-20">
+                {heroImages.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentIndex(index)}
+                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                      index === currentIndex 
+                        ? "w-8 bg-primary" 
+                        : "bg-primary/30 hover:bg-primary/50"
+                    }`}
+                    aria-label={`Go to slide ${index + 1}`}
+                  />
+                ))}
               </div>
             </div>
           </motion.div>
