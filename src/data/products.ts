@@ -1,18 +1,21 @@
 import { Product, Collection, Review } from '@/types/product';
 
-// Product images
-import ganeshaDay from '@/assets/products/ganesha-day.png';
-import ganeshaNight from '@/assets/products/ganesha-night.png';
-import krishnaDay from '@/assets/products/krishna-day.png';
-import krishnaNight from '@/assets/products/krishna-night.png';
-import shivaDay from '@/assets/products/shiva-day.png';
-import shivaNight from '@/assets/products/shiva-night.png';
-import hanumanDay from '@/assets/products/hanuman-day.png';
-import hanumanNight from '@/assets/products/hanuman-night.png';
-import galaxyDay from '@/assets/products/galaxy-day.png';
-import galaxyNight from '@/assets/products/galaxy-night.png';
-import woodenBaseDay from '@/assets/products/wooden-base-day.png';
-import woodenBaseNight from '@/assets/products/wooden-base-night.png';
+// Product images - User uploaded
+import ganeshaDay from '@/assets/products/ganesha-lamp-1.jpg';
+import ganeshaNight from '@/assets/products/ganesha-lamp-2.jpg';
+import krishnaDay from '@/assets/products/krishna-lamp.jpg';
+import krishnaNight from '@/assets/products/krishna-lamp.jpg';
+import heroLamp from '@/assets/products/hero-lamp.jpg';
+
+// Reuse images for other products
+const shivaDay = heroLamp;
+const shivaNight = heroLamp;
+const hanumanDay = ganeshaDay;
+const hanumanNight = ganeshaNight;
+const galaxyDay = krishnaDay;
+const galaxyNight = krishnaNight;
+const woodenBaseDay = ganeshaDay;
+const woodenBaseNight = ganeshaNight;
 
 export const collections: Collection[] = [
   {

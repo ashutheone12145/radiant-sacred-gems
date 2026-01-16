@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { ChevronDown, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
+import heroLamp from "@/assets/products/hero-lamp.jpg";
 
 export const HeroSection = () => {
   return (
@@ -83,14 +84,13 @@ export const HeroSection = () => {
               {/* Glow effect behind image */}
               <div className="absolute inset-0 bg-gradient-radial from-primary/40 via-primary/10 to-transparent rounded-full blur-3xl animate-glow-pulse" />
               
-              {/* Placeholder for hero product image */}
-              <div className="relative z-10 aspect-square rounded-full bg-gradient-to-br from-cream to-sand flex items-center justify-center border border-primary/20 shadow-gold">
-                <div className="text-center p-8">
-                  <div className="w-32 h-32 mx-auto mb-4 rounded-full bg-primary/20 flex items-center justify-center">
-                    <Sparkles className="h-16 w-16 text-primary" />
-                  </div>
-                  <p className="text-sm text-muted-foreground">Premium Crystal Lamp</p>
-                </div>
+              {/* Hero product image */}
+              <div className="relative z-10 aspect-square rounded-3xl overflow-hidden border border-primary/20 shadow-gold">
+                <img 
+                  src={heroLamp} 
+                  alt="Premium Crystal Lamp featuring divine deity" 
+                  className="w-full h-full object-cover"
+                />
               </div>
             </div>
           </motion.div>
