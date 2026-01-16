@@ -2,7 +2,8 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Sun, Moon, Sparkles, Zap, Palette } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import ganeshaLamp from "@/assets/products/hero-lamp.png";
+import ganeshaLampDay from "@/assets/products/hero-lamp.png";
+import ganeshaLampNight from "@/assets/products/hero-lamp-night.png";
 
 export const FeatureShowcase = () => {
   const [isNightMode, setIsNightMode] = useState(false);
@@ -59,7 +60,7 @@ export const FeatureShowcase = () => {
                   <AnimatePresence mode="wait">
                     <motion.img
                       key={isNightMode ? "night" : "day"}
-                      src={ganeshaLamp}
+                      src={isNightMode ? ganeshaLampNight : ganeshaLampDay}
                       alt={isNightMode ? "Crystal lamp glowing at night" : "Crystal lamp in daylight"}
                       className="w-full h-full object-cover rounded-2xl"
                       initial={{ opacity: 0, scale: 1.05 }}
