@@ -19,6 +19,14 @@ const woodenBaseNight = ganeshaNight;
 
 export const collections: Collection[] = [
   {
+    id: 'deity-lamps',
+    name: 'Divine Deity Collection',
+    slug: 'deity-lamps',
+    description: 'Sacred crystal lamps featuring beloved Hindu deities',
+    image: ganeshaNight,
+    productCount: 12,
+  },
+  {
     id: 'galaxy-collection',
     name: 'Cosmic Galaxy Series',
     slug: 'galaxy-collection',
