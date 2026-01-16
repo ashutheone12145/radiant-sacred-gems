@@ -1,7 +1,9 @@
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Sun, Moon, Sparkles, Zap, Palette } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import ganeshaDay from "@/assets/products/ganesha-lamp-1.jpg";
+import ganeshaNight from "@/assets/products/ganesha-lamp-2.jpg";
 
 export const FeatureShowcase = () => {
   const [isNightMode, setIsNightMode] = useState(false);
@@ -52,20 +54,26 @@ export const FeatureShowcase = () => {
                 </div>
               )}
               
-              {/* Product placeholder */}
+              {/* Product image with day/night toggle */}
               <div className="relative z-10 h-full flex items-center justify-center p-8">
-                <div
-                  className={`w-48 h-48 rounded-full flex items-center justify-center transition-all duration-700 ${
-                    isNightMode
-                      ? "bg-primary/30 shadow-[0_0_60px_20px_rgba(212,175,55,0.4)]"
-                      : "bg-primary/10 shadow-lg"
-                  }`}
-                >
-                  <Sparkles
-                    className={`h-20 w-20 transition-colors duration-700 ${
-                      isNightMode ? "text-primary" : "text-primary/60"
-                    }`}
-                  />
+                <div className="relative w-full h-full rounded-2xl overflow-hidden">
+                  <AnimatePresence mode="wait">
+                    <motion.img
+                      key={isNightMode ? "night" : "day"}
+                      src={isNightMode ? ganeshaNight : ganeshaDay}
+                      alt={isNightMode ? "Crystal lamp glowing at night" : "Crystal lamp in daylight"}
+                      className="w-full h-full object-cover rounded-2xl"
+                      initial={{ opacity: 0, scale: 1.05 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0, scale: 0.95 }}
+                      transition={{ duration: 0.5 }}
+                    />
+                  </AnimatePresence>
+                  
+                  {/* Glow overlay for night mode */}
+                  {isNightMode && (
+                    <div className="absolute inset-0 bg-primary/10 mix-blend-overlay rounded-2xl" />
+                  )}
                 </div>
               </div>
               

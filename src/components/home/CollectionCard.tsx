@@ -18,10 +18,17 @@ export const CollectionCard = ({ collection, index = 0 }: CollectionCardProps) =
     >
       <Link
         to={`/collections/${collection.slug}`}
-        className="group relative block aspect-[4/5] overflow-hidden rounded-2xl bg-gradient-to-br from-sand to-cream"
+        className="group relative block aspect-[4/5] overflow-hidden rounded-2xl"
       >
-        {/* Background placeholder */}
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-foreground/60" />
+        {/* Collection image background */}
+        <img
+          src={collection.image}
+          alt={collection.name}
+          className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+        />
+        
+        {/* Overlay gradient */}
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-foreground/20 to-foreground/80" />
         
         {/* Hover glow effect */}
         <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/10 transition-colors duration-500" />
@@ -35,10 +42,10 @@ export const CollectionCard = ({ collection, index = 0 }: CollectionCardProps) =
             <p className="text-primary text-sm font-medium mb-2">
               {collection.productCount} Products
             </p>
-            <h3 className="font-serif text-2xl md:text-3xl font-bold text-foreground mb-2">
+            <h3 className="font-serif text-2xl md:text-3xl font-bold text-white mb-2">
               {collection.name}
             </h3>
-            <p className="text-muted-foreground text-sm mb-4 line-clamp-2">
+            <p className="text-white/80 text-sm mb-4 line-clamp-2">
               {collection.description}
             </p>
             <div className="inline-flex items-center gap-2 text-primary font-medium group-hover:gap-3 transition-all">
