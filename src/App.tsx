@@ -27,17 +27,17 @@ const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <CartProvider>
-        <WishlistProvider>
-          <CompareProvider>
-            <RecentlyViewedProvider>
-              <Toaster />
-              <Sonner />
-              <CartDrawer />
-              <CompareBar />
-              <BackToTop />
-              <BrowserRouter>
+    <BrowserRouter>
+      <TooltipProvider>
+        <CartProvider>
+          <WishlistProvider>
+            <CompareProvider>
+              <RecentlyViewedProvider>
+                <Toaster />
+                <Sonner />
+                <CartDrawer />
+                <CompareBar />
+                <BackToTop />
                 <Routes>
                   <Route path="/" element={<Index />} />
                   <Route path="/product/:slug" element={<ProductDetail />} />
@@ -52,12 +52,12 @@ const App = () => (
                   <Route path="/compare" element={<Compare />} />
                   <Route path="*" element={<NotFound />} />
                 </Routes>
-              </BrowserRouter>
-            </RecentlyViewedProvider>
-          </CompareProvider>
-        </WishlistProvider>
-      </CartProvider>
-    </TooltipProvider>
+              </RecentlyViewedProvider>
+            </CompareProvider>
+          </WishlistProvider>
+        </CartProvider>
+      </TooltipProvider>
+    </BrowserRouter>
   </QueryClientProvider>
 );
 
