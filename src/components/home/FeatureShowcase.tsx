@@ -59,7 +59,7 @@ export const FeatureShowcase = () => {
                   <AnimatePresence mode="wait">
                     <motion.img
                       key={isNightMode ? "night" : "day"}
-                      src={isNightMode ? ganeshaNight : ganeshaDay}
+                      src={ganeshaLamp}
                       alt={isNightMode ? "Crystal lamp glowing at night" : "Crystal lamp in daylight"}
                       className="w-full h-full object-cover rounded-2xl"
                       initial={{ opacity: 0, scale: 1.05 }}
