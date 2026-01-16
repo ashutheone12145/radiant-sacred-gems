@@ -1,21 +1,23 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, ChevronLeft, ChevronRight, Instagram, Heart } from "lucide-react";
+import { X, ChevronLeft, ChevronRight, Instagram, Heart, ShoppingBag } from "lucide-react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 import heroLamp from "@/assets/products/hero-lamp.jpg";
 import krishnaLamp from "@/assets/products/krishna-lamp.jpg";
 import ganeshaLamp1 from "@/assets/products/ganesha-lamp-1.jpg";
 import ganeshaLamp2 from "@/assets/products/ganesha-lamp-2.jpg";
 
 const galleryImages = [
-  { src: heroLamp, alt: "Divine Crystal Lamp", likes: 1247 },
-  { src: ganeshaLamp1, alt: "Lord Ganesha Crystal Lamp", likes: 982 },
-  { src: krishnaLamp, alt: "Radha Krishna Crystal Lamp", likes: 1456 },
-  { src: ganeshaLamp2, alt: "Ganesha Lamp Illuminated", likes: 867 },
-  { src: heroLamp, alt: "Spiritual Ambiance Lamp", likes: 1123 },
-  { src: krishnaLamp, alt: "Krishna Playing Flute", likes: 934 },
-  { src: ganeshaLamp1, alt: "Ganesha Blessing Pose", likes: 1089 },
-  { src: ganeshaLamp2, alt: "Crystal Lamp Night Glow", likes: 756 },
+  { src: heroLamp, alt: "Divine Crystal Lamp", likes: 1247, productSlug: "shiva-crystal-lamp" },
+  { src: ganeshaLamp1, alt: "Lord Ganesha Crystal Lamp", likes: 982, productSlug: "ganesha-crystal-lamp" },
+  { src: krishnaLamp, alt: "Radha Krishna Crystal Lamp", likes: 1456, productSlug: "krishna-crystal-lamp" },
+  { src: ganeshaLamp2, alt: "Ganesha Lamp Illuminated", likes: 867, productSlug: "ganesha-crystal-lamp" },
+  { src: heroLamp, alt: "Spiritual Ambiance Lamp", likes: 1123, productSlug: "shiva-crystal-lamp" },
+  { src: krishnaLamp, alt: "Krishna Playing Flute", likes: 934, productSlug: "krishna-crystal-lamp" },
+  { src: ganeshaLamp1, alt: "Ganesha Blessing Pose", likes: 1089, productSlug: "ganesha-crystal-lamp" },
+  { src: ganeshaLamp2, alt: "Crystal Lamp Night Glow", likes: 756, productSlug: "ganesha-crystal-lamp" },
 ];
 
 interface InstagramGalleryProps {
@@ -101,12 +103,8 @@ export const InstagramGallery = ({
               />
               
               {/* Hover Overlay */}
-              <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/40 transition-colors duration-300 flex items-center justify-center">
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileHover={{ opacity: 1, scale: 1 }}
-                  className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center gap-4"
-                >
+              <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/50 transition-colors duration-300 flex flex-col items-center justify-center gap-3">
+                <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center gap-4">
                   <button
                     onClick={(e) => toggleLike(index, e)}
                     className="flex items-center gap-1 text-white"
@@ -122,7 +120,19 @@ export const InstagramGallery = ({
                       {likedImages.has(index) ? image.likes + 1 : image.likes}
                     </span>
                   </button>
-                </motion.div>
+                </div>
+                
+                {/* Shop Now Button */}
+                <Link
+                  to={`/product/${image.productSlug}`}
+                  onClick={(e) => e.stopPropagation()}
+                  className="opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0"
+                >
+                  <Button size="sm" className="gap-2 bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg">
+                    <ShoppingBag className="h-4 w-4" />
+                    Shop Now
+                  </Button>
+                </Link>
               </div>
 
               {/* Corner gradient */}
@@ -185,24 +195,32 @@ export const InstagramGallery = ({
                         Crystal Divine Lamps Collection
                       </p>
                     </div>
-                    <button
-                      onClick={(e) => toggleLike(selectedIndex, e)}
-                      className="flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 hover:bg-primary/20 transition-colors"
-                    >
-                      <Heart 
-                        className={`h-5 w-5 transition-all ${
-                          likedImages.has(selectedIndex) 
-                            ? "fill-red-500 text-red-500" 
-                            : "text-primary"
-                        }`}
-                      />
-                      <span className="font-medium text-foreground">
-                        {likedImages.has(selectedIndex) 
-                          ? galleryImages[selectedIndex].likes + 1 
-                          : galleryImages[selectedIndex].likes
-                        }
-                      </span>
-                    </button>
+                    <div className="flex items-center gap-3">
+                      <button
+                        onClick={(e) => toggleLike(selectedIndex, e)}
+                        className="flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 hover:bg-primary/20 transition-colors"
+                      >
+                        <Heart 
+                          className={`h-5 w-5 transition-all ${
+                            likedImages.has(selectedIndex) 
+                              ? "fill-red-500 text-red-500" 
+                              : "text-primary"
+                          }`}
+                        />
+                        <span className="font-medium text-foreground">
+                          {likedImages.has(selectedIndex) 
+                            ? galleryImages[selectedIndex].likes + 1 
+                            : galleryImages[selectedIndex].likes
+                          }
+                        </span>
+                      </button>
+                      <Button asChild className="gap-2">
+                        <Link to={`/product/${galleryImages[selectedIndex].productSlug}`}>
+                          <ShoppingBag className="h-4 w-4" />
+                          Shop Now
+                        </Link>
+                      </Button>
+                    </div>
                   </div>
 
                   {/* Thumbnails */}
