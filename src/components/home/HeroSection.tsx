@@ -17,13 +17,42 @@ const heroImages = [
 
 export const HeroSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [direction, setDirection] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
+      setDirection(1);
       setCurrentIndex((prev) => (prev + 1) % heroImages.length);
     }, 4000);
     return () => clearInterval(interval);
   }, []);
+
+  const handleSwipe = (swipeDirection: number) => {
+    setDirection(swipeDirection);
+    if (swipeDirection > 0) {
+      setCurrentIndex((prev) => (prev + 1) % heroImages.length);
+    } else {
+      setCurrentIndex((prev) => (prev - 1 + heroImages.length) % heroImages.length);
+    }
+  };
+
+  const swipeVariants = {
+    enter: (dir: number) => ({
+      x: dir > 0 ? 300 : -300,
+      opacity: 0,
+      scale: 0.95,
+    }),
+    center: {
+      x: 0,
+      opacity: 1,
+      scale: 1,
+    },
+    exit: (dir: number) => ({
+      x: dir < 0 ? 300 : -300,
+      opacity: 0,
+      scale: 0.95,
+    }),
+  };
 
   return (
     <section className="relative min-h-[90vh] flex items-center overflow-hidden bg-gradient-to-br from-cream via-background to-sand/30">
@@ -104,18 +133,31 @@ export const HeroSection = () => {
               {/* Glow effect behind image */}
               <div className="absolute inset-0 bg-gradient-radial from-primary/40 via-primary/10 to-transparent rounded-full blur-3xl animate-glow-pulse" />
               
-              {/* Image Carousel */}
+              {/* Image Carousel with Swipe */}
               <div className="relative z-10 aspect-square rounded-3xl overflow-hidden border border-primary/20 shadow-gold">
-                <AnimatePresence mode="wait">
+                <AnimatePresence initial={false} custom={direction} mode="wait">
                   <motion.img
                     key={currentIndex}
                     src={heroImages[currentIndex].src}
                     alt={heroImages[currentIndex].alt}
-                    className="w-full h-full object-cover"
-                    initial={{ opacity: 0, scale: 1.1 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.95 }}
-                    transition={{ duration: 0.7, ease: "easeInOut" }}
+                    className="w-full h-full object-cover cursor-grab active:cursor-grabbing"
+                    custom={direction}
+                    variants={swipeVariants}
+                    initial="enter"
+                    animate="center"
+                    exit="exit"
+                    transition={{ duration: 0.5, ease: "easeInOut" }}
+                    drag="x"
+                    dragConstraints={{ left: 0, right: 0 }}
+                    dragElastic={0.2}
+                    onDragEnd={(_, info) => {
+                      const swipeThreshold = 50;
+                      if (info.offset.x < -swipeThreshold) {
+                        handleSwipe(1);
+                      } else if (info.offset.x > swipeThreshold) {
+                        handleSwipe(-1);
+                      }
+                    }}
                   />
                 </AnimatePresence>
               </div>
