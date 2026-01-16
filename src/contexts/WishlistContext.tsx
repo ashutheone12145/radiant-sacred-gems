@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState, useCallback, ReactNode, useEffect } from 'react';
 import { Product } from '@/types/product';
+import { parseStoredProducts } from '@/lib/validations';
 
 interface WishlistContextType {
   items: Product[];
@@ -18,14 +19,17 @@ const STORAGE_KEY = 'divine-crystal-wishlist';
 export function WishlistProvider({ children }: { children: ReactNode }) {
   const [items, setItems] = useState<Product[]>(() => {
     if (typeof window !== 'undefined') {
-      const stored = localStorage.getItem(STORAGE_KEY);
-      return stored ? JSON.parse(stored) : [];
+      return parseStoredProducts(STORAGE_KEY);
     }
     return [];
   });
 
   useEffect(() => {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
+    } catch (error) {
+      console.warn('Failed to save wishlist to localStorage');
+    }
   }, [items]);
 
   const addItem = useCallback((product: Product) => {
