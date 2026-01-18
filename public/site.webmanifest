@@ -1,0 +1,20 @@
+{
+  "name": "आत्मन् Roots",
+  "short_name": "आत्मन् Roots",
+  "description": "Rooted in Tradition, Radiant in Spirit - Sacred crystal lamps handcrafted with devotion",
+  "icons": [
+    {
+      "src": "/favicon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#D4A574",
+  "background_color": "#1a1a1a",
+  "display": "standalone"
+}
