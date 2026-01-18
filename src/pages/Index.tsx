@@ -104,6 +104,9 @@ const Index = () => {
         {/* Day/Night Feature */}
         <FeatureShowcase />
         
+        {/* Instagram Gallery */}
+        <InstagramGallery />
+        
         {/* Testimonials */}
         <section className="py-16 md:py-24 bg-cream/30">
           <div className="container">
@@ -141,9 +144,6 @@ const Index = () => {
             </div>
           </div>
         </section>
-        
-        {/* Instagram Gallery */}
-        <InstagramGallery />
         
         {/* CTA Section */}
         <section className="py-16 md:py-24 bg-gradient-to-br from-primary/10 via-background to-sand/30">

@@ -77,13 +77,21 @@ const Collection = () => {
   const collectionName = collection?.name || "All Products";
   const collectionDescription = collection?.description || "Browse our complete collection of divine crystal lamps";
 
+  // Map collection slugs to product categories
+  const collectionToCategoryMap: Record<string, string> = {
+    'deity-lamps': 'deity',
+    'galaxy-collection': 'galaxy',
+    'accessories': 'accessories',
+  };
+
   // Filter products
   const filteredProducts = useMemo(() => {
     let result = [...products];
     
     // Filter by collection/category
     if (slug && slug !== "all") {
-      result = result.filter((p) => p.category === slug);
+      const category = collectionToCategoryMap[slug] || slug;
+      result = result.filter((p) => p.category === category);
     }
     
     // Filter by deity
