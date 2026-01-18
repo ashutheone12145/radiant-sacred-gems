@@ -100,7 +100,7 @@ const About = () => {
                 </h2>
                 <div className="space-y-4 text-muted-foreground leading-relaxed">
                   <p>
-                    Divine Glow was born from a simple observation: while our homes have 
+                    आत्मन् Roots was born from a simple observation: while our homes have 
                     evolved with modern technology, our spiritual spaces often remained 
                     unchanged. We saw an opportunity to bridge this gap – to honor 
                     timeless traditions while embracing contemporary design.

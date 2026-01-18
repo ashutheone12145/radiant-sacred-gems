@@ -75,7 +75,7 @@ const Collection = () => {
 
   const collection = collections.find((c) => c.slug === slug);
   const collectionName = collection?.name || "All Products";
-  const collectionDescription = collection?.description || "Browse our complete collection of divine crystal lamps";
+  const collectionDescription = collection?.description || "Browse our complete collection of sacred crystal lamps";
 
   // Map collection slugs to product categories
   const collectionToCategoryMap: Record<string, string> = {

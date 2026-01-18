@@ -11,7 +11,7 @@ interface RecentlyViewedContextType {
 
 const RecentlyViewedContext = createContext<RecentlyViewedContextType | undefined>(undefined);
 
-const STORAGE_KEY = 'divine-crystal-recently-viewed';
+const STORAGE_KEY = 'aatman-roots-recently-viewed';
 const MAX_ITEMS = 8;
 
 export function RecentlyViewedProvider({ children }: { children: ReactNode }) {

@@ -190,7 +190,7 @@ export const InstagramGallery = ({
                         {galleryImages[selectedIndex].alt}
                       </p>
                       <p className="text-sm text-muted-foreground">
-                        Crystal Divine Lamps Collection
+                        आत्मन् Roots Collection
                       </p>
                     </div>
                     <div className="flex items-center gap-3">
