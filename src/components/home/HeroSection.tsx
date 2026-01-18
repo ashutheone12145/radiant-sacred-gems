@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import heroLamp from "@/assets/products/hero-lamp.png";
 
 const heroImages = [
-  { src: heroLamp, alt: "Divine Ganesha Crystal Lamp with spiritual ambiance" },
+  { src: heroLamp, alt: "आत्मन् Roots Sacred Crystal Lamp with spiritual ambiance" },
 ];
 
 export const HeroSection = () => {
@@ -72,17 +72,17 @@ export const HeroSection = () => {
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6"
             >
               <Sparkles className="h-4 w-4" />
-              Handcrafted Divine Illumination
+              Rooted in Tradition, Radiant in Spirit
             </motion.div>
             
             <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-foreground leading-tight mb-6">
-              Illuminate Your{" "}
-              <span className="text-gradient-gold">Sacred Space</span>
+              Awaken Your{" "}
+              <span className="text-gradient-gold">Inner Light</span>
             </h1>
             
             <p className="text-lg md:text-xl text-muted-foreground max-w-xl mx-auto lg:mx-0 mb-8">
-              Experience divine radiance with our premium K9 crystal lamps featuring 
-              beloved Hindu deities. Transform any room into a serene sanctuary.
+              Discover sacred crystal lamps handcrafted with devotion, featuring divine 
+              deities to bring peace, prosperity, and spiritual energy to your home.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
