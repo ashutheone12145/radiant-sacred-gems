@@ -104,8 +104,11 @@ export function Header() {
               <img 
                 src={logo} 
                 alt="आत्मन् Roots" 
-                className="h-10 md:h-14 w-auto"
+                className="h-10 md:h-12 w-auto"
               />
+              <span className="hidden sm:block font-serif text-lg md:text-xl font-semibold text-foreground">
+                आत्मन् Roots
+              </span>
             </motion.div>
           </Link>
 
