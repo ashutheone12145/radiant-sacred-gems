@@ -34,10 +34,10 @@ export function Footer() {
         <div className="container mx-auto px-4 py-12 md:py-16">
           <div className="max-w-xl mx-auto text-center">
             <h3 className="text-2xl md:text-3xl font-serif mb-3">
-              Join Our Sacred Circle
+              Join the आत्मन् Roots Family
             </h3>
             <p className="text-accent-foreground/70 mb-6">
-              Subscribe for exclusive offers, new arrivals, and spiritual inspiration.
+              Receive blessings, exclusive offers, and sacred inspiration for your spiritual journey.
             </p>
             <form className="flex flex-col sm:flex-row gap-3">
               <input
@@ -64,8 +64,11 @@ export function Footer() {
             <Link to="/" className="inline-block mb-4">
               <img src={logo} alt="आत्मन् Roots" className="h-16 w-auto" />
             </Link>
-            <p className="text-accent-foreground/70 text-sm mb-6 max-w-xs">
-              Handcrafted spiritual LED lamps that illuminate your sacred space with divine light.
+            <p className="text-accent-foreground/70 text-sm mb-4 max-w-xs">
+              Rooted in Tradition, Radiant in Spirit
+            </p>
+            <p className="text-accent-foreground/60 text-xs mb-6 max-w-xs">
+              Sacred crystal lamps handcrafted with devotion to awaken your inner light and bring divine energy to your home.
             </p>
             <div className="flex gap-4">
               <a href="#" className="text-accent-foreground/60 hover:text-primary transition-colors">
@@ -156,7 +159,7 @@ export function Footer() {
       <div className="border-t border-accent-foreground/10">
         <div className="container mx-auto px-4 py-6">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-accent-foreground/60">
-            <p>© 2024 आत्मन् Roots. All rights reserved.</p>
+            <p>© 2024 आत्मन् Roots. Crafted with devotion. All rights reserved.</p>
             <div className="flex gap-6">
               <Link to="/privacy" className="hover:text-accent-foreground transition-colors">
                 Privacy Policy
