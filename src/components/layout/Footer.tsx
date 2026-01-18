@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Instagram, Facebook, Youtube, Mail, Phone, MapPin } from 'lucide-react';
+import logo from '@/assets/logo.png';
 
 const footerLinks = {
   shop: [
@@ -61,7 +62,7 @@ export function Footer() {
           {/* Brand Column */}
           <div className="col-span-2 lg:col-span-1">
             <Link to="/" className="inline-block mb-4">
-              <span className="text-xl font-serif font-semibold">Divine Crystal</span>
+              <img src={logo} alt="आत्मन् Roots" className="h-16 w-auto" />
             </Link>
             <p className="text-accent-foreground/70 text-sm mb-6 max-w-xs">
               Handcrafted spiritual LED lamps that illuminate your sacred space with divine light.
@@ -136,7 +137,7 @@ export function Footer() {
             <ul className="space-y-3">
               <li className="flex items-start gap-3 text-sm text-accent-foreground/70">
                 <Mail className="h-4 w-4 mt-0.5 flex-shrink-0" />
-                <span>support@divinecrystal.com</span>
+                <span>support@aatmanroots.com</span>
               </li>
               <li className="flex items-start gap-3 text-sm text-accent-foreground/70">
                 <Phone className="h-4 w-4 mt-0.5 flex-shrink-0" />
@@ -155,7 +156,7 @@ export function Footer() {
       <div className="border-t border-accent-foreground/10">
         <div className="container mx-auto px-4 py-6">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-accent-foreground/60">
-            <p>© 2024 Divine Crystal Lamps. All rights reserved.</p>
+            <p>© 2024 आत्मन् Roots. All rights reserved.</p>
             <div className="flex gap-6">
               <Link to="/privacy" className="hover:text-accent-foreground transition-colors">
                 Privacy Policy

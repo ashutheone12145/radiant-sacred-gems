@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { products } from '@/data/products';
+import logo from '@/assets/logo.png';
 
 const navLinks = [
   { name: 'Shop All', href: '/collections' },
@@ -96,16 +97,15 @@ export function Header() {
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2">
             <motion.div
-              className="flex flex-col items-center"
+              className="flex items-center gap-2"
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.2 }}
             >
-              <span className="text-xl md:text-2xl font-serif font-semibold text-foreground tracking-wide">
-                Divine Crystal
-              </span>
-              <span className="text-[10px] md:text-xs tracking-[0.3em] text-primary uppercase">
-                Illuminate Your Space
-              </span>
+              <img 
+                src={logo} 
+                alt="आत्मन् Roots" 
+                className="h-10 md:h-14 w-auto"
+              />
             </motion.div>
           </Link>
 
