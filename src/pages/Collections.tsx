@@ -46,7 +46,7 @@ const Collections = () => {
               Our Collections
             </h1>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Discover our curated collections of divine crystal lamps, each designed to bring 
+              Discover our curated collections of sacred crystal lamps, each designed to bring 
               spiritual elegance and radiant light to your sacred spaces.
             </p>
           </motion.div>

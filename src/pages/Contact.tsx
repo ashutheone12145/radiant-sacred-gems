@@ -201,10 +201,10 @@ const Contact = () => {
                   <div>
                     <p className="font-medium text-foreground">Email</p>
                     <a
-                      href="mailto:support@divineglow.com"
+                      href="mailto:support@aatmanroots.com"
                       className="text-muted-foreground hover:text-primary transition-colors"
                     >
-                      support@divineglow.com
+                      support@aatmanroots.com
                     </a>
                   </div>
                 </div>
@@ -231,7 +231,7 @@ const Contact = () => {
                   <div>
                     <p className="font-medium text-foreground">Address</p>
                     <p className="text-muted-foreground">
-                      123 Divine Street, Spiritual District
+                      123 Aatman Street, Spiritual District
                       <br />
                       Mumbai, Maharashtra 400001
                     </p>
