@@ -4,9 +4,17 @@ import { ChevronDown, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import heroLamp from "@/assets/products/hero-lamp.png";
+import heroLampNight from "@/assets/products/hero-lamp-night.png";
+import krishnaLamp from "@/assets/products/krishna-lamp.jpg";
+import ganeshaLamp1 from "@/assets/products/ganesha-lamp-1.jpg";
+import ganeshaLamp2 from "@/assets/products/ganesha-lamp-2.jpg";
 
 const heroImages = [
-  { src: heroLamp, alt: "आत्मन् Roots Sacred Crystal Lamp with spiritual ambiance" },
+  { src: heroLamp, alt: "Sacred Crystal Lamp illuminating with divine radiance" },
+  { src: heroLampNight, alt: "Ganesha Crystal Lamp glowing in enchanting night mode" },
+  { src: krishnaLamp, alt: "Lord Krishna Crystal Lamp with serene spiritual energy" },
+  { src: ganeshaLamp1, alt: "Handcrafted Ganesha Lamp bringing prosperity and blessings" },
+  { src: ganeshaLamp2, alt: "Premium Ganesha Crystal Lamp with sacred craftsmanship" },
 ];
 
 export const HeroSection = () => {
