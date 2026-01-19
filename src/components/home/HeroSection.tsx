@@ -1,60 +1,10 @@
 import { Button } from "@/components/ui/button";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { ChevronDown, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
-import heroLamp from "@/assets/products/hero-lamp.png";
-import heroLampNight from "@/assets/products/hero-lamp-night.png";
-import krishnaLamp from "@/assets/products/krishna-lamp.jpg";
-import ganeshaLamp1 from "@/assets/products/ganesha-lamp-1.jpg";
-import ganeshaLamp2 from "@/assets/products/ganesha-lamp-2.jpg";
-
-const heroImages = [
-  { src: heroLamp, alt: "Sacred Crystal Lamp illuminating with divine radiance" },
-  { src: heroLampNight, alt: "Ganesha Crystal Lamp glowing in enchanting night mode" },
-  { src: krishnaLamp, alt: "Lord Krishna Crystal Lamp with serene spiritual energy" },
-  { src: ganeshaLamp1, alt: "Handcrafted Ganesha Lamp bringing prosperity and blessings" },
-  { src: ganeshaLamp2, alt: "Premium Ganesha Crystal Lamp with sacred craftsmanship" },
-];
+import heroVideo from "@/assets/videos/hero-video.mp4";
 
 export const HeroSection = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [direction, setDirection] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setDirection(1);
-      setCurrentIndex((prev) => (prev + 1) % heroImages.length);
-    }, 4000);
-    return () => clearInterval(interval);
-  }, []);
-
-  const handleSwipe = (swipeDirection: number) => {
-    setDirection(swipeDirection);
-    if (swipeDirection > 0) {
-      setCurrentIndex((prev) => (prev + 1) % heroImages.length);
-    } else {
-      setCurrentIndex((prev) => (prev - 1 + heroImages.length) % heroImages.length);
-    }
-  };
-
-  const swipeVariants = {
-    enter: (dir: number) => ({
-      x: dir > 0 ? 300 : -300,
-      opacity: 0,
-      scale: 0.95,
-    }),
-    center: {
-      x: 0,
-      opacity: 1,
-      scale: 1,
-    },
-    exit: (dir: number) => ({
-      x: dir < 0 ? 300 : -300,
-      opacity: 0,
-      scale: 0.95,
-    }),
-  };
 
   return (
     <section className="relative min-h-[85vh] sm:min-h-[90vh] flex items-center overflow-hidden bg-gradient-to-br from-cream via-background to-sand/30">
@@ -124,63 +74,30 @@ export const HeroSection = () => {
             </motion.div>
           </motion.div>
           
-          {/* Hero Image - Now visible on mobile */}
+          {/* Hero Video */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.3 }}
             className="relative order-1 lg:order-2"
           >
-            <div className="relative aspect-square max-w-[280px] sm:max-w-[350px] lg:max-w-lg mx-auto">
-              {/* Glow effect behind image */}
+            <div className="relative aspect-[9/16] sm:aspect-square max-w-[280px] sm:max-w-[350px] lg:max-w-lg mx-auto">
+              {/* Glow effect behind video */}
               <div className="absolute inset-0 bg-gradient-radial from-primary/40 via-primary/10 to-transparent rounded-full blur-2xl sm:blur-3xl animate-glow-pulse" />
               
-              {/* Image Carousel with Swipe */}
-              <div className="relative z-10 aspect-square rounded-2xl sm:rounded-3xl overflow-hidden border border-primary/20 shadow-gold">
-                <AnimatePresence initial={false} custom={direction} mode="wait">
-                  <motion.img
-                    key={currentIndex}
-                    src={heroImages[currentIndex].src}
-                    alt={heroImages[currentIndex].alt}
-                    className="w-full h-full object-cover cursor-grab active:cursor-grabbing"
-                    custom={direction}
-                    variants={swipeVariants}
-                    initial="enter"
-                    animate="center"
-                    exit="exit"
-                    transition={{ duration: 0.5, ease: "easeInOut" }}
-                    drag="x"
-                    dragConstraints={{ left: 0, right: 0 }}
-                    dragElastic={0.2}
-                    onDragEnd={(_, info) => {
-                      const swipeThreshold = 50;
-                      if (info.offset.x < -swipeThreshold) {
-                        handleSwipe(1);
-                      } else if (info.offset.x > swipeThreshold) {
-                        handleSwipe(-1);
-                      }
-                    }}
-                  />
-                </AnimatePresence>
+              {/* Video Player */}
+              <div className="relative z-10 aspect-[9/16] sm:aspect-square rounded-2xl sm:rounded-3xl overflow-hidden border border-primary/20 shadow-gold">
+                <video
+                  src={heroVideo}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="w-full h-full object-cover"
+                >
+                  Your browser does not support the video tag.
+                </video>
               </div>
-
-              {/* Carousel Indicators */}
-              {heroImages.length > 1 && (
-                <div className="absolute -bottom-6 sm:-bottom-8 left-1/2 -translate-x-1/2 flex gap-2 z-20">
-                  {heroImages.map((_, index) => (
-                    <button
-                      key={index}
-                      onClick={() => setCurrentIndex(index)}
-                      className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                        index === currentIndex 
-                          ? "w-6 sm:w-8 bg-primary" 
-                          : "bg-primary/30 hover:bg-primary/50"
-                      }`}
-                      aria-label={`Go to slide ${index + 1}`}
-                    />
-                  ))}
-                </div>
-              )}
             </div>
           </motion.div>
         </div>
