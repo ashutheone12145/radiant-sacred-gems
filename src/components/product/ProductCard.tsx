@@ -72,47 +72,48 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
         )}
 
         {/* Badges */}
-        <div className="absolute top-3 left-3 flex flex-col gap-2">
+        <div className="absolute top-2 sm:top-3 left-2 sm:left-3 flex flex-col gap-1 sm:gap-2">
           {discount > 0 && (
-            <span className="bg-primary text-primary-foreground text-xs font-medium px-2 py-1 rounded-sm">
+            <span className="bg-primary text-primary-foreground text-[10px] sm:text-xs font-medium px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-sm">
               -{discount}%
             </span>
           )}
           {product.tags.includes('bestseller') && (
-            <span className="bg-accent text-accent-foreground text-xs font-medium px-2 py-1 rounded-sm">
+            <span className="bg-accent text-accent-foreground text-[10px] sm:text-xs font-medium px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-sm">
               Bestseller
             </span>
           )}
         </div>
 
-        {/* Wishlist, Compare & Night/Day Toggle Buttons */}
-        <div className="absolute top-3 right-3 flex flex-col gap-2">
+        {/* Action Buttons - Simplified for mobile */}
+        <div className="absolute top-2 sm:top-3 right-2 sm:right-3 flex flex-col gap-1.5 sm:gap-2">
           <motion.button
             whileTap={{ scale: 0.9 }}
             onClick={(e) => {
               e.preventDefault();
               toggleItem(product);
             }}
-            className={`w-8 h-8 rounded-full flex items-center justify-center transition-all ${
+            className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center transition-all ${
               inWishlist 
                 ? 'bg-primary text-primary-foreground' 
-                : 'bg-background/80 text-foreground hover:bg-primary/20'
+                : 'bg-background/90 text-foreground hover:bg-primary/20'
             }`}
           >
-            <Heart className={`h-4 w-4 ${inWishlist ? 'fill-current' : ''}`} />
+            <Heart className={`h-3.5 w-3.5 sm:h-4 sm:w-4 ${inWishlist ? 'fill-current' : ''}`} />
           </motion.button>
 
+          {/* Compare button - hidden on mobile for cleaner UI */}
           <motion.button
             whileTap={{ scale: 0.9 }}
             onClick={(e) => {
               e.preventDefault();
               if (canAddToCompare) toggleCompare(product);
             }}
-            className={`w-8 h-8 rounded-full flex items-center justify-center transition-all ${
+            className={`hidden sm:flex w-8 h-8 rounded-full items-center justify-center transition-all ${
               inCompare 
                 ? 'bg-accent text-accent-foreground' 
                 : canAddToCompare
-                  ? 'bg-background/80 text-foreground hover:bg-accent/20'
+                  ? 'bg-background/90 text-foreground hover:bg-accent/20'
                   : 'bg-background/50 text-muted-foreground cursor-not-allowed'
             }`}
             title={inCompare ? 'Remove from compare' : canAddToCompare ? 'Add to compare' : 'Compare limit reached'}
@@ -125,61 +126,76 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
               e.preventDefault();
               setIsNightMode(!isNightMode);
             }}
-            className={`w-8 h-8 rounded-full flex items-center justify-center transition-all ${
+            className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center transition-all text-sm ${
               isNightMode 
                 ? 'bg-primary text-primary-foreground' 
-                : 'bg-background/80 text-foreground'
+                : 'bg-background/90 text-foreground'
             }`}
           >
             {isNightMode ? '🌙' : '☀️'}
           </button>
         </div>
 
-        {/* Quick View & Quick Add Buttons */}
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: isHovered ? 1 : 0, y: isHovered ? 0 : 10 }}
-          transition={{ duration: 0.2 }}
-          className="absolute bottom-4 left-4 right-4 flex gap-2"
-        >
-          <button
-            onClick={(e) => {
-              e.preventDefault();
-              setQuickViewOpen(true);
-            }}
-            className="w-1/2 bg-background/95 backdrop-blur-sm text-foreground py-2.5 rounded-sm font-medium text-xs flex items-center justify-center gap-1.5 hover:bg-background transition-colors border border-border"
+        {/* Quick View & Quick Add - Show on hover for desktop, always visible add button on mobile */}
+        <div className="absolute bottom-2 sm:bottom-4 left-2 sm:left-4 right-2 sm:right-4">
+          {/* Desktop version - hover to show */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: isHovered ? 1 : 0, y: isHovered ? 0 : 10 }}
+            transition={{ duration: 0.2 }}
+            className="hidden sm:flex gap-2"
           >
-            <Eye className="h-3.5 w-3.5" />
-            Quick View
-          </button>
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+                setQuickViewOpen(true);
+              }}
+              className="w-1/2 bg-background/95 backdrop-blur-sm text-foreground py-2.5 rounded-sm font-medium text-xs flex items-center justify-center gap-1.5 hover:bg-background transition-colors border border-border"
+            >
+              <Eye className="h-3.5 w-3.5" />
+              Quick View
+            </button>
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+                addItem(product);
+              }}
+              className="w-1/2 bg-primary text-primary-foreground py-2.5 rounded-sm font-medium text-xs flex items-center justify-center gap-1.5 hover:bg-primary/90 transition-colors"
+            >
+              <ShoppingBag className="h-3.5 w-3.5" />
+              Add
+            </button>
+          </motion.div>
+          
+          {/* Mobile version - always visible add button */}
           <button
             onClick={(e) => {
               e.preventDefault();
               addItem(product);
             }}
-            className="w-1/2 bg-primary text-primary-foreground py-2.5 rounded-sm font-medium text-xs flex items-center justify-center gap-1.5 hover:bg-primary/90 transition-colors"
+            className="sm:hidden w-full bg-primary text-primary-foreground py-2 rounded-sm font-medium text-xs flex items-center justify-center gap-1.5 active:bg-primary/90 transition-colors"
           >
             <ShoppingBag className="h-3.5 w-3.5" />
-            Add
+            Add to Cart
           </button>
-        </motion.div>
+        </div>
       </Link>
 
       {/* Product Info */}
-      <div className="p-4">
+      <div className="p-3 sm:p-4">
         <Link to={`/product/${product.slug}`}>
-          <h3 className="font-serif font-medium text-lg line-clamp-2 hover:text-primary transition-colors">
+          <h3 className="font-serif font-medium text-sm sm:text-lg line-clamp-2 hover:text-primary transition-colors leading-tight">
             {product.name}
           </h3>
         </Link>
 
         {/* Rating */}
-        <div className="flex items-center gap-1.5 mt-2">
+        <div className="flex items-center gap-1 sm:gap-1.5 mt-1.5 sm:mt-2">
           <div className="flex">
             {[...Array(5)].map((_, i) => (
               <Star
                 key={i}
-                className={`h-3.5 w-3.5 ${
+                className={`h-3 w-3 sm:h-3.5 sm:w-3.5 ${
                   i < Math.floor(product.rating)
                     ? 'fill-primary text-primary'
                     : 'fill-muted text-muted'
@@ -187,18 +203,18 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
               />
             ))}
           </div>
-          <span className="text-xs text-muted-foreground">
+          <span className="text-[10px] sm:text-xs text-muted-foreground">
             ({product.reviewCount})
           </span>
         </div>
 
         {/* Price */}
-        <div className="flex items-center gap-2 mt-3">
-          <span className="text-lg font-semibold text-primary">
+        <div className="flex items-center gap-1.5 sm:gap-2 mt-2 sm:mt-3">
+          <span className="text-sm sm:text-lg font-semibold text-primary">
             {formatPrice(product.price)}
           </span>
           {product.compareAtPrice && (
-            <span className="text-sm text-muted-foreground line-through">
+            <span className="text-xs sm:text-sm text-muted-foreground line-through">
               {formatPrice(product.compareAtPrice)}
             </span>
           )}

@@ -18,7 +18,7 @@ export const CollectionCard = ({ collection, index = 0 }: CollectionCardProps) =
     >
       <Link
         to={`/collections/${collection.slug}`}
-        className="group relative block aspect-[4/5] overflow-hidden rounded-2xl"
+        className="group relative block aspect-[4/5] sm:aspect-[4/5] overflow-hidden rounded-xl sm:rounded-2xl"
       >
         {/* Collection image background */}
         <img
@@ -37,18 +37,18 @@ export const CollectionCard = ({ collection, index = 0 }: CollectionCardProps) =
         <div className="shimmer-overlay" />
         
         {/* Content */}
-        <div className="absolute inset-0 flex flex-col justify-end p-6">
+        <div className="absolute inset-0 flex flex-col justify-end p-4 sm:p-6">
           <div className="transform transition-transform duration-300 group-hover:-translate-y-2">
-            <p className="text-primary text-sm font-medium mb-2">
+            <p className="text-primary text-xs sm:text-sm font-medium mb-1 sm:mb-2">
               {collection.productCount} Products
             </p>
-            <h3 className="font-serif text-2xl md:text-3xl font-bold text-white mb-2">
+            <h3 className="font-serif text-xl sm:text-2xl md:text-3xl font-bold text-white mb-1 sm:mb-2">
               {collection.name}
             </h3>
-            <p className="text-white/80 text-sm mb-4 line-clamp-2">
+            <p className="text-white/80 text-xs sm:text-sm mb-3 sm:mb-4 line-clamp-2">
               {collection.description}
             </p>
-            <div className="inline-flex items-center gap-2 text-primary font-medium group-hover:gap-3 transition-all">
+            <div className="inline-flex items-center gap-2 text-primary font-medium text-sm group-hover:gap-3 transition-all">
               Explore Collection
               <ArrowRight className="h-4 w-4" />
             </div>
@@ -56,7 +56,7 @@ export const CollectionCard = ({ collection, index = 0 }: CollectionCardProps) =
         </div>
         
         {/* Border glow on hover */}
-        <div className="absolute inset-0 rounded-2xl border-2 border-transparent group-hover:border-primary/30 transition-colors duration-500" />
+        <div className="absolute inset-0 rounded-xl sm:rounded-2xl border-2 border-transparent group-hover:border-primary/30 transition-colors duration-500" />
       </Link>
     </motion.div>
   );

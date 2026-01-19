@@ -67,113 +67,141 @@ export function Header() {
   };
 
   return (
-    <header className="sticky top-0 z-50 bg-background/95 backdrop-blur-md border-b border-border">
-      <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16 md:h-20">
-          {/* Mobile Menu */}
-          <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
-            <SheetTrigger asChild className="md:hidden">
-              <Button variant="ghost" size="icon" className="mr-2">
-                <Menu className="h-5 w-5" />
-                <span className="sr-only">Menu</span>
-              </Button>
-            </SheetTrigger>
-            <SheetContent side="left" className="w-80 bg-background">
-              <nav className="flex flex-col gap-4 mt-8">
-                {navLinks.map((link) => (
+    <>
+      <header className="sticky top-0 z-50 bg-background/95 backdrop-blur-md border-b border-border">
+        <div className="container mx-auto px-3 sm:px-4">
+          <div className="flex items-center justify-between h-14 sm:h-16 md:h-20">
+            {/* Mobile Menu */}
+            <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
+              <SheetTrigger asChild className="md:hidden">
+                <Button variant="ghost" size="icon" className="h-9 w-9 mr-1 sm:mr-2 flex-shrink-0">
+                  <Menu className="h-5 w-5" />
+                  <span className="sr-only">Menu</span>
+                </Button>
+              </SheetTrigger>
+              <SheetContent side="left" className="w-[85vw] max-w-80 bg-background p-0">
+                {/* Mobile menu header with brand */}
+                <div className="flex items-center gap-2 p-4 border-b border-border">
+                  <img 
+                    src={logo} 
+                    alt="आत्मन् Roots" 
+                    className="h-10 w-auto"
+                  />
+                  <span className="font-serif text-lg font-semibold text-foreground">
+                    आत्मन् Roots
+                  </span>
+                </div>
+                <nav className="flex flex-col gap-1 p-4">
+                  {navLinks.map((link) => (
+                    <Link
+                      key={link.name}
+                      to={link.href}
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="text-base font-medium text-foreground hover:text-primary hover:bg-primary/5 transition-colors py-3 px-3 rounded-lg"
+                    >
+                      {link.name}
+                    </Link>
+                  ))}
+                  {/* Mobile-only wishlist link */}
                   <Link
-                    key={link.name}
-                    to={link.href}
+                    to="/wishlist"
                     onClick={() => setMobileMenuOpen(false)}
-                    className="text-lg font-serif text-foreground hover:text-primary transition-colors py-2 border-b border-border"
+                    className="text-base font-medium text-foreground hover:text-primary hover:bg-primary/5 transition-colors py-3 px-3 rounded-lg flex items-center gap-2 mt-2 border-t border-border pt-4"
                   >
-                    {link.name}
+                    <Heart className="h-4 w-4" />
+                    Wishlist
+                    {wishlistCount > 0 && (
+                      <span className="ml-auto h-5 w-5 rounded-full bg-primary text-primary-foreground text-xs flex items-center justify-center font-medium">
+                        {wishlistCount}
+                      </span>
+                    )}
                   </Link>
-                ))}
-              </nav>
-            </SheetContent>
-          </Sheet>
+                </nav>
+              </SheetContent>
+            </Sheet>
 
-          {/* Logo */}
-          <Link to="/" className="flex items-center gap-2">
-            <motion.div
-              className="flex items-center gap-2"
-              whileHover={{ scale: 1.02 }}
-              transition={{ duration: 0.2 }}
-            >
-              <img 
-                src={logo} 
-                alt="आत्मन् Roots" 
-                className="h-10 md:h-12 w-auto"
-              />
-              <span className="hidden sm:block font-serif text-lg md:text-xl font-semibold text-foreground">
-                आत्मन् Roots
-              </span>
-            </motion.div>
-          </Link>
-
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                to={link.href}
-                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors relative group"
+            {/* Logo - Always show brand name */}
+            <Link to="/" className="flex items-center gap-1.5 sm:gap-2 min-w-0">
+              <motion.div
+                className="flex items-center gap-1.5 sm:gap-2"
+                whileHover={{ scale: 1.02 }}
+                transition={{ duration: 0.2 }}
               >
-                {link.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
-              </Link>
-            ))}
-          </nav>
+                <img 
+                  src={logo} 
+                  alt="आत्मन् Roots" 
+                  className="h-7 sm:h-9 md:h-12 w-auto flex-shrink-0"
+                />
+                <span className="font-serif text-xs sm:text-sm md:text-xl font-semibold text-foreground whitespace-nowrap">
+                  आत्मन् Roots
+                </span>
+              </motion.div>
+            </Link>
 
-          {/* Actions */}
-          <div className="flex items-center gap-2 md:gap-4">
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => setSearchOpen(true)}
-            >
-              <Search className="h-5 w-5" />
-              <span className="sr-only">Search</span>
-            </Button>
-            
-            <Button variant="ghost" size="icon" className="hidden md:flex relative" asChild>
-              <Link to="/wishlist">
-                <Heart className="h-5 w-5" />
-                {wishlistCount > 0 && (
+            {/* Desktop Navigation */}
+            <nav className="hidden md:flex items-center gap-5 lg:gap-8">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.name}
+                  to={link.href}
+                  className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors relative group whitespace-nowrap"
+                >
+                  {link.name}
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
+                </Link>
+              ))}
+            </nav>
+
+            {/* Actions */}
+            <div className="flex items-center gap-0.5 sm:gap-1 md:gap-3">
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={() => setSearchOpen(true)}
+                className="h-9 w-9"
+              >
+                <Search className="h-5 w-5" />
+                <span className="sr-only">Search</span>
+              </Button>
+              
+              <Button variant="ghost" size="icon" className="hidden md:flex relative h-9 w-9" asChild>
+                <Link to="/wishlist">
+                  <Heart className="h-5 w-5" />
+                  {wishlistCount > 0 && (
+                    <motion.span
+                      initial={{ scale: 0 }}
+                      animate={{ scale: 1 }}
+                      className="absolute -top-1 -right-1 h-4 w-4 rounded-full bg-primary text-primary-foreground text-[10px] flex items-center justify-center font-medium"
+                    >
+                      {wishlistCount}
+                    </motion.span>
+                  )}
+                  <span className="sr-only">Wishlist</span>
+                </Link>
+              </Button>
+              
+              <Button 
+                variant="ghost" 
+                size="icon" 
+                className="relative h-9 w-9"
+                onClick={toggleCart}
+              >
+                <ShoppingBag className="h-5 w-5" />
+                {itemCount > 0 && (
                   <motion.span
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
-                    className="absolute -top-1 -right-1 h-5 w-5 rounded-full bg-primary text-primary-foreground text-xs flex items-center justify-center font-medium"
+                    className="absolute -top-1 -right-1 h-4 w-4 rounded-full bg-primary text-primary-foreground text-[10px] flex items-center justify-center font-medium"
                   >
-                    {wishlistCount}
+                    {itemCount}
                   </motion.span>
                 )}
-                <span className="sr-only">Wishlist</span>
-              </Link>
-            </Button>
-            
-            <Button 
-              variant="ghost" 
-              size="icon" 
-              className="relative"
-              onClick={toggleCart}
-            >
-              <ShoppingBag className="h-5 w-5" />
-              {itemCount > 0 && (
-                <motion.span
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1 }}
-                  className="absolute -top-1 -right-1 h-5 w-5 rounded-full bg-primary text-primary-foreground text-xs flex items-center justify-center font-medium"
-                >
-                  {itemCount}
-                </motion.span>
-              )}
-              <span className="sr-only">Cart</span>
-            </Button>
+                <span className="sr-only">Cart</span>
+              </Button>
+            </div>
           </div>
         </div>
-      </div>
+      </header>
 
       {/* Search Overlay */}
       <AnimatePresence>
@@ -184,8 +212,8 @@ export function Header() {
             exit={{ opacity: 0 }}
             className="fixed inset-0 z-50 bg-background/95 backdrop-blur-md"
           >
-            <div className="container mx-auto px-4 py-8">
-              <div className="flex justify-end mb-8">
+            <div className="container mx-auto px-4 py-4 sm:py-8">
+              <div className="flex justify-end mb-4 sm:mb-8">
                 <Button
                   variant="ghost"
                   size="icon"
@@ -210,7 +238,7 @@ export function Header() {
                     placeholder="Search for crystal lamps..."
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
-                    className="w-full h-14 pl-12 pr-4 text-lg rounded-full border-2 border-border focus:border-primary bg-background"
+                    className="w-full h-12 sm:h-14 pl-12 pr-4 text-base sm:text-lg rounded-full border-2 border-border focus:border-primary bg-background"
                   />
                   <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
                 </form>
@@ -226,16 +254,16 @@ export function Header() {
                       <button
                         key={product.id}
                         onClick={() => handleSuggestionClick(product.slug)}
-                        className="w-full flex items-center gap-4 p-4 hover:bg-muted transition-colors text-left"
+                        className="w-full flex items-center gap-3 sm:gap-4 p-3 sm:p-4 hover:bg-muted transition-colors text-left"
                       >
                         <img
                           src={product.images.day}
                           alt={product.name}
-                          className="w-12 h-12 object-cover rounded-lg"
+                          className="w-10 h-10 sm:w-12 sm:h-12 object-cover rounded-lg"
                         />
-                        <div>
-                          <p className="font-medium text-foreground">{product.name}</p>
-                          <p className="text-sm text-muted-foreground">₹{product.price.toLocaleString()}</p>
+                        <div className="min-w-0 flex-1">
+                          <p className="font-medium text-foreground text-sm sm:text-base truncate">{product.name}</p>
+                          <p className="text-xs sm:text-sm text-muted-foreground">₹{product.price.toLocaleString()}</p>
                         </div>
                       </button>
                     ))}
@@ -245,7 +273,7 @@ export function Header() {
                         setSearchOpen(false);
                         setSearchQuery('');
                       }}
-                      className="block w-full p-4 text-center text-primary hover:bg-muted transition-colors border-t border-border"
+                      className="block w-full p-3 sm:p-4 text-center text-primary hover:bg-muted transition-colors border-t border-border text-sm sm:text-base"
                     >
                       View all results →
                     </Link>
@@ -258,9 +286,9 @@ export function Header() {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.2 }}
-                    className="mt-8 text-center"
+                    className="mt-6 sm:mt-8 text-center"
                   >
-                    <p className="text-sm text-muted-foreground mb-4">Popular searches</p>
+                    <p className="text-sm text-muted-foreground mb-3 sm:mb-4">Popular searches</p>
                     <div className="flex flex-wrap justify-center gap-2">
                       {['Ganesha Lamp', 'Galaxy Collection', 'Krishna', 'LED Crystal'].map((term) => (
                         <Button
@@ -268,7 +296,7 @@ export function Header() {
                           variant="outline"
                           size="sm"
                           onClick={() => setSearchQuery(term)}
-                          className="rounded-full"
+                          className="rounded-full text-xs sm:text-sm"
                         >
                           {term}
                         </Button>
@@ -281,6 +309,6 @@ export function Header() {
           </motion.div>
         )}
       </AnimatePresence>
-    </header>
+    </>
   );
 }
