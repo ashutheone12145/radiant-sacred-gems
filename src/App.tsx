@@ -12,6 +12,7 @@ import { CompareBar } from "@/components/product/CompareBar";
 import { BackToTop } from "@/components/ui/back-to-top";
 import { MobileBottomNav } from "@/components/layout/MobileBottomNav";
 import { AnimatedRoutes } from "@/components/layout/AnimatedRoutes";
+import { ScrollToTop } from "@/components/layout/ScrollToTop";
 
 const queryClient = new QueryClient();
 
@@ -29,6 +30,7 @@ const App = () => (
                 <CompareBar />
                 <BackToTop />
                 <MobileBottomNav />
+                <ScrollToTop />
                 <AnimatedRoutes />
               </RecentlyViewedProvider>
             </CompareProvider>
