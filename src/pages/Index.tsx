@@ -15,22 +15,18 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { toast } from "sonner";
-
 const Index = () => {
   const featuredProducts = products.slice(0, 4);
   const featuredReviews = reviews.slice(0, 3);
-
   const handleRefresh = useCallback(async () => {
     // Simulate refresh delay
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    await new Promise(resolve => setTimeout(resolve, 1000));
     toast.success("Content refreshed!", {
       duration: 2000,
-      position: "top-center",
+      position: "top-center"
     });
   }, []);
-
-  return (
-    <PullToRefresh onRefresh={handleRefresh}>
+  return <PullToRefresh onRefresh={handleRefresh}>
       <div className="min-h-screen bg-background">
         <Header />
         
@@ -45,7 +41,7 @@ const Index = () => {
           <section className="py-10 sm:py-16 md:py-24 bg-cream/30">
             <div className="container px-3 sm:px-4">
               <ScrollAnimate animation="fadeUp" className="text-center mb-8 sm:mb-12">
-                <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-2 sm:mb-4">
+                <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl font-bold mb-2 sm:mb-4 bg-inherit text-primary">
                   Explore Our Collections
                 </h2>
                 <p className="text-sm sm:text-base text-muted-foreground max-w-2xl mx-auto px-4">
@@ -54,11 +50,9 @@ const Index = () => {
               </ScrollAnimate>
               
               <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
-                {collections.map((collection) => (
-                  <StaggerItem key={collection.slug}>
+                {collections.map(collection => <StaggerItem key={collection.slug}>
                     <CollectionCard collection={collection} />
-                  </StaggerItem>
-                ))}
+                  </StaggerItem>)}
               </StaggerContainer>
             </div>
           </section>
@@ -83,11 +77,9 @@ const Index = () => {
               </ScrollAnimate>
               
               <StaggerContainer className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6" staggerDelay={0.08}>
-                {featuredProducts.map((product) => (
-                  <StaggerItem key={product.id}>
+                {featuredProducts.map(product => <StaggerItem key={product.id}>
                     <ProductCard product={product} />
-                  </StaggerItem>
-                ))}
+                  </StaggerItem>)}
               </StaggerContainer>
             </div>
           </section>
@@ -115,16 +107,9 @@ const Index = () => {
               </ScrollAnimate>
               
               <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
-                {featuredReviews.map((review, index) => (
-                  <StaggerItem key={review.id}>
-                    <TestimonialCard 
-                      author={review.author}
-                      rating={review.rating}
-                      content={review.content}
-                      index={index}
-                    />
-                  </StaggerItem>
-                ))}
+                {featuredReviews.map((review, index) => <StaggerItem key={review.id}>
+                    <TestimonialCard author={review.author} rating={review.rating} content={review.content} index={index} />
+                  </StaggerItem>)}
               </StaggerContainer>
             </div>
           </section>
@@ -150,8 +135,6 @@ const Index = () => {
         
         <Footer />
       </div>
-    </PullToRefresh>
-  );
+    </PullToRefresh>;
 };
-
 export default Index;
