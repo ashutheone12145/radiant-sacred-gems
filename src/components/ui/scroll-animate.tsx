@@ -1,5 +1,6 @@
 import { ReactNode, useRef } from 'react';
 import { motion, useInView, Variants } from 'framer-motion';
+import { cn } from '@/lib/utils';
 
 type AnimationType = 'fadeUp' | 'fadeIn' | 'slideLeft' | 'slideRight' | 'scale' | 'stagger';
 
@@ -121,7 +122,8 @@ export function StaggerItem({ children, className }: StaggerItemProps) {
         visible: { opacity: 1, y: 0 },
       }}
       transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
-      className={className}
+      className={cn("relative", className)}
+      style={{ zIndex: 1 }}
     >
       {children}
     </motion.div>
