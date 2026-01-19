@@ -10,6 +10,7 @@ import { RecentlyViewedProvider } from "@/contexts/RecentlyViewedContext";
 import { CartDrawer } from "@/components/cart/CartDrawer";
 import { CompareBar } from "@/components/product/CompareBar";
 import { BackToTop } from "@/components/ui/back-to-top";
+import { MobileBottomNav } from "@/components/layout/MobileBottomNav";
 import Index from "./pages/Index";
 import ProductDetail from "./pages/ProductDetail";
 import Collection from "./pages/Collection";
@@ -38,6 +39,7 @@ const App = () => (
                 <CartDrawer />
                 <CompareBar />
                 <BackToTop />
+                <MobileBottomNav />
                 <Routes>
                   <Route path="/" element={<Index />} />
                   <Route path="/product/:slug" element={<ProductDetail />} />

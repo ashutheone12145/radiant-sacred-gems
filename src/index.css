@@ -229,4 +229,20 @@
   .bg-pattern-subtle {
     background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0L30 60M0 30L60 30' stroke='%23d4a94820' stroke-width='1' fill='none'/%3E%3C/svg%3E");
   }
+  
+  /* Safe area padding for notched devices */
+  .safe-area-pb {
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  
+  /* Mobile bottom nav spacing */
+  .pb-mobile-nav {
+    padding-bottom: 4rem;
+  }
+  
+  @media (min-width: 768px) {
+    .pb-mobile-nav {
+      padding-bottom: 0;
+    }
+  }
 }

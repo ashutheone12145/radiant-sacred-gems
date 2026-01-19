@@ -28,7 +28,7 @@ const footerLinks = {
 
 export function Footer() {
   return (
-    <footer className="bg-accent text-accent-foreground">
+    <footer className="bg-accent text-accent-foreground pb-mobile-nav">
       {/* Newsletter Section */}
       <div className="border-b border-accent-foreground/10">
         <div className="container mx-auto px-4 py-8 sm:py-12 md:py-16">
