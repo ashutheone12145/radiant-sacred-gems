@@ -102,18 +102,16 @@ export const ImageGallery = ({
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5 }}
-            className={`relative z-10 h-full w-full flex items-center justify-center ${
+            className={`relative z-10 h-full w-full flex items-center justify-center p-4 ${
               isNightMode ? "bg-navy/90" : ""
             }`}
           >
-            {/* Placeholder for actual image */}
-            <div className="w-3/4 h-3/4 rounded-lg bg-primary/10 flex items-center justify-center">
-              <span className="text-sm text-muted-foreground text-center p-4">
-                {productName}
-                <br />
-                {isNightMode ? "(Night Mode)" : "(Day Mode)"}
-              </span>
-            </div>
+            <img
+              src={currentImage}
+              alt={`${productName} ${isNightMode ? '- Night Mode' : '- Day Mode'}`}
+              className="max-w-full max-h-full w-auto h-auto object-contain rounded-lg"
+              loading="eager"
+            />
           </motion.div>
         </AnimatePresence>
         
@@ -195,9 +193,12 @@ export const ImageGallery = ({
                   : "opacity-60 hover:opacity-100"
               }`}
             >
-              <div className="w-full h-full bg-gradient-to-br from-cream to-sand flex items-center justify-center">
-                <span className="text-xs text-muted-foreground">{index + 1}</span>
-              </div>
+              <img
+                src={image}
+                alt={`${productName} thumbnail ${index + 1}`}
+                className="w-full h-full object-cover"
+                loading="lazy"
+              />
             </button>
           ))}
         </div>
@@ -218,17 +219,15 @@ export const ImageGallery = ({
             onTouchEnd={onTouchEnd}
           >
             {isNightMode && (
-              <div className="absolute inset-0 flex items-center justify-center">
+              <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                 <div className="w-1/2 h-1/2 bg-primary/30 rounded-full blur-3xl animate-glow-pulse" />
               </div>
             )}
-            <div className="relative z-10 w-full max-w-md aspect-square rounded-lg bg-primary/10 flex items-center justify-center">
-              <span className="text-sm text-white/60 text-center p-4">
-                {productName}
-                <br />
-                {isNightMode ? "(Night Mode)" : "(Day Mode)"}
-              </span>
-            </div>
+            <img
+              src={currentImage}
+              alt={`${productName} ${isNightMode ? '- Night Mode' : '- Day Mode'}`}
+              className="relative z-10 max-w-full max-h-[80vh] w-auto h-auto object-contain rounded-lg"
+            />
             
             {/* Lightbox navigation */}
             {allImages.length > 1 && (
