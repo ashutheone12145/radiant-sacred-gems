@@ -7,6 +7,7 @@ import { useWishlist } from '@/contexts/WishlistContext';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { ThemeToggle } from '@/components/ui/theme-toggle';
 import { products } from '@/data/products';
 import logo from '@/assets/logo.png';
 
@@ -156,7 +157,9 @@ export function Header() {
             </nav>
 
             {/* Actions */}
-            <div className="flex items-center gap-0.5 sm:gap-1 md:gap-3">
+            <div className="flex items-center gap-0.5 sm:gap-1 md:gap-2">
+              <ThemeToggle />
+              
               <Button
                 variant="ghost"
                 size="icon"

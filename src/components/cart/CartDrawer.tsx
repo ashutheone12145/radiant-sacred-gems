@@ -1,5 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Plus, Minus, Gift, ShoppingBag } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { useCart } from '@/contexts/CartContext';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -168,8 +169,10 @@ export function CartDrawer() {
                 <p className="text-xs text-muted-foreground mb-4">
                   Shipping and taxes calculated at checkout
                 </p>
-                <Button className="w-full btn-premium py-6">
-                  Proceed to Checkout
+                <Button asChild className="w-full btn-premium py-6">
+                  <Link to="/checkout" onClick={closeCart}>
+                    Proceed to Checkout
+                  </Link>
                 </Button>
               </div>
             )}
