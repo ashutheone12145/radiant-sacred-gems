@@ -148,6 +148,7 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
             <button
               onClick={(e) => {
                 e.preventDefault();
+                e.stopPropagation();
                 setQuickViewOpen(true);
               }}
               className="w-1/2 bg-background/95 backdrop-blur-sm text-foreground py-2.5 rounded-sm font-medium text-xs flex items-center justify-center gap-1.5 hover:bg-background transition-colors border border-border"
@@ -158,9 +159,11 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
             <button
               onClick={(e) => {
                 e.preventDefault();
+                e.stopPropagation();
                 addItem(product);
               }}
-              className="w-1/2 bg-primary text-primary-foreground py-2.5 rounded-sm font-medium text-xs flex items-center justify-center gap-1.5 hover:bg-primary/90 transition-colors"
+              className="w-1/2 bg-primary py-2.5 rounded-sm font-medium text-xs flex items-center justify-center gap-1.5 transition-colors"
+              style={{ color: 'hsl(var(--primary-foreground))' }}
             >
               <ShoppingBag className="h-3.5 w-3.5" />
               Add
@@ -171,9 +174,11 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
           <button
             onClick={(e) => {
               e.preventDefault();
+              e.stopPropagation();
               addItem(product);
             }}
-            className="sm:hidden w-full bg-primary text-primary-foreground py-2 rounded-sm font-medium text-xs flex items-center justify-center gap-1.5 active:bg-primary/90 transition-colors"
+            className="sm:hidden w-full bg-primary py-2 rounded-sm font-medium text-xs flex items-center justify-center gap-1.5 active:bg-primary/90 transition-colors"
+            style={{ color: 'hsl(var(--primary-foreground))' }}
           >
             <ShoppingBag className="h-3.5 w-3.5" />
             Add to Cart
