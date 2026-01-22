@@ -121,19 +121,22 @@ export function Header() {
             </Sheet>
 
             {/* Logo - Always show brand name */}
-            <Link to="/" className="flex items-center gap-1.5 sm:gap-2 min-w-0">
+            <Link to="/" className="flex items-center gap-1 sm:gap-1.5 min-w-0">
               <motion.div
-                className="flex items-center gap-1.5 sm:gap-2"
+                className="flex items-center gap-1 sm:gap-1.5"
                 whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.2 }}
               >
+                <span className="font-serif text-xs sm:text-sm md:text-xl font-semibold text-foreground whitespace-nowrap">
+                  आत्मन्
+                </span>
                 <img 
                   src={logo} 
                   alt="आत्मन् Roots" 
                   className="h-7 sm:h-9 md:h-12 w-auto flex-shrink-0"
                 />
                 <span className="font-serif text-xs sm:text-sm md:text-xl font-semibold text-foreground whitespace-nowrap">
-                  आत्मन् Roots
+                  Roots
                 </span>
               </motion.div>
             </Link>
