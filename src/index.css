@@ -4,6 +4,11 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Smooth scrolling for the entire page */
+html {
+  scroll-behavior: smooth;
+}
+
 /* आत्मन् Roots - Premium Spiritual Ecommerce Design System
    Aesthetic: Luxurious, calm, devotional, modern
    Colors: Warm neutrals (cream, sand, soft gold, deep navy)
