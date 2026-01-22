@@ -1,6 +1,12 @@
 import { Link } from 'react-router-dom';
 import { Instagram, Facebook, Youtube, Mail, Phone, MapPin } from 'lucide-react';
 import logo from '@/assets/logo.png';
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '@/components/ui/accordion';
 
 const footerLinks = {
   shop: [
@@ -57,22 +63,19 @@ export function Footer() {
       </div>
 
       {/* Main Footer */}
-      <div className="container mx-auto px-4 py-8 sm:py-12 md:py-16">
-        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6 sm:gap-8">
+      <div className="container mx-auto px-4 py-6 sm:py-10">
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
           {/* Brand Column */}
-          <div className="col-span-2 sm:col-span-2 lg:col-span-1 text-center sm:text-left">
-            <Link to="/" className="inline-flex items-center gap-1 sm:gap-1.5 mb-3 sm:mb-4">
-              <span className="font-serif text-sm sm:text-base font-semibold">आत्मन्</span>
-              <img src={logo} alt="आत्मन् Roots" className="h-10 sm:h-12 w-auto" />
-              <span className="font-serif text-sm sm:text-base font-semibold">Roots</span>
+          <div className="text-center lg:text-left">
+            <Link to="/" className="inline-flex items-center gap-1.5 mb-3">
+              <span className="font-serif text-sm font-semibold">आत्मन्</span>
+              <img src={logo} alt="आत्मन् Roots" className="h-10 w-auto" />
+              <span className="font-serif text-sm font-semibold">Roots</span>
             </Link>
-            <p className="text-accent-foreground/70 text-sm mb-2 sm:mb-4 max-w-xs mx-auto sm:mx-0">
+            <p className="text-accent-foreground/70 text-sm mb-2 max-w-xs mx-auto lg:mx-0">
               Rooted in Tradition, Radiant in Spirit
             </p>
-            <p className="text-accent-foreground/60 text-xs mb-4 sm:mb-6 max-w-xs mx-auto sm:mx-0">
-              Sacred crystal lamps handcrafted with devotion to awaken your inner light.
-            </p>
-            <div className="flex gap-4 justify-center sm:justify-start">
+            <div className="flex gap-4 justify-center lg:justify-start mt-4">
               <a href="#" className="text-accent-foreground/60 hover:text-primary transition-colors p-2 -m-2">
                 <Instagram className="h-5 w-5" />
               </a>
@@ -85,16 +88,95 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Shop Links */}
-          <div>
-            <h4 className="font-serif font-semibold mb-3 sm:mb-4 text-sm sm:text-base">Shop</h4>
-            <ul className="space-y-2 sm:space-y-2.5">
+          {/* Accordion Links - Mobile */}
+          <div className="lg:hidden col-span-1">
+            <Accordion type="multiple" className="w-full">
+              <AccordionItem value="shop" className="border-accent-foreground/10">
+                <AccordionTrigger className="text-sm font-serif font-semibold hover:no-underline py-3">
+                  Shop
+                </AccordionTrigger>
+                <AccordionContent>
+                  <ul className="space-y-2 pb-2">
+                    {footerLinks.shop.map((link) => (
+                      <li key={link.name}>
+                        <Link to={link.href} className="text-sm text-accent-foreground/70 hover:text-accent-foreground transition-colors">
+                          {link.name}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </AccordionContent>
+              </AccordionItem>
+              
+              <AccordionItem value="support" className="border-accent-foreground/10">
+                <AccordionTrigger className="text-sm font-serif font-semibold hover:no-underline py-3">
+                  Support
+                </AccordionTrigger>
+                <AccordionContent>
+                  <ul className="space-y-2 pb-2">
+                    {footerLinks.support.map((link) => (
+                      <li key={link.name}>
+                        <Link to={link.href} className="text-sm text-accent-foreground/70 hover:text-accent-foreground transition-colors">
+                          {link.name}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </AccordionContent>
+              </AccordionItem>
+              
+              <AccordionItem value="company" className="border-accent-foreground/10">
+                <AccordionTrigger className="text-sm font-serif font-semibold hover:no-underline py-3">
+                  Company
+                </AccordionTrigger>
+                <AccordionContent>
+                  <ul className="space-y-2 pb-2">
+                    {footerLinks.company.map((link) => (
+                      <li key={link.name}>
+                        <Link to={link.href} className="text-sm text-accent-foreground/70 hover:text-accent-foreground transition-colors">
+                          {link.name}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </AccordionContent>
+              </AccordionItem>
+              
+              <AccordionItem value="contact" className="border-accent-foreground/10">
+                <AccordionTrigger className="text-sm font-serif font-semibold hover:no-underline py-3">
+                  Contact
+                </AccordionTrigger>
+                <AccordionContent>
+                  <ul className="space-y-2 pb-2">
+                    <li>
+                      <a href="mailto:support@aatmanroots.com" className="flex items-center gap-2 text-sm text-accent-foreground/70 hover:text-accent-foreground transition-colors">
+                        <Mail className="h-4 w-4" />
+                        support@aatmanroots.com
+                      </a>
+                    </li>
+                    <li>
+                      <a href="tel:+919876543210" className="flex items-center gap-2 text-sm text-accent-foreground/70 hover:text-accent-foreground transition-colors">
+                        <Phone className="h-4 w-4" />
+                        +91 98765 43210
+                      </a>
+                    </li>
+                    <li className="flex items-center gap-2 text-sm text-accent-foreground/70">
+                      <MapPin className="h-4 w-4" />
+                      Mumbai, Maharashtra, India
+                    </li>
+                  </ul>
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
+          </div>
+
+          {/* Desktop Links - Hidden on Mobile */}
+          <div className="hidden lg:block">
+            <h4 className="font-serif font-semibold mb-3 text-sm">Shop</h4>
+            <ul className="space-y-2">
               {footerLinks.shop.map((link) => (
                 <li key={link.name}>
-                  <Link
-                    to={link.href}
-                    className="text-xs sm:text-sm text-accent-foreground/70 hover:text-accent-foreground transition-colors py-1 inline-block"
-                  >
+                  <Link to={link.href} className="text-sm text-accent-foreground/70 hover:text-accent-foreground transition-colors">
                     {link.name}
                   </Link>
                 </li>
@@ -102,16 +184,12 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Support Links */}
-          <div>
-            <h4 className="font-serif font-semibold mb-3 sm:mb-4 text-sm sm:text-base">Support</h4>
-            <ul className="space-y-2 sm:space-y-2.5">
+          <div className="hidden lg:block">
+            <h4 className="font-serif font-semibold mb-3 text-sm">Support</h4>
+            <ul className="space-y-2">
               {footerLinks.support.map((link) => (
                 <li key={link.name}>
-                  <Link
-                    to={link.href}
-                    className="text-xs sm:text-sm text-accent-foreground/70 hover:text-accent-foreground transition-colors py-1 inline-block"
-                  >
+                  <Link to={link.href} className="text-sm text-accent-foreground/70 hover:text-accent-foreground transition-colors">
                     {link.name}
                   </Link>
                 </li>
@@ -119,42 +197,29 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Company Links */}
-          <div className="hidden md:block">
-            <h4 className="font-serif font-semibold mb-4 text-sm sm:text-base">Company</h4>
-            <ul className="space-y-2.5">
-              {footerLinks.company.map((link) => (
+          <div className="hidden lg:block">
+            <h4 className="font-serif font-semibold mb-3 text-sm">Company & Contact</h4>
+            <ul className="space-y-2 mb-4">
+              {footerLinks.company.slice(0, 3).map((link) => (
                 <li key={link.name}>
-                  <Link
-                    to={link.href}
-                    className="text-xs sm:text-sm text-accent-foreground/70 hover:text-accent-foreground transition-colors py-1 inline-block"
-                  >
+                  <Link to={link.href} className="text-sm text-accent-foreground/70 hover:text-accent-foreground transition-colors">
                     {link.name}
                   </Link>
                 </li>
               ))}
             </ul>
-          </div>
-
-          {/* Contact Info */}
-          <div className="col-span-2 sm:col-span-2 md:col-span-1">
-            <h4 className="font-serif font-semibold mb-3 sm:mb-4 text-sm sm:text-base">Contact</h4>
-            <ul className="space-y-2 sm:space-y-3">
+            <ul className="space-y-2 pt-3 border-t border-accent-foreground/10">
               <li>
-                <a href="mailto:support@aatmanroots.com" className="flex items-center gap-2 sm:gap-3 text-xs sm:text-sm text-accent-foreground/70 hover:text-accent-foreground transition-colors py-1">
-                  <Mail className="h-4 w-4 flex-shrink-0" />
-                  <span>support@aatmanroots.com</span>
+                <a href="mailto:support@aatmanroots.com" className="flex items-center gap-2 text-sm text-accent-foreground/70 hover:text-accent-foreground transition-colors">
+                  <Mail className="h-4 w-4" />
+                  support@aatmanroots.com
                 </a>
               </li>
               <li>
-                <a href="tel:+919876543210" className="flex items-center gap-2 sm:gap-3 text-xs sm:text-sm text-accent-foreground/70 hover:text-accent-foreground transition-colors py-1">
-                  <Phone className="h-4 w-4 flex-shrink-0" />
-                  <span>+91 98765 43210</span>
+                <a href="tel:+919876543210" className="flex items-center gap-2 text-sm text-accent-foreground/70 hover:text-accent-foreground transition-colors">
+                  <Phone className="h-4 w-4" />
+                  +91 98765 43210
                 </a>
-              </li>
-              <li className="flex items-start gap-2 sm:gap-3 text-xs sm:text-sm text-accent-foreground/70 py-1">
-                <MapPin className="h-4 w-4 flex-shrink-0 mt-0.5" />
-                <span>Mumbai, Maharashtra, India</span>
               </li>
             </ul>
           </div>
