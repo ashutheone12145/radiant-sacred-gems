@@ -70,96 +70,99 @@ export function Header() {
     <>
       <header className="sticky top-0 z-50 bg-background/95 backdrop-blur-md border-b border-border">
         <div className="container mx-auto px-3 sm:px-4">
-          <div className="flex items-center justify-between h-14 sm:h-16 md:h-20">
-            {/* Mobile Menu */}
-            <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
-              <SheetTrigger asChild className="md:hidden">
-                <Button variant="ghost" size="icon" className="h-9 w-9 flex-shrink-0">
-                  <Menu className="h-5 w-5" />
-                  <span className="sr-only">Menu</span>
-                </Button>
-              </SheetTrigger>
-              <SheetContent side="left" className="w-[85vw] max-w-80 bg-background p-0">
-                {/* Mobile menu header with brand - same as top nav */}
-                <div className="flex items-center justify-center gap-1.5 p-4 border-b border-border">
-                  <span className="font-serif text-sm font-semibold text-foreground whitespace-nowrap">
-                    आत्मन्
-                  </span>
-                  <img 
-                    src={logo} 
-                    alt="आत्मन् Roots" 
-                    className="h-10 w-auto"
-                  />
-                  <span className="font-serif text-sm font-semibold text-foreground whitespace-nowrap">
-                    Roots
-                  </span>
-                </div>
-                <nav className="flex flex-col gap-1 p-4">
-                  {navLinks.map((link) => (
+          <div className="flex items-center h-14 sm:h-16 md:h-20">
+            {/* Left Section - Mobile Menu or Desktop Nav */}
+            <div className="flex-1 flex items-center">
+              {/* Mobile Menu */}
+              <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
+                <SheetTrigger asChild className="lg:hidden">
+                  <Button variant="ghost" size="icon" className="h-9 w-9 flex-shrink-0">
+                    <Menu className="h-5 w-5" />
+                    <span className="sr-only">Menu</span>
+                  </Button>
+                </SheetTrigger>
+                <SheetContent side="left" className="w-[85vw] max-w-80 bg-background p-0">
+                  {/* Mobile menu header with brand - same as top nav */}
+                  <div className="flex items-center justify-center gap-1.5 p-4 border-b border-border">
+                    <span className="font-serif text-sm font-semibold text-foreground whitespace-nowrap">
+                      आत्मन्
+                    </span>
+                    <img 
+                      src={logo} 
+                      alt="आत्मन् Roots" 
+                      className="h-10 w-auto"
+                    />
+                    <span className="font-serif text-sm font-semibold text-foreground whitespace-nowrap">
+                      Roots
+                    </span>
+                  </div>
+                  <nav className="flex flex-col gap-1 p-4">
+                    {navLinks.map((link) => (
+                      <Link
+                        key={link.name}
+                        to={link.href}
+                        onClick={() => setMobileMenuOpen(false)}
+                        className="text-base font-medium text-foreground hover:text-primary hover:bg-primary/5 transition-colors py-3 px-3 rounded-lg"
+                      >
+                        {link.name}
+                      </Link>
+                    ))}
+                    {/* Mobile-only wishlist link */}
                     <Link
-                      key={link.name}
-                      to={link.href}
+                      to="/wishlist"
                       onClick={() => setMobileMenuOpen(false)}
-                      className="text-base font-medium text-foreground hover:text-primary hover:bg-primary/5 transition-colors py-3 px-3 rounded-lg"
+                      className="text-base font-medium text-foreground hover:text-primary hover:bg-primary/5 transition-colors py-3 px-3 rounded-lg flex items-center gap-2 mt-2 border-t border-border pt-4"
                     >
-                      {link.name}
+                      <Heart className="h-4 w-4" />
+                      Wishlist
+                      {wishlistCount > 0 && (
+                        <span className="ml-auto h-5 w-5 rounded-full bg-primary text-primary-foreground text-xs flex items-center justify-center font-medium">
+                          {wishlistCount}
+                        </span>
+                      )}
                     </Link>
-                  ))}
-                  {/* Mobile-only wishlist link */}
-                  <Link
-                    to="/wishlist"
-                    onClick={() => setMobileMenuOpen(false)}
-                    className="text-base font-medium text-foreground hover:text-primary hover:bg-primary/5 transition-colors py-3 px-3 rounded-lg flex items-center gap-2 mt-2 border-t border-border pt-4"
-                  >
-                    <Heart className="h-4 w-4" />
-                    Wishlist
-                    {wishlistCount > 0 && (
-                      <span className="ml-auto h-5 w-5 rounded-full bg-primary text-primary-foreground text-xs flex items-center justify-center font-medium">
-                        {wishlistCount}
-                      </span>
-                    )}
-                  </Link>
-                </nav>
-              </SheetContent>
-            </Sheet>
+                  </nav>
+                </SheetContent>
+              </Sheet>
 
-            {/* Logo - Centered with increased size (+4px) */}
-            <Link to="/" className="absolute left-1/2 -translate-x-1/2 flex items-center gap-1 sm:gap-1.5">
+              {/* Desktop Navigation - Left side */}
+              <nav className="hidden lg:flex items-center gap-5 lg:gap-6">
+                {navLinks.slice(0, 4).map((link) => (
+                  <Link
+                    key={link.name}
+                    to={link.href}
+                    className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors relative group whitespace-nowrap"
+                  >
+                    {link.name}
+                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
+                  </Link>
+                ))}
+              </nav>
+            </div>
+
+            {/* Center - Logo */}
+            <Link to="/" className="flex items-center gap-1 sm:gap-1.5 flex-shrink-0 mx-4">
               <motion.div
                 className="flex items-center gap-1 sm:gap-1.5"
                 whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.2 }}
               >
-                <span className="font-serif text-sm sm:text-base md:text-2xl font-semibold text-foreground whitespace-nowrap">
+                <span className="font-serif text-sm sm:text-base md:text-xl font-semibold text-foreground whitespace-nowrap">
                   आत्मन्
                 </span>
                 <img 
                   src={logo} 
                   alt="आत्मन् Roots" 
-                  className="h-8 sm:h-10 md:h-14 w-auto flex-shrink-0"
+                  className="h-8 sm:h-10 md:h-12 w-auto flex-shrink-0"
                 />
-                <span className="font-serif text-sm sm:text-base md:text-2xl font-semibold text-foreground whitespace-nowrap">
+                <span className="font-serif text-sm sm:text-base md:text-xl font-semibold text-foreground whitespace-nowrap">
                   Roots
                 </span>
               </motion.div>
             </Link>
 
-            {/* Desktop Navigation - Hidden on mobile */}
-            <nav className="hidden lg:flex items-center gap-5 lg:gap-8">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.name}
-                  to={link.href}
-                  className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors relative group whitespace-nowrap"
-                >
-                  {link.name}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
-                </Link>
-              ))}
-            </nav>
-
-            {/* Actions */}
-            <div className="flex items-center gap-0.5 sm:gap-1 md:gap-2">
+            {/* Right Section - Actions */}
+            <div className="flex-1 flex items-center justify-end gap-0.5 sm:gap-1 md:gap-2">
               <Button
                 variant="ghost"
                 size="icon"
