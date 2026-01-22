@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Star, Minus, Plus, Gift, Check, Truck, ShieldCheck, RotateCcw } from "lucide-react";
@@ -9,6 +9,7 @@ import { SizeComparison } from "@/components/product/SizeComparison";
 import { ReviewCard } from "@/components/product/ReviewCard";
 import { ProductFAQ } from "@/components/product/ProductFAQ";
 import { RelatedProductsCarousel } from "@/components/product/RelatedProductsCarousel";
+import { StickyMobileCart } from "@/components/product/StickyMobileCart";
 import { RecentlyViewed } from "@/components/product/RecentlyViewed";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -40,6 +41,9 @@ const ProductDetail = () => {
   const [quantity, setQuantity] = useState(1);
   const [showGiftMessage, setShowGiftMessage] = useState(false);
   const [giftMessage, setGiftMessage] = useState("");
+  
+  // Ref for the sticky cart trigger (trust indicators section)
+  const ctaTriggerRef = useRef<HTMLDivElement>(null);
 
   // Track product view
   useEffect(() => {
@@ -185,7 +189,10 @@ const ProductDetail = () => {
             </p>
             
             {/* Trust indicators - horizontal scroll on mobile */}
-            <div className="flex gap-3 md:gap-4 py-3 md:py-4 border-y border-border/50 overflow-x-auto scrollbar-hide">
+            <div 
+              ref={ctaTriggerRef}
+              className="flex gap-3 md:gap-4 py-3 md:py-4 border-y border-border/50 overflow-x-auto scrollbar-hide"
+            >
               <div className="flex items-center gap-1.5 md:gap-2 text-xs md:text-sm text-muted-foreground whitespace-nowrap">
                 <Truck className="h-3.5 w-3.5 md:h-4 md:w-4 text-primary flex-shrink-0" />
                 Free Shipping
@@ -428,48 +435,12 @@ const ProductDetail = () => {
         )}
       </main>
       
-      {/* Mobile Sticky Add to Cart - improved with quantity controls */}
-      <div className="fixed bottom-16 left-0 right-0 p-3 bg-background/95 backdrop-blur-md border-t border-border md:hidden z-40 safe-area-pb">
-        <div className="flex items-center gap-3">
-          {/* Quantity controls */}
-          <div className="flex items-center border border-border rounded-lg bg-background">
-            <button
-              onClick={() => setQuantity(Math.max(1, quantity - 1))}
-              className="h-10 w-10 flex items-center justify-center text-foreground"
-            >
-              <Minus className="h-4 w-4" />
-            </button>
-            <span className="w-8 text-center font-medium text-sm">{quantity}</span>
-            <button
-              onClick={() => setQuantity(quantity + 1)}
-              className="h-10 w-10 flex items-center justify-center text-foreground"
-            >
-              <Plus className="h-4 w-4" />
-            </button>
-          </div>
-          
-          {/* Add to Cart */}
-          <Button
-            onClick={handleAddToCart}
-            className="flex-1 btn-premium h-10"
-            disabled={!product.inStock}
-          >
-            <span className="flex items-center gap-2">
-              {product.inStock ? (
-                <>
-                  Add to Cart
-                  <span className="text-xs opacity-80">• {formatPrice(product.price * quantity)}</span>
-                </>
-              ) : (
-                "Out of Stock"
-              )}
-            </span>
-          </Button>
-        </div>
-      </div>
       
       {/* Recently Viewed */}
       <RecentlyViewed excludeProductId={product.id} />
+      
+      {/* Sticky Mobile Cart Bar */}
+      <StickyMobileCart product={product} triggerRef={ctaTriggerRef} />
       
       <Footer />
     </div>
