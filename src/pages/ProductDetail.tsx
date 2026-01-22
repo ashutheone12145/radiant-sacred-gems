@@ -8,7 +8,7 @@ import { ImageGallery } from "@/components/product/ImageGallery";
 import { SizeComparison } from "@/components/product/SizeComparison";
 import { ReviewCard } from "@/components/product/ReviewCard";
 import { ProductFAQ } from "@/components/product/ProductFAQ";
-import { ProductCard } from "@/components/product/ProductCard";
+import { RelatedProductsCarousel } from "@/components/product/RelatedProductsCarousel";
 import { RecentlyViewed } from "@/components/product/RecentlyViewed";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -422,18 +422,9 @@ const ProductDetail = () => {
           <ProductFAQ />
         </section>
         
-        {/* Related Products */}
+        {/* Related Products Carousel */}
         {relatedProducts.length > 0 && (
-          <section>
-            <h2 className="font-serif text-xl md:text-2xl font-bold text-foreground mb-4 md:mb-8">
-              You May Also Like
-            </h2>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6">
-              {relatedProducts.map((product, index) => (
-                <ProductCard key={product.id} product={product} index={index} />
-              ))}
-            </div>
-          </section>
+          <RelatedProductsCarousel products={relatedProducts} />
         )}
       </main>
       

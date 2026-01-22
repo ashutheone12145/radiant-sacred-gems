@@ -48,12 +48,14 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
     >
       {/* Image Container */}
       <Link to={`/product/${product.slug}`} className="block relative aspect-square overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-foreground/5" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-foreground/5 z-10 pointer-events-none" />
         
-        {/* Day/Night Toggle */}
+        {/* Day/Night Toggle with Zoom Effect */}
         <motion.img
           src={isNightMode ? product.images.night : product.images.day}
           alt={product.name}
+          animate={{ scale: isHovered ? 1.08 : 1 }}
+          transition={{ duration: 0.4, ease: "easeOut" }}
           className={`w-full h-full object-cover transition-all duration-700 ${
             isNightMode ? 'brightness-50' : ''
           }`}
