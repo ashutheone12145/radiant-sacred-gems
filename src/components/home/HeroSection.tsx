@@ -4,8 +4,9 @@ import { Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useIsMobile } from "@/hooks/use-mobile";
 
-// Import hero video
-import heroVideo from "@/assets/hero/hero-mobile.webm";
+// Import hero videos
+import heroMobileVideo from "@/assets/hero/hero-mobile.webm";
+import heroDesktopVideo from "@/assets/hero/hero-desktop.webm";
 
 export const HeroSection = () => {
   const isMobile = useIsMobile();
@@ -50,10 +51,10 @@ export const HeroSection = () => {
           transition={{ duration: 0.8, delay: 0.3 }}
           className="relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl max-w-5xl mx-auto"
         >
-          {/* Video for all devices - square on mobile, 21:9 cinematic on desktop */}
+          {/* Video - square on mobile, 21:9 cinematic on desktop/tablet */}
           <div className={isMobile ? "aspect-square" : "aspect-[21/9]"}>
             <video
-              src={heroVideo}
+              src={isMobile ? heroMobileVideo : heroDesktopVideo}
               autoPlay
               loop
               muted
