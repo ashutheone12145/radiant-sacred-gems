@@ -46,43 +46,44 @@ export default function Search() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-background">
+    <div className="min-h-screen flex flex-col bg-background pb-mobile-nav">
       <Header />
       
       <main className="flex-1">
         {/* Search Header */}
-        <section className="bg-muted/30 py-12 md:py-16">
+        <section className="bg-muted/30 py-8 sm:py-12 md:py-16">
           <div className="container mx-auto px-4">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               className="max-w-2xl mx-auto text-center"
             >
-              <h1 className="text-3xl md:text-4xl font-serif font-semibold text-foreground mb-6">
+              <h1 className="text-2xl sm:text-3xl md:text-4xl font-serif font-semibold text-foreground mb-4 sm:mb-6">
                 Search Products
               </h1>
               
               <form onSubmit={handleSearch} className="relative">
                 <Input
                   type="text"
-                  placeholder="Search for crystal lamps, deities, collections..."
+                  placeholder="Search for crystal lamps..."
                   value={searchInput}
                   onChange={(e) => setSearchInput(e.target.value)}
-                  className="w-full h-14 pl-12 pr-24 text-lg rounded-full border-2 border-border focus:border-primary bg-background"
+                  className="w-full h-11 sm:h-14 pl-10 sm:pl-12 pr-20 sm:pr-24 text-sm sm:text-lg rounded-full border-2 border-border focus:border-primary bg-background"
                 />
-                <SearchIcon className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+                <SearchIcon className="absolute left-3 sm:left-4 top-1/2 -translate-y-1/2 h-4 w-4 sm:h-5 sm:w-5 text-muted-foreground" />
                 {searchInput && (
                   <button
                     type="button"
                     onClick={clearSearch}
-                    className="absolute right-20 top-1/2 -translate-y-1/2 p-1 hover:bg-muted rounded-full transition-colors"
+                    className="absolute right-16 sm:right-20 top-1/2 -translate-y-1/2 p-1 hover:bg-muted rounded-full transition-colors"
                   >
-                    <X className="h-4 w-4 text-muted-foreground" />
+                    <X className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-muted-foreground" />
                   </button>
                 )}
                 <Button
                   type="submit"
-                  className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full px-6"
+                  className="absolute right-1.5 sm:right-2 top-1/2 -translate-y-1/2 rounded-full px-4 sm:px-6 h-8 sm:h-auto text-xs sm:text-sm"
+                  size="sm"
                 >
                   Search
                 </Button>
@@ -92,14 +93,14 @@ export default function Search() {
         </section>
 
         {/* Results */}
-        <section className="py-12 md:py-16">
+        <section className="py-8 sm:py-12 md:py-16">
           <div className="container mx-auto px-4">
             {query ? (
               <>
                 <motion.p
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  className="text-muted-foreground mb-8"
+                  className="text-sm sm:text-base text-muted-foreground mb-4 sm:mb-8"
                 >
                   {results.length} result{results.length !== 1 ? 's' : ''} for "{query}"
                 </motion.p>
@@ -109,7 +110,7 @@ export default function Search() {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.1 }}
-                    className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6"
+                    className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4 md:gap-6"
                   >
                     {results.map((product, index) => (
                       <motion.div

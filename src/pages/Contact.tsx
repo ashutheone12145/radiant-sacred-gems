@@ -61,13 +61,13 @@ const Contact = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background pb-mobile-nav">
       <Header />
       
-      <main className="container py-8">
+      <main className="container px-4 py-4 sm:py-8">
         {/* Breadcrumb */}
-        <Breadcrumb className="mb-8">
-          <BreadcrumbList>
+        <Breadcrumb className="mb-4 sm:mb-8">
+          <BreadcrumbList className="text-xs sm:text-sm">
             <BreadcrumbItem>
               <BreadcrumbLink asChild>
                 <Link to="/">Home</Link>
@@ -84,28 +84,28 @@ const Contact = () => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-center mb-12"
+          className="text-center mb-8 sm:mb-12"
         >
-          <h1 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
+          <h1 className="font-serif text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-3 sm:mb-4">
             Get in Touch
           </h1>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-sm sm:text-base text-muted-foreground max-w-2xl mx-auto px-2">
             Have a question about our products or need assistance with your order? 
             We're here to help and typically respond within 24-48 hours.
           </p>
         </motion.div>
         
-        <div className="grid lg:grid-cols-2 gap-12 max-w-5xl mx-auto">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 max-w-5xl mx-auto">
           {/* Contact Form */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.1 }}
           >
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
               <div className="grid sm:grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <Label htmlFor="name">Name</Label>
+                  <Label htmlFor="name" className="text-sm">Name</Label>
                   <Input
                     id="name"
                     name="name"
@@ -113,10 +113,11 @@ const Contact = () => {
                     value={formData.name}
                     onChange={handleChange}
                     required
+                    className="text-sm sm:text-base"
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="email">Email</Label>
+                  <Label htmlFor="email" className="text-sm">Email</Label>
                   <Input
                     id="email"
                     name="email"
@@ -125,6 +126,7 @@ const Contact = () => {
                     value={formData.email}
                     onChange={handleChange}
                     required
+                    className="text-sm sm:text-base"
                   />
                 </div>
               </div>

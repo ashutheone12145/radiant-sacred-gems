@@ -152,13 +152,13 @@ const Checkout = () => {
   }
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background pb-mobile-nav">
       <Header />
       
-      <main className="container py-8">
+      <main className="container px-4 py-4 sm:py-8">
         {/* Breadcrumb */}
-        <Breadcrumb className="mb-8">
-          <BreadcrumbList>
+        <Breadcrumb className="mb-4 sm:mb-8">
+          <BreadcrumbList className="text-xs sm:text-sm">
             <BreadcrumbItem>
               <BreadcrumbLink asChild>
                 <Link to="/">Home</Link>
@@ -172,7 +172,7 @@ const Checkout = () => {
         </Breadcrumb>
         
         {/* Step Indicator */}
-        <div className="flex items-center justify-center gap-4 mb-12">
+        <div className="flex items-center justify-center gap-2 sm:gap-4 mb-8 sm:mb-12">
           {steps.map((step, index) => {
             const isActive = currentStep === step.id;
             const isCompleted =
@@ -181,7 +181,7 @@ const Checkout = () => {
             return (
               <div key={step.id} className="flex items-center">
                 <div
-                  className={`flex items-center gap-2 px-4 py-2 rounded-full transition-colors ${
+                  className={`flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-4 py-1.5 sm:py-2 rounded-full transition-colors ${
                     isActive
                       ? "bg-primary text-primary-foreground"
                       : isCompleted
@@ -190,23 +190,23 @@ const Checkout = () => {
                   }`}
                 >
                   {isCompleted ? (
-                    <Check className="h-4 w-4" />
+                    <Check className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
                   ) : (
-                    <step.icon className="h-4 w-4" />
+                    <step.icon className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
                   )}
-                  <span className="text-sm font-medium hidden sm:inline">
+                  <span className="text-xs sm:text-sm font-medium hidden sm:inline">
                     {step.label}
                   </span>
                 </div>
                 {index < steps.length - 1 && (
-                  <ChevronRight className="h-4 w-4 text-muted-foreground mx-2" />
+                  <ChevronRight className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-muted-foreground mx-1 sm:mx-2" />
                 )}
               </div>
             );
           })}
         </div>
         
-        <div className="grid lg:grid-cols-2 gap-12">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
           {/* Form Section */}
           <motion.div
             key={currentStep}
@@ -215,8 +215,8 @@ const Checkout = () => {
             transition={{ duration: 0.3 }}
           >
             {currentStep === "information" && (
-              <div className="space-y-6">
-                <h2 className="font-serif text-2xl font-bold text-foreground">
+              <div className="space-y-4 sm:space-y-6">
+                <h2 className="font-serif text-xl sm:text-2xl font-bold text-foreground">
                   Contact Information
                 </h2>
                 

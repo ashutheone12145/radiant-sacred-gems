@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { useEffect, useRef } from "react";
 
 const announcements = [
   "🕉️ Free Shipping on Orders Over ₹999",
@@ -9,32 +9,55 @@ const announcements = [
 ];
 
 export const AnnouncementBar = () => {
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const scrollContainer = scrollRef.current;
+    const content = contentRef.current;
+    if (!scrollContainer || !content) return;
+
+    let animationId: number;
+    let scrollPos = 0;
+    const speed = 0.5; // pixels per frame
+
+    const animate = () => {
+      scrollPos += speed;
+      // Reset when first set of announcements has scrolled past
+      const contentWidth = content.scrollWidth / 2;
+      if (scrollPos >= contentWidth) {
+        scrollPos = 0;
+      }
+      scrollContainer.scrollLeft = scrollPos;
+      animationId = requestAnimationFrame(animate);
+    };
+
+    animationId = requestAnimationFrame(animate);
+
+    return () => {
+      cancelAnimationFrame(animationId);
+    };
+  }, []);
+
   return (
     <div className="bg-primary text-primary-foreground py-2 overflow-hidden">
-      <motion.div
-        className="flex whitespace-nowrap"
-        animate={{
-          x: ["0%", "-50%"],
-        }}
-        transition={{
-          x: {
-            repeat: Infinity,
-            repeatType: "loop",
-            duration: 25,
-            ease: "linear",
-          },
-        }}
+      <div
+        ref={scrollRef}
+        className="overflow-hidden scrollbar-hide"
+        style={{ scrollBehavior: "auto" }}
       >
-        {/* Duplicate the announcements for seamless loop */}
-        {[...announcements, ...announcements].map((text, index) => (
-          <span
-            key={index}
-            className="mx-8 text-xs sm:text-sm font-medium inline-flex items-center"
-          >
-            {text}
-          </span>
-        ))}
-      </motion.div>
+        <div ref={contentRef} className="flex whitespace-nowrap">
+          {/* Duplicate the announcements for seamless infinite loop */}
+          {[...announcements, ...announcements].map((text, index) => (
+            <span
+              key={index}
+              className="mx-8 text-xs sm:text-sm font-medium inline-flex items-center"
+            >
+              {text}
+            </span>
+          ))}
+        </div>
+      </div>
     </div>
   );
 };
