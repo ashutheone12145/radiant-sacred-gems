@@ -136,15 +136,15 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
           </button>
         </div>
 
-        {/* Quick View & Quick Add - Show on hover for desktop, always visible add button on mobile */}
-        <div className="absolute bottom-2 sm:bottom-4 left-2 sm:left-4 right-2 sm:right-4">
-          {/* Desktop version - hover to show */}
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: isHovered ? 1 : 0, y: isHovered ? 0 : 10 }}
-            transition={{ duration: 0.2 }}
-            className="hidden sm:flex gap-2"
-          >
+        {/* Quick View & Quick Add - Show on hover/touch */}
+        <motion.div 
+          className="absolute bottom-2 sm:bottom-4 left-2 sm:left-4 right-2 sm:right-4"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: isHovered ? 1 : 0, y: isHovered ? 0 : 10 }}
+          transition={{ duration: 0.2 }}
+        >
+          {/* Desktop version */}
+          <div className="hidden sm:flex gap-2">
             <button
               onClick={(e) => {
                 e.preventDefault();
@@ -168,9 +168,9 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
               <ShoppingBag className="h-3.5 w-3.5" />
               Add
             </button>
-          </motion.div>
+          </div>
           
-          {/* Mobile version - always visible add button */}
+          {/* Mobile version - show on touch */}
           <button
             onClick={(e) => {
               e.preventDefault();
@@ -183,7 +183,7 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
             <ShoppingBag className="h-3.5 w-3.5" />
             Add to Cart
           </button>
-        </div>
+        </motion.div>
       </Link>
 
       {/* Product Info */}
