@@ -135,25 +135,19 @@ export function Header() {
               </Sheet>
 
               {/* Desktop Navigation - Left side */}
-              <nav className="hidden lg:flex items-center gap-5 lg:gap-6">
+              <nav className="hidden lg:flex items-center gap-1">
                 {navLinks.map((link) => (
                   <Link
                     key={link.name}
                     to={link.href}
                     className={cn(
-                      "text-sm font-medium transition-colors relative group whitespace-nowrap",
+                      "text-sm font-medium transition-all duration-200 px-3 py-1.5 rounded-full whitespace-nowrap",
                       isActiveLink(link.href)
-                        ? "text-primary"
-                        : "text-muted-foreground hover:text-foreground"
+                        ? "bg-primary/10 text-primary"
+                        : "text-muted-foreground hover:text-foreground hover:bg-muted"
                     )}
                   >
                     {link.name}
-                    <span 
-                      className={cn(
-                        "absolute -bottom-1 left-0 h-0.5 bg-primary transition-all duration-300",
-                        isActiveLink(link.href) ? "w-full" : "w-0 group-hover:w-full"
-                      )} 
-                    />
                   </Link>
                 ))}
               </nav>
