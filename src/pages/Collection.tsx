@@ -43,6 +43,7 @@ const deityOptions = [
   { value: "hanuman", label: "Lord Hanuman" },
   { value: "lakshmi", label: "Goddess Lakshmi" },
   { value: "durga", label: "Goddess Durga" },
+  { value: "saraswati", label: "Goddess Saraswati" },
 ];
 
 // Get min and max prices from products

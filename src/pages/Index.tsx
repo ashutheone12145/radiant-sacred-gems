@@ -2,6 +2,7 @@ import { useCallback } from "react";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { HeroSection } from "@/components/home/HeroSection";
+import { AnnouncementBar } from "@/components/home/AnnouncementBar";
 import { TrustBadges } from "@/components/home/TrustBadges";
 import { CollectionCard } from "@/components/home/CollectionCard";
 import { FeatureShowcase } from "@/components/home/FeatureShowcase";
@@ -34,12 +35,12 @@ const Index = () => {
       <div className="min-h-screen bg-background">
         <Header />
         
+        {/* Announcement Bar */}
+        <AnnouncementBar />
+        
         <main>
           {/* Hero Section */}
           <HeroSection />
-          
-          {/* Trust Badges */}
-          <TrustBadges />
           
           {/* Featured Collections */}
           <section className="py-10 sm:py-16 md:py-24 bg-cream/30">
@@ -101,6 +102,9 @@ const Index = () => {
           <ScrollAnimate animation="fadeUp" delay={0.1}>
             <InstagramGallery />
           </ScrollAnimate>
+          
+          {/* Trust Badges - Moved above Testimonials */}
+          <TrustBadges />
           
           {/* Testimonials */}
           <section className="py-10 sm:py-16 md:py-24 bg-cream/30">

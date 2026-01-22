@@ -12,7 +12,7 @@ export interface Product {
     gallery: string[];
   };
   category: 'deity' | 'galaxy' | 'accessories';
-  deity?: 'ganesha' | 'krishna' | 'shiva' | 'hanuman' | 'lakshmi' | 'durga';
+  deity?: 'ganesha' | 'krishna' | 'shiva' | 'hanuman' | 'lakshmi' | 'durga' | 'saraswati';
   features: string[];
   specifications: {
     size: string;

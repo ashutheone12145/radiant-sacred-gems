@@ -1,11 +1,10 @@
-import { Truck, ShieldCheck, Award, RotateCcw } from "lucide-react";
 import { motion } from "framer-motion";
 
 const badges = [
-  { icon: Truck, label: "Free Shipping", description: "Orders over ₹999" },
-  { icon: ShieldCheck, label: "Secure Checkout", description: "100% Protected" },
-  { icon: Award, label: "Handcrafted", description: "Premium K9 Crystal" },
-  { icon: RotateCcw, label: "Easy Returns", description: "30-Day Policy" },
+  { emoji: "🚚", label: "Free Shipping", description: "Orders over ₹999" },
+  { emoji: "🔒", label: "Secure Checkout", description: "100% Protected" },
+  { emoji: "🕉️", label: "Handcrafted", description: "Premium K9 Crystal" },
+  { emoji: "↩️", label: "Easy Returns", description: "30-Day Policy" },
 ];
 
 export const TrustBadges = () => {
@@ -23,7 +22,7 @@ export const TrustBadges = () => {
               className="flex items-center gap-2 sm:gap-3 justify-center sm:justify-start"
             >
               <div className="flex h-8 w-8 sm:h-10 sm:w-10 items-center justify-center rounded-full bg-primary/10 flex-shrink-0">
-                <badge.icon className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
+                <span className="text-base sm:text-xl">{badge.emoji}</span>
               </div>
               <div className="min-w-0">
                 <p className="text-xs sm:text-sm font-medium text-foreground truncate">{badge.label}</p>
