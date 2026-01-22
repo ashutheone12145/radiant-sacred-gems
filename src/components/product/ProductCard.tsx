@@ -40,9 +40,13 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
     <motion.div
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
+      whileHover={{ 
+        y: -8,
+        transition: { duration: 0.3, ease: "easeOut" }
+      }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="product-card group"
+      className="product-card group transition-shadow duration-300 hover:shadow-xl hover:shadow-primary/10"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
