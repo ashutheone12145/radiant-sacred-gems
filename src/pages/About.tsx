@@ -41,14 +41,14 @@ const values = [
 
 const About = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background pb-mobile-nav">
       <Header />
       
       <main>
         {/* Breadcrumb */}
-        <div className="container py-8">
+        <div className="container px-4 py-4 sm:py-8">
           <Breadcrumb>
-            <BreadcrumbList>
+            <BreadcrumbList className="text-xs sm:text-sm">
               <BreadcrumbItem>
                 <BreadcrumbLink asChild>
                   <Link to="/">Home</Link>
@@ -63,21 +63,21 @@ const About = () => {
         </div>
         
         {/* Hero Section */}
-        <section className="relative py-16 md:py-24 overflow-hidden">
+        <section className="relative py-10 sm:py-16 md:py-24 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-cream via-background to-sand/30" />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/10 rounded-full blur-3xl" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] sm:w-[600px] h-[300px] sm:h-[600px] bg-primary/10 rounded-full blur-3xl" />
           
-          <div className="container relative z-10">
+          <div className="container px-4 relative z-10">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               className="max-w-3xl mx-auto text-center"
             >
-              <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">
+              <h1 className="font-serif text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-4 sm:mb-6">
                 Illuminating Faith, <br />
                 <span className="text-gradient-gold">Inspiring Devotion</span>
               </h1>
-              <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
+              <p className="text-sm sm:text-lg md:text-xl text-muted-foreground leading-relaxed px-2">
                 We blend ancient spiritual traditions with modern artistry to create 
                 crystal lamps that transform your sacred spaces into sanctuaries of 
                 peace and divine light.
@@ -87,18 +87,18 @@ const About = () => {
         </section>
         
         {/* Our Story */}
-        <section className="py-16 md:py-24">
-          <div className="container">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <section className="py-10 sm:py-16 md:py-24">
+          <div className="container px-4">
+            <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
               <motion.div
                 initial={{ opacity: 0, x: -30 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
               >
-                <h2 className="font-serif text-3xl md:text-4xl font-bold text-foreground mb-6">
+                <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-4 sm:mb-6">
                   Our Story
                 </h2>
-                <div className="space-y-4 text-muted-foreground leading-relaxed">
+                <div className="space-y-3 sm:space-y-4 text-muted-foreground leading-relaxed text-sm sm:text-base">
                   <p>
                     आत्मन् Roots was born from a simple observation: while our homes have 
                     evolved with modern technology, our spiritual spaces often remained 
@@ -125,15 +125,15 @@ const About = () => {
                 initial={{ opacity: 0, x: 30 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                className="relative aspect-square max-w-md mx-auto"
+                className="relative aspect-square max-w-xs sm:max-w-md mx-auto"
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-primary/5 rounded-3xl" />
-                <div className="absolute inset-8 bg-cream rounded-2xl flex items-center justify-center">
+                <div className="absolute inset-4 sm:inset-8 bg-cream rounded-2xl flex items-center justify-center">
                   <div className="text-center">
-                    <div className="w-24 h-24 mx-auto mb-4 rounded-full bg-primary/20 flex items-center justify-center">
-                      <Sparkles className="h-12 w-12 text-primary" />
+                    <div className="w-16 h-16 sm:w-24 sm:h-24 mx-auto mb-3 sm:mb-4 rounded-full bg-primary/20 flex items-center justify-center">
+                      <Sparkles className="h-8 w-8 sm:h-12 sm:w-12 text-primary" />
                     </div>
-                    <p className="text-sm text-muted-foreground">Crafted with devotion since 2020</p>
+                    <p className="text-xs sm:text-sm text-muted-foreground">Crafted with devotion since 2020</p>
                   </div>
                 </div>
               </motion.div>
@@ -142,24 +142,24 @@ const About = () => {
         </section>
         
         {/* Our Values */}
-        <section className="py-16 md:py-24 bg-cream/30">
-          <div className="container">
+        <section className="py-10 sm:py-16 md:py-24 bg-cream/30">
+          <div className="container px-4">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-center mb-12"
+              className="text-center mb-8 sm:mb-12"
             >
-              <h2 className="font-serif text-3xl md:text-4xl font-bold text-foreground mb-4">
+              <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3 sm:mb-4">
                 Our Values
               </h2>
-              <p className="text-muted-foreground max-w-2xl mx-auto">
+              <p className="text-sm sm:text-base text-muted-foreground max-w-2xl mx-auto px-2">
                 Everything we create is guided by principles that honor both tradition 
                 and innovation.
               </p>
             </motion.div>
             
-            <div className="grid md:grid-cols-2 gap-6">
+            <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
               {values.map((value, index) => (
                 <motion.div
                   key={value.title}
@@ -167,17 +167,17 @@ const About = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
-                  className="bg-card rounded-2xl p-6 md:p-8 border border-border/50"
+                  className="bg-card rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 border border-border/50"
                 >
-                  <div className="flex items-start gap-4">
-                    <div className="flex-shrink-0 h-12 w-12 rounded-xl bg-primary/10 flex items-center justify-center">
-                      <value.icon className="h-6 w-6 text-primary" />
+                  <div className="flex items-start gap-3 sm:gap-4">
+                    <div className="flex-shrink-0 h-10 w-10 sm:h-12 sm:w-12 rounded-lg sm:rounded-xl bg-primary/10 flex items-center justify-center">
+                      <value.icon className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />
                     </div>
                     <div>
-                      <h3 className="font-serif text-xl font-semibold text-foreground mb-2">
+                      <h3 className="font-serif text-base sm:text-xl font-semibold text-foreground mb-1 sm:mb-2">
                         {value.title}
                       </h3>
-                      <p className="text-muted-foreground">{value.description}</p>
+                      <p className="text-sm sm:text-base text-muted-foreground">{value.description}</p>
                     </div>
                   </div>
                 </motion.div>
@@ -187,24 +187,24 @@ const About = () => {
         </section>
         
         {/* Craftsmanship */}
-        <section className="py-16 md:py-24">
-          <div className="container">
+        <section className="py-10 sm:py-16 md:py-24">
+          <div className="container px-4">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               className="max-w-3xl mx-auto text-center"
             >
-              <h2 className="font-serif text-3xl md:text-4xl font-bold text-foreground mb-6">
+              <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-4 sm:mb-6">
                 The Art of Crystal Illumination
               </h2>
-              <p className="text-muted-foreground leading-relaxed mb-8">
+              <p className="text-sm sm:text-base text-muted-foreground leading-relaxed mb-4 sm:mb-8 px-2">
                 Our lamps are made from K9 optical crystal – the same material used in 
                 premium camera lenses and scientific instruments. This ensures 
                 exceptional clarity and light transmission, allowing the laser-engraved 
                 divine imagery to appear almost ethereal when illuminated.
               </p>
-              <p className="text-muted-foreground leading-relaxed">
+              <p className="text-sm sm:text-base text-muted-foreground leading-relaxed px-2">
                 Each deity is rendered through a precise 3D laser engraving process, 
                 creating thousands of tiny points within the crystal that scatter light 
                 in breathtaking ways. The result is a lamp that's a simple decoration 
@@ -215,24 +215,24 @@ const About = () => {
         </section>
         
         {/* CTA */}
-        <section className="py-16 md:py-24 bg-cream/30">
-          <div className="container">
+        <section className="py-10 sm:py-16 md:py-24 bg-cream/30">
+          <div className="container px-4">
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               className="max-w-2xl mx-auto text-center"
             >
-              <h2 className="font-serif text-3xl md:text-4xl font-bold text-foreground mb-4">
+              <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3 sm:mb-4">
                 Experience Divine Illumination
               </h2>
-              <p className="text-muted-foreground mb-8">
+              <p className="text-sm sm:text-base text-muted-foreground mb-6 sm:mb-8 px-2">
                 Explore our collection and find the perfect lamp to enhance your 
                 spiritual practice.
               </p>
               <Link
                 to="/collections"
-                className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-primary text-primary-foreground font-medium hover:bg-primary/90 transition-colors"
+                className="inline-flex items-center gap-2 px-6 sm:px-8 py-3 sm:py-4 rounded-full bg-primary text-primary-foreground font-medium hover:bg-primary/90 transition-colors text-sm sm:text-base"
               >
                 Shop Collections
               </Link>

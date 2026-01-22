@@ -25,22 +25,22 @@ export default function Wishlist() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-background">
+    <div className="min-h-screen flex flex-col bg-background pb-mobile-nav">
       <Header />
       
       <main className="flex-1">
         {/* Page Header */}
-        <section className="bg-muted/30 py-12 md:py-16">
+        <section className="bg-muted/30 py-8 sm:py-12 md:py-16">
           <div className="container mx-auto px-4">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               className="text-center"
             >
-              <h1 className="text-3xl md:text-4xl font-serif font-semibold text-foreground mb-4">
+              <h1 className="text-2xl sm:text-3xl md:text-4xl font-serif font-semibold text-foreground mb-2 sm:mb-4">
                 My Wishlist
               </h1>
-              <p className="text-muted-foreground">
+              <p className="text-sm sm:text-base text-muted-foreground">
                 {items.length} item{items.length !== 1 ? 's' : ''} saved for later
               </p>
             </motion.div>
@@ -48,25 +48,25 @@ export default function Wishlist() {
         </section>
 
         {/* Wishlist Content */}
-        <section className="py-12 md:py-16">
+        <section className="py-8 sm:py-12 md:py-16">
           <div className="container mx-auto px-4">
             {items.length > 0 ? (
               <>
                 {/* Actions Bar */}
-                <div className="flex justify-end mb-8">
+                <div className="flex justify-end mb-4 sm:mb-8">
                   <Button
                     variant="ghost"
                     size="sm"
                     onClick={clearWishlist}
-                    className="text-muted-foreground hover:text-destructive"
+                    className="text-muted-foreground hover:text-destructive text-xs sm:text-sm"
                   >
-                    <Trash2 className="h-4 w-4 mr-2" />
+                    <Trash2 className="h-3.5 w-3.5 sm:h-4 sm:w-4 mr-1.5 sm:mr-2" />
                     Clear Wishlist
                   </Button>
                 </div>
 
                 {/* Products Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-6">
                   {items.map((product, index) => (
                     <motion.div
                       key={product.id}
@@ -74,7 +74,7 @@ export default function Wishlist() {
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -20 }}
                       transition={{ delay: index * 0.05 }}
-                      className="group bg-card rounded-xl border border-border overflow-hidden"
+                      className="group bg-card rounded-lg sm:rounded-xl border border-border overflow-hidden"
                     >
                       {/* Image */}
                       <Link to={`/product/${product.slug}`} className="block relative aspect-square overflow-hidden">
@@ -90,34 +90,34 @@ export default function Wishlist() {
                             e.preventDefault();
                             removeItem(product.id);
                           }}
-                          className="absolute top-3 right-3 w-10 h-10 rounded-full bg-background/90 backdrop-blur-sm flex items-center justify-center text-destructive hover:bg-destructive hover:text-destructive-foreground transition-colors"
+                          className="absolute top-2 right-2 sm:top-3 sm:right-3 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-background/90 backdrop-blur-sm flex items-center justify-center text-destructive hover:bg-destructive hover:text-destructive-foreground transition-colors"
                         >
-                          <Heart className="h-5 w-5 fill-current" />
+                          <Heart className="h-4 w-4 sm:h-5 sm:w-5 fill-current" />
                         </button>
 
                         {/* Discount Badge */}
                         {product.compareAtPrice && (
-                          <span className="absolute top-3 left-3 bg-primary text-primary-foreground text-xs font-medium px-2 py-1 rounded-sm">
+                          <span className="absolute top-2 left-2 sm:top-3 sm:left-3 bg-primary text-primary-foreground text-[10px] sm:text-xs font-medium px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-sm">
                             -{Math.round((1 - product.price / product.compareAtPrice) * 100)}%
                           </span>
                         )}
                       </Link>
 
                       {/* Info */}
-                      <div className="p-4">
+                      <div className="p-3 sm:p-4">
                         <Link to={`/product/${product.slug}`}>
-                          <h3 className="font-serif font-medium text-lg line-clamp-2 hover:text-primary transition-colors mb-2">
+                          <h3 className="font-serif font-medium text-sm sm:text-lg line-clamp-2 hover:text-primary transition-colors mb-1.5 sm:mb-2">
                             {product.name}
                           </h3>
                         </Link>
 
                         {/* Price */}
-                        <div className="flex items-center gap-2 mb-4">
-                          <span className="text-lg font-semibold text-primary">
+                        <div className="flex items-center gap-1.5 sm:gap-2 mb-3 sm:mb-4 flex-wrap">
+                          <span className="text-sm sm:text-lg font-semibold text-primary">
                             {formatPrice(product.price)}
                           </span>
                           {product.compareAtPrice && (
-                            <span className="text-sm text-muted-foreground line-through">
+                            <span className="text-xs sm:text-sm text-muted-foreground line-through">
                               {formatPrice(product.compareAtPrice)}
                             </span>
                           )}
@@ -126,9 +126,10 @@ export default function Wishlist() {
                         {/* Add to Cart */}
                         <Button
                           onClick={() => handleAddToCart(product)}
-                          className="w-full"
+                          className="w-full text-xs sm:text-sm h-9 sm:h-10"
+                          size="sm"
                         >
-                          <ShoppingBag className="h-4 w-4 mr-2" />
+                          <ShoppingBag className="h-3.5 w-3.5 sm:h-4 sm:w-4 mr-1.5 sm:mr-2" />
                           Add to Cart
                         </Button>
                       </div>

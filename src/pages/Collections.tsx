@@ -16,14 +16,14 @@ import {
 
 const Collections = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background pb-mobile-nav">
       <Header />
       
       <main>
-        <div className="container py-8">
+        <div className="container px-4 py-4 sm:py-8">
           {/* Breadcrumb */}
-          <Breadcrumb className="mb-8">
-            <BreadcrumbList>
+          <Breadcrumb className="mb-4 sm:mb-8">
+            <BreadcrumbList className="text-xs sm:text-sm">
               <BreadcrumbItem>
                 <BreadcrumbLink asChild>
                   <Link to="/">Home</Link>
@@ -40,19 +40,19 @@ const Collections = () => {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-center mb-12"
+            className="text-center mb-8 sm:mb-12"
           >
-            <h1 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
+            <h1 className="font-serif text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-3 sm:mb-4">
               Our Collections
             </h1>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-sm sm:text-base text-muted-foreground max-w-2xl mx-auto px-2">
               Discover our curated collections of sacred crystal lamps, each designed to bring 
               spiritual elegance and radiant light to your sacred spaces.
             </p>
           </motion.div>
           
           {/* Collections Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6 mb-8 sm:mb-12">
             {collections.map((collection, index) => (
               <motion.div
                 key={collection.id}
@@ -63,7 +63,7 @@ const Collections = () => {
               >
                 <Link
                   to={`/collections/${collection.slug}`}
-                  className="group relative block aspect-[4/5] overflow-hidden rounded-2xl"
+                  className="group relative block aspect-[3/4] sm:aspect-[4/5] overflow-hidden rounded-xl sm:rounded-2xl"
                 >
                   {/* Collection image */}
                   <img
@@ -78,30 +78,27 @@ const Collections = () => {
                   {/* Hover effect */}
                   <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/10 transition-colors duration-500" />
                   
-                  {/* Shimmer effect */}
-                  <div className="shimmer-overlay" />
-                  
                   {/* Content */}
-                  <div className="absolute inset-0 flex flex-col justify-end p-6">
+                  <div className="absolute inset-0 flex flex-col justify-end p-3 sm:p-6">
                     <div className="transform transition-transform duration-300 group-hover:-translate-y-2">
-                      <p className="text-primary text-sm font-medium mb-2">
+                      <p className="text-primary text-[10px] sm:text-sm font-medium mb-1 sm:mb-2">
                         {collection.productCount} Products
                       </p>
-                      <h2 className="font-serif text-2xl md:text-3xl font-bold text-white mb-2">
+                      <h2 className="font-serif text-sm sm:text-2xl md:text-3xl font-bold text-white mb-1 sm:mb-2 line-clamp-2">
                         {collection.name}
                       </h2>
-                      <p className="text-white/80 text-sm mb-4 line-clamp-2">
+                      <p className="text-white/80 text-[10px] sm:text-sm mb-2 sm:mb-4 line-clamp-2 hidden sm:block">
                         {collection.description}
                       </p>
-                      <div className="inline-flex items-center gap-2 text-primary font-medium group-hover:gap-3 transition-all">
-                        Explore Collection
-                        <ArrowRight className="h-4 w-4" />
+                      <div className="inline-flex items-center gap-1 sm:gap-2 text-primary font-medium group-hover:gap-2 sm:group-hover:gap-3 transition-all text-xs sm:text-base">
+                        Explore
+                        <ArrowRight className="h-3 w-3 sm:h-4 sm:w-4" />
                       </div>
                     </div>
                   </div>
                   
                   {/* Border glow on hover */}
-                  <div className="absolute inset-0 rounded-2xl border-2 border-transparent group-hover:border-primary/30 transition-colors duration-500" />
+                  <div className="absolute inset-0 rounded-xl sm:rounded-2xl border-2 border-transparent group-hover:border-primary/30 transition-colors duration-500" />
                 </Link>
               </motion.div>
             ))}
@@ -112,11 +109,11 @@ const Collections = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-12"
+            className="text-center mb-8 sm:mb-12"
           >
             <Link
               to="/collections/all"
-              className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-primary text-primary-foreground font-medium hover:bg-primary/90 transition-colors"
+              className="inline-flex items-center gap-2 px-6 sm:px-8 py-3 sm:py-4 rounded-full bg-primary text-primary-foreground font-medium hover:bg-primary/90 transition-colors text-sm sm:text-base"
             >
               View All Products
               <ArrowRight className="h-4 w-4" />

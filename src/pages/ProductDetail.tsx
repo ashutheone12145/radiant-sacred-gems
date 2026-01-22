@@ -302,7 +302,7 @@ const ProductDetail = () => {
                   <ul className="space-y-1.5 md:space-y-2">
                     {product.features.map((feature, index) => (
                       <li key={index} className="flex items-start gap-2 text-muted-foreground text-sm">
-                        <Check className="h-3.5 w-3.5 md:h-4 md:w-4 text-primary mt-0.5 flex-shrink-0" />
+                        <span className="text-base mt-0.5 flex-shrink-0">✨</span>
                         {feature}
                       </li>
                     ))}

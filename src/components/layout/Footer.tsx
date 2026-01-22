@@ -61,9 +61,10 @@ export function Footer() {
         <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6 sm:gap-8">
           {/* Brand Column */}
           <div className="col-span-2 sm:col-span-2 lg:col-span-1 text-center sm:text-left">
-            <Link to="/" className="inline-flex items-center gap-2 mb-3 sm:mb-4">
-              <img src={logo} alt="आत्मन् Roots" className="h-12 sm:h-16 w-auto" />
-              <span className="font-serif text-base sm:text-lg font-semibold">आत्मन् Roots</span>
+            <Link to="/" className="inline-flex items-center gap-1 sm:gap-1.5 mb-3 sm:mb-4">
+              <span className="font-serif text-sm sm:text-base font-semibold">आत्मन्</span>
+              <img src={logo} alt="आत्मन् Roots" className="h-10 sm:h-12 w-auto" />
+              <span className="font-serif text-sm sm:text-base font-semibold">Roots</span>
             </Link>
             <p className="text-accent-foreground/70 text-sm mb-2 sm:mb-4 max-w-xs mx-auto sm:mx-0">
               Rooted in Tradition, Radiant in Spirit

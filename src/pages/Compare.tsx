@@ -30,31 +30,31 @@ export default function Compare() {
   );
 
   return (
-    <div className="min-h-screen flex flex-col bg-background">
+    <div className="min-h-screen flex flex-col bg-background pb-mobile-nav">
       <Header />
 
       <main className="flex-1">
         {/* Page Header */}
-        <section className="bg-muted/30 py-8 md:py-12">
+        <section className="bg-muted/30 py-6 sm:py-8 md:py-12">
           <div className="container mx-auto px-4">
-            <div className="flex items-center justify-between">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
               <div>
                 <Link
                   to="/collections"
-                  className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground mb-4"
+                  className="inline-flex items-center gap-2 text-xs sm:text-sm text-muted-foreground hover:text-foreground mb-2 sm:mb-4"
                 >
-                  <ArrowLeft className="h-4 w-4" />
+                  <ArrowLeft className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
                   Back to Collections
                 </Link>
-                <h1 className="text-2xl md:text-3xl font-serif font-semibold text-foreground">
+                <h1 className="text-xl sm:text-2xl md:text-3xl font-serif font-semibold text-foreground">
                   Compare Products
                 </h1>
-                <p className="text-muted-foreground mt-1">
+                <p className="text-sm sm:text-base text-muted-foreground mt-1">
                   {items.length} product{items.length !== 1 ? 's' : ''} selected
                 </p>
               </div>
               {items.length > 0 && (
-                <Button variant="outline" size="sm" onClick={clearCompare}>
+                <Button variant="outline" size="sm" onClick={clearCompare} className="self-start sm:self-auto text-xs sm:text-sm">
                   Clear All
                 </Button>
               )}
@@ -63,22 +63,22 @@ export default function Compare() {
         </section>
 
         {/* Comparison Table */}
-        <section className="py-8 md:py-12">
+        <section className="py-6 sm:py-8 md:py-12">
           <div className="container mx-auto px-4">
             {items.length >= 2 ? (
-              <div className="overflow-x-auto">
-                <table className="w-full min-w-[640px]">
+              <div className="overflow-x-auto -mx-4 px-4">
+                <table className="w-full min-w-[500px]">
                   <thead>
                     <tr>
-                      <th className="text-left p-4 bg-muted/50 rounded-tl-lg w-40 md:w-48">
-                        <span className="text-sm font-medium text-muted-foreground">
+                      <th className="text-left p-2 sm:p-4 bg-muted/50 rounded-tl-lg w-24 sm:w-40 md:w-48">
+                        <span className="text-xs sm:text-sm font-medium text-muted-foreground">
                           Product
                         </span>
                       </th>
                       {items.map((product, index) => (
                         <th
                           key={product.id}
-                          className={`p-4 bg-muted/50 ${
+                          className={`p-2 sm:p-4 bg-muted/50 ${
                             index === items.length - 1 ? 'rounded-tr-lg' : ''
                           }`}
                         >
