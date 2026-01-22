@@ -7,7 +7,6 @@ import { useWishlist } from '@/contexts/WishlistContext';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import { ThemeToggle } from '@/components/ui/theme-toggle';
 import { products } from '@/data/products';
 import logo from '@/assets/logo.png';
 
@@ -75,21 +74,24 @@ export function Header() {
             {/* Mobile Menu */}
             <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
               <SheetTrigger asChild className="md:hidden">
-                <Button variant="ghost" size="icon" className="h-9 w-9 mr-1 sm:mr-2 flex-shrink-0">
+                <Button variant="ghost" size="icon" className="h-9 w-9 flex-shrink-0">
                   <Menu className="h-5 w-5" />
                   <span className="sr-only">Menu</span>
                 </Button>
               </SheetTrigger>
               <SheetContent side="left" className="w-[85vw] max-w-80 bg-background p-0">
-                {/* Mobile menu header with brand */}
-                <div className="flex items-center gap-2 p-4 border-b border-border">
+                {/* Mobile menu header with brand - same as top nav */}
+                <div className="flex items-center justify-center gap-1.5 p-4 border-b border-border">
+                  <span className="font-serif text-sm font-semibold text-foreground whitespace-nowrap">
+                    आत्मन्
+                  </span>
                   <img 
                     src={logo} 
                     alt="आत्मन् Roots" 
                     className="h-10 w-auto"
                   />
-                  <span className="font-serif text-lg font-semibold text-foreground">
-                    आत्मन् Roots
+                  <span className="font-serif text-sm font-semibold text-foreground whitespace-nowrap">
+                    Roots
                   </span>
                 </div>
                 <nav className="flex flex-col gap-1 p-4">
@@ -121,29 +123,29 @@ export function Header() {
               </SheetContent>
             </Sheet>
 
-            {/* Logo - Always show brand name */}
-            <Link to="/" className="flex items-center gap-1 sm:gap-1.5 min-w-0">
+            {/* Logo - Centered with increased size (+4px) */}
+            <Link to="/" className="absolute left-1/2 -translate-x-1/2 flex items-center gap-1 sm:gap-1.5">
               <motion.div
                 className="flex items-center gap-1 sm:gap-1.5"
                 whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.2 }}
               >
-                <span className="font-serif text-xs sm:text-sm md:text-xl font-semibold text-foreground whitespace-nowrap">
+                <span className="font-serif text-sm sm:text-base md:text-2xl font-semibold text-foreground whitespace-nowrap">
                   आत्मन्
                 </span>
                 <img 
                   src={logo} 
                   alt="आत्मन् Roots" 
-                  className="h-7 sm:h-9 md:h-12 w-auto flex-shrink-0"
+                  className="h-8 sm:h-10 md:h-14 w-auto flex-shrink-0"
                 />
-                <span className="font-serif text-xs sm:text-sm md:text-xl font-semibold text-foreground whitespace-nowrap">
+                <span className="font-serif text-sm sm:text-base md:text-2xl font-semibold text-foreground whitespace-nowrap">
                   Roots
                 </span>
               </motion.div>
             </Link>
 
-            {/* Desktop Navigation */}
-            <nav className="hidden md:flex items-center gap-5 lg:gap-8">
+            {/* Desktop Navigation - Hidden on mobile */}
+            <nav className="hidden lg:flex items-center gap-5 lg:gap-8">
               {navLinks.map((link) => (
                 <Link
                   key={link.name}
@@ -158,8 +160,6 @@ export function Header() {
 
             {/* Actions */}
             <div className="flex items-center gap-0.5 sm:gap-1 md:gap-2">
-              <ThemeToggle />
-              
               <Button
                 variant="ghost"
                 size="icon"
@@ -170,7 +170,7 @@ export function Header() {
                 <span className="sr-only">Search</span>
               </Button>
               
-              <Button variant="ghost" size="icon" className="hidden md:flex relative h-9 w-9" asChild>
+              <Button variant="ghost" size="icon" className="relative h-9 w-9" asChild>
                 <Link to="/wishlist">
                   <Heart className="h-5 w-5" />
                   {wishlistCount > 0 && (
