@@ -76,7 +76,7 @@ export const HeroSection = () => {
         >
           {isMobile ? (
             /* Mobile: Video */
-            <div className="aspect-[9/16] sm:aspect-video relative">
+            <div className="aspect-square sm:aspect-video relative">
               <video
                 src={heroMobileVideo}
                 autoPlay
