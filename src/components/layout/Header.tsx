@@ -111,7 +111,12 @@ export function Header() {
                         key={link.name}
                         to={link.href}
                         onClick={() => setMobileMenuOpen(false)}
-                        className="text-base font-medium text-foreground hover:text-primary hover:bg-primary/5 transition-colors py-3 px-3 rounded-lg"
+                        className={cn(
+                          "text-base font-medium transition-all py-3 px-3 rounded-lg",
+                          isActiveLink(link.href)
+                            ? "bg-primary/10 text-primary"
+                            : "text-foreground hover:text-primary hover:bg-primary/5"
+                        )}
                       >
                         {link.name}
                       </Link>
