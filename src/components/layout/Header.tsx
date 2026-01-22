@@ -1,4 +1,4 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ShoppingBag, Menu, X, Search, Heart } from 'lucide-react';
 import { useState, useRef, useEffect } from 'react';
@@ -9,6 +9,7 @@ import { Input } from '@/components/ui/input';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { products } from '@/data/products';
 import logo from '@/assets/logo.png';
+import { cn } from '@/lib/utils';
 
 const navLinks = [
   { name: 'Shop All', href: '/collections' },
@@ -26,6 +27,14 @@ export function Header() {
   const [searchQuery, setSearchQuery] = useState('');
   const [suggestions, setSuggestions] = useState<typeof products>([]);
   const searchInputRef = useRef<HTMLInputElement>(null);
+  const location = useLocation();
+
+  const isActiveLink = (href: string) => {
+    if (href === '/collections') {
+      return location.pathname === '/collections';
+    }
+    return location.pathname.startsWith(href);
+  };
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -127,14 +136,24 @@ export function Header() {
 
               {/* Desktop Navigation - Left side */}
               <nav className="hidden lg:flex items-center gap-5 lg:gap-6">
-                {navLinks.slice(0, 4).map((link) => (
+                {navLinks.map((link) => (
                   <Link
                     key={link.name}
                     to={link.href}
-                    className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors relative group whitespace-nowrap"
+                    className={cn(
+                      "text-sm font-medium transition-colors relative group whitespace-nowrap",
+                      isActiveLink(link.href)
+                        ? "text-primary"
+                        : "text-muted-foreground hover:text-foreground"
+                    )}
                   >
                     {link.name}
-                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
+                    <span 
+                      className={cn(
+                        "absolute -bottom-1 left-0 h-0.5 bg-primary transition-all duration-300",
+                        isActiveLink(link.href) ? "w-full" : "w-0 group-hover:w-full"
+                      )} 
+                    />
                   </Link>
                 ))}
               </nav>
