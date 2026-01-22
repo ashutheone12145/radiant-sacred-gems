@@ -1,10 +1,33 @@
 import { Button } from "@/components/ui/button";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
-import heroVideo from "@/assets/videos/hero-video.mp4";
+import { useState, useEffect } from "react";
+
+// Import hero images
+import ganeshaLamp from "@/assets/hero/ganesha-lamp.png";
+import lakshmiLamp from "@/assets/hero/lakshmi-lamp.png";
+import shivaLamp from "@/assets/hero/shiva-lamp.png";
+import radhaKrishnaLamp from "@/assets/hero/radha-krishna-lamp.png";
+
+const heroImages = [
+  { src: ganeshaLamp, alt: "Lord Ganesha Crystal Lamp" },
+  { src: lakshmiLamp, alt: "Goddess Lakshmi Crystal Lamp" },
+  { src: shivaLamp, alt: "Lord Shiva Crystal Lamp" },
+  { src: radhaKrishnaLamp, alt: "Radha Krishna Crystal Lamp" },
+];
 
 export const HeroSection = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % heroImages.length);
+    }, 4000); // Change image every 4 seconds
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <section className="bg-gradient-to-b from-background via-cream/20 to-background">
       {/* Top Section - Heading and Subheading */}
@@ -37,7 +60,7 @@ export const HeroSection = () => {
         </motion.div>
       </div>
       
-      {/* Middle Section - Video */}
+      {/* Middle Section - Image Carousel */}
       <div className="container px-4">
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
@@ -45,20 +68,39 @@ export const HeroSection = () => {
           transition={{ duration: 0.8, delay: 0.3 }}
           className="relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl max-w-5xl mx-auto"
         >
-          <div className="aspect-video">
-            <video
-              src={heroVideo}
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="w-full h-full object-cover"
-            >
-              Your browser does not support the video tag.
-            </video>
+          <div className="aspect-[21/9] relative">
+            <AnimatePresence mode="wait">
+              <motion.img
+                key={currentIndex}
+                src={heroImages[currentIndex].src}
+                alt={heroImages[currentIndex].alt}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 1 }}
+                className="absolute inset-0 w-full h-full object-cover"
+              />
+            </AnimatePresence>
           </div>
+          
           {/* Subtle gradient overlay for aesthetics */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none" />
+          
+          {/* Carousel Indicators */}
+          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+            {heroImages.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentIndex(index)}
+                className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                  index === currentIndex 
+                    ? "bg-white w-6" 
+                    : "bg-white/50 hover:bg-white/75"
+                }`}
+                aria-label={`Go to slide ${index + 1}`}
+              />
+            ))}
+          </div>
         </motion.div>
       </div>
       
