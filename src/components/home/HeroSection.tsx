@@ -75,7 +75,7 @@ export const HeroSection = () => {
             <Button asChild size="lg" className="btn-premium text-sm sm:text-base px-6 sm:px-8 h-11 sm:h-12">
               <Link to="/collections">Shop Collection</Link>
             </Button>
-            <Button asChild variant="outline" size="lg" className="text-sm sm:text-base px-6 sm:px-8 h-11 sm:h-12 border-primary/30 text-foreground hover:bg-primary/5">
+            <Button asChild variant="outline" size="lg" className="text-sm sm:text-base px-6 sm:px-8 h-11 sm:h-12 border-primary/30 hover:bg-primary/10 hover:text-foreground">
               <Link to="/collections/deity">Explore Deities</Link>
             </Button>
           </div>

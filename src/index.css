@@ -169,13 +169,15 @@
   
   /* Premium button styles */
   .btn-premium {
-    @apply relative overflow-hidden bg-primary text-primary-foreground px-8 py-4 rounded-sm font-medium tracking-wide uppercase text-sm;
+    @apply relative overflow-hidden bg-primary px-8 py-4 rounded-sm font-medium tracking-wide uppercase text-sm;
     @apply transition-all duration-300;
+    color: hsl(var(--primary-foreground)) !important;
     box-shadow: 0 4px 20px hsl(var(--primary) / 0.3);
   }
   
   .btn-premium:hover {
-    @apply bg-primary text-primary-foreground;
+    background-color: hsl(43 74% 42%) !important;
+    color: hsl(var(--primary-foreground)) !important;
     box-shadow: 0 8px 30px hsl(var(--primary) / 0.5);
     transform: translateY(-2px);
   }
