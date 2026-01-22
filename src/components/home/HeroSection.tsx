@@ -10,7 +10,7 @@ import ganeshaLamp from "@/assets/hero/ganesha-lamp.png";
 import lakshmiLamp from "@/assets/hero/lakshmi-lamp.png";
 import shivaLamp from "@/assets/hero/shiva-lamp.png";
 import radhaKrishnaLamp from "@/assets/hero/radha-krishna-lamp.png";
-import heroMobileVideo from "@/assets/videos/hero-video.mp4";
+import heroMobileVideo from "@/assets/hero/hero-mobile.webm";
 
 const heroImages = [
   { src: ganeshaLamp, alt: "Lord Ganesha Crystal Lamp" },
