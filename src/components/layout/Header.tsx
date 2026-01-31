@@ -2,7 +2,7 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ShoppingBag, Menu, X, Search, Heart } from 'lucide-react';
 import { useState, useRef, useEffect } from 'react';
-import { useCart } from '@/contexts/CartContext';
+import { useCartStore } from '@/stores/cartStore';
 import { useWishlist } from '@/contexts/WishlistContext';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -20,7 +20,8 @@ const navLinks = [
 ];
 
 export function Header() {
-  const { itemCount, toggleCart } = useCart();
+  const itemCount = useCartStore(state => state.itemCount);
+  const toggleCart = useCartStore(state => state.toggleCart);
   const { itemCount: wishlistCount } = useWishlist();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
@@ -214,13 +215,13 @@ export function Header() {
                 onClick={toggleCart}
               >
                 <ShoppingBag className="h-5 w-5" />
-                {itemCount > 0 && (
+                {itemCount() > 0 && (
                   <motion.span
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
                     className="absolute -top-1 -right-1 h-4 w-4 rounded-full bg-primary text-primary-foreground text-[10px] flex items-center justify-center font-medium"
                   >
-                    {itemCount}
+                    {itemCount()}
                   </motion.span>
                 )}
                 <span className="sr-only">Cart</span>

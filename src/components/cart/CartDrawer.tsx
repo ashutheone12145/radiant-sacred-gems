@@ -1,31 +1,45 @@
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Plus, Minus, Gift, ShoppingBag } from 'lucide-react';
-import { Link } from 'react-router-dom';
-import { useCart } from '@/contexts/CartContext';
+import { X, Plus, Minus, ShoppingBag, ExternalLink, Loader2 } from 'lucide-react';
+import { useCartStore } from '@/stores/cartStore';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { useState } from 'react';
+import { useEffect } from 'react';
 
 export function CartDrawer() {
-  const { 
-    items, 
-    isOpen, 
-    closeCart, 
-    removeItem, 
-    updateQuantity, 
-    updateGiftMessage,
-    subtotal 
-  } = useCart();
-  
-  const [showGiftInput, setShowGiftInput] = useState<string | null>(null);
+  const items = useCartStore(state => state.items);
+  const isOpen = useCartStore(state => state.isOpen);
+  const isLoading = useCartStore(state => state.isLoading);
+  const isSyncing = useCartStore(state => state.isSyncing);
+  const closeCart = useCartStore(state => state.closeCart);
+  const removeItem = useCartStore(state => state.removeItem);
+  const updateQuantity = useCartStore(state => state.updateQuantity);
+  const getCheckoutUrl = useCartStore(state => state.getCheckoutUrl);
+  const syncCart = useCartStore(state => state.syncCart);
+  const subtotal = useCartStore(state => state.subtotal);
+  const itemCount = useCartStore(state => state.itemCount);
 
-  const formatPrice = (price: number) => {
+  // Sync cart with Shopify when drawer opens
+  useEffect(() => { 
+    if (isOpen) syncCart(); 
+  }, [isOpen, syncCart]);
+
+  const formatPrice = (amount: number, currencyCode = 'INR') => {
     return new Intl.NumberFormat('en-IN', {
       style: 'currency',
-      currency: 'INR',
+      currency: currencyCode,
       maximumFractionDigits: 0,
-    }).format(price);
+    }).format(amount);
   };
+
+  const handleCheckout = () => {
+    const checkoutUrl = getCheckoutUrl();
+    if (checkoutUrl) {
+      window.open(checkoutUrl, '_blank');
+      closeCart();
+    }
+  };
+
+  const total = subtotal();
+  const count = itemCount();
 
   return (
     <AnimatePresence>
@@ -52,7 +66,7 @@ export function CartDrawer() {
             <div className="flex items-center justify-between px-6 py-4 border-b border-border">
               <h2 className="text-xl font-serif font-semibold flex items-center gap-2">
                 <ShoppingBag className="h-5 w-5 text-primary" />
-                Your Cart
+                Your Cart {count > 0 && `(${count})`}
               </h2>
               <Button variant="ghost" size="icon" onClick={closeCart}>
                 <X className="h-5 w-5" />
@@ -74,7 +88,7 @@ export function CartDrawer() {
                 <div className="space-y-6">
                   {items.map((item) => (
                     <motion.div
-                      key={item.product.id}
+                      key={item.variantId}
                       layout
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
@@ -83,75 +97,57 @@ export function CartDrawer() {
                     >
                       {/* Product Image */}
                       <div className="w-24 h-24 bg-secondary rounded-lg overflow-hidden flex-shrink-0">
-                        <img
-                          src={item.product.images.day}
-                          alt={item.product.name}
-                          className="w-full h-full object-cover"
-                        />
+                        {item.product.node.images?.edges?.[0]?.node && (
+                          <img
+                            src={item.product.node.images.edges[0].node.url}
+                            alt={item.product.node.title}
+                            className="w-full h-full object-cover"
+                          />
+                        )}
                       </div>
 
                       {/* Product Details */}
                       <div className="flex-1 min-w-0">
                         <h3 className="font-serif font-medium text-sm line-clamp-2">
-                          {item.product.name}
+                          {item.product.node.title}
                         </h3>
+                        {item.variantTitle !== 'Default Title' && (
+                          <p className="text-xs text-muted-foreground mt-0.5">
+                            {item.selectedOptions.map(o => o.value).join(' • ')}
+                          </p>
+                        )}
                         <p className="text-primary font-semibold mt-1">
-                          {formatPrice(item.product.price)}
+                          {formatPrice(parseFloat(item.price.amount), item.price.currencyCode)}
                         </p>
 
                         {/* Quantity Controls */}
                         <div className="flex items-center gap-3 mt-3">
                           <div className="flex items-center border border-border rounded-sm">
                             <button
-                              onClick={() => updateQuantity(item.product.id, item.quantity - 1)}
-                              className="p-1.5 hover:bg-secondary transition-colors"
+                              onClick={() => updateQuantity(item.variantId, item.quantity - 1)}
+                              disabled={isLoading}
+                              className="p-1.5 hover:bg-secondary transition-colors disabled:opacity-50"
                             >
                               <Minus className="h-3 w-3" />
                             </button>
                             <span className="px-3 text-sm font-medium">{item.quantity}</span>
                             <button
-                              onClick={() => updateQuantity(item.product.id, item.quantity + 1)}
-                              className="p-1.5 hover:bg-secondary transition-colors"
+                              onClick={() => updateQuantity(item.variantId, item.quantity + 1)}
+                              disabled={isLoading}
+                              className="p-1.5 hover:bg-secondary transition-colors disabled:opacity-50"
                             >
                               <Plus className="h-3 w-3" />
                             </button>
                           </div>
 
                           <button
-                            onClick={() => setShowGiftInput(showGiftInput === item.product.id ? null : item.product.id)}
-                            className={`p-1.5 rounded transition-colors ${
-                              item.giftMessage ? 'text-primary' : 'text-muted-foreground hover:text-foreground'
-                            }`}
-                          >
-                            <Gift className="h-4 w-4" />
-                          </button>
-
-                          <button
-                            onClick={() => removeItem(item.product.id)}
-                            className="p-1.5 text-muted-foreground hover:text-destructive transition-colors ml-auto"
+                            onClick={() => removeItem(item.variantId)}
+                            disabled={isLoading}
+                            className="p-1.5 text-muted-foreground hover:text-destructive transition-colors ml-auto disabled:opacity-50"
                           >
                             <X className="h-4 w-4" />
                           </button>
                         </div>
-
-                        {/* Gift Message Input */}
-                        <AnimatePresence>
-                          {showGiftInput === item.product.id && (
-                            <motion.div
-                              initial={{ height: 0, opacity: 0 }}
-                              animate={{ height: 'auto', opacity: 1 }}
-                              exit={{ height: 0, opacity: 0 }}
-                              className="overflow-hidden"
-                            >
-                              <Input
-                                placeholder="Add a gift message..."
-                                value={item.giftMessage || ''}
-                                onChange={(e) => updateGiftMessage(item.product.id, e.target.value)}
-                                className="mt-3 text-sm"
-                              />
-                            </motion.div>
-                          )}
-                        </AnimatePresence>
                       </div>
                     </motion.div>
                   ))}
@@ -164,15 +160,26 @@ export function CartDrawer() {
               <div className="border-t border-border px-6 py-6 bg-secondary/30">
                 <div className="flex justify-between items-center mb-4">
                   <span className="text-muted-foreground">Subtotal</span>
-                  <span className="text-xl font-serif font-semibold">{formatPrice(subtotal)}</span>
+                  <span className="text-xl font-serif font-semibold">
+                    {formatPrice(total, items[0]?.price.currencyCode)}
+                  </span>
                 </div>
                 <p className="text-xs text-muted-foreground mb-4">
                   Shipping and taxes calculated at checkout
                 </p>
-                <Button asChild className="w-full btn-premium py-6">
-                  <Link to="/checkout" onClick={closeCart}>
-                    Proceed to Checkout
-                  </Link>
+                <Button 
+                  onClick={handleCheckout} 
+                  className="w-full btn-premium py-6"
+                  disabled={items.length === 0 || isLoading || isSyncing}
+                >
+                  {isLoading || isSyncing ? (
+                    <Loader2 className="w-4 h-4 animate-spin" />
+                  ) : (
+                    <>
+                      <ExternalLink className="w-4 h-4 mr-2" />
+                      Checkout with Shopify
+                    </>
+                  )}
                 </Button>
               </div>
             )}
