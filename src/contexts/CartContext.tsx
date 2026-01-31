@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState, useCallback, ReactNode } from 'react';
 import { CartItem, Product } from '@/types/product';
+import { useCartStore } from '@/stores/cartStore';
 
 interface CartContextType {
   items: CartItem[];
@@ -20,7 +21,12 @@ const CartContext = createContext<CartContextType | undefined>(undefined);
 
 export function CartProvider({ children }: { children: ReactNode }) {
   const [items, setItems] = useState<CartItem[]>([]);
-  const [isOpen, setIsOpen] = useState(false);
+  
+  // Use Zustand cart store for drawer state to avoid conflicts
+  const zustandOpenCart = useCartStore(state => state.openCart);
+  const zustandCloseCart = useCartStore(state => state.closeCart);
+  const zustandToggleCart = useCartStore(state => state.toggleCart);
+  const zustandIsOpen = useCartStore(state => state.isOpen);
 
   const addItem = useCallback((product: Product, quantity = 1, giftMessage?: string) => {
     setItems(prev => {
@@ -38,8 +44,8 @@ export function CartProvider({ children }: { children: ReactNode }) {
       
       return [...prev, { product, quantity, giftMessage }];
     });
-    setIsOpen(true);
-  }, []);
+    zustandOpenCart();
+  }, [zustandOpenCart]);
 
   const removeItem = useCallback((productId: string) => {
     setItems(prev => prev.filter(item => item.product.id !== productId));
@@ -77,10 +83,6 @@ export function CartProvider({ children }: { children: ReactNode }) {
   const itemCount = items.reduce((sum, item) => sum + item.quantity, 0);
   const subtotal = items.reduce((sum, item) => sum + (item.product.price * item.quantity), 0);
 
-  const openCart = useCallback(() => setIsOpen(true), []);
-  const closeCart = useCallback(() => setIsOpen(false), []);
-  const toggleCart = useCallback(() => setIsOpen(prev => !prev), []);
-
   return (
     <CartContext.Provider value={{
       items,
@@ -91,10 +93,10 @@ export function CartProvider({ children }: { children: ReactNode }) {
       clearCart,
       itemCount,
       subtotal,
-      isOpen,
-      openCart,
-      closeCart,
-      toggleCart,
+      isOpen: zustandIsOpen,
+      openCart: zustandOpenCart,
+      closeCart: zustandCloseCart,
+      toggleCart: zustandToggleCart,
     }}>
       {children}
     </CartContext.Provider>
