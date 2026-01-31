@@ -93,7 +93,7 @@ export function Header() {
                 <SheetContent side="left" className="w-[85vw] max-w-80 bg-background p-0">
                   {/* Mobile menu header with brand - same as top nav */}
                   <div className="flex items-center justify-center gap-1.5 p-4 border-b border-border">
-                    <span className="font-serif text-sm font-semibold text-foreground whitespace-nowrap">
+                    <span className="font-serif text-sm font-semibold text-primary whitespace-nowrap">
                       आत्मन्
                     </span>
                     <img 
@@ -101,7 +101,7 @@ export function Header() {
                       alt="आत्मन् Roots" 
                       className="h-10 w-auto"
                     />
-                    <span className="font-serif text-sm font-semibold text-foreground whitespace-nowrap">
+                    <span className="font-serif text-sm font-semibold text-primary whitespace-nowrap">
                       Roots
                     </span>
                   </div>
@@ -165,7 +165,7 @@ export function Header() {
                 whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.2 }}
               >
-                <span className="font-serif text-sm sm:text-base md:text-xl font-semibold text-foreground whitespace-nowrap">
+                <span className="font-serif text-sm sm:text-base md:text-xl font-semibold text-primary whitespace-nowrap">
                   आत्मन्
                 </span>
                 <img 
@@ -173,7 +173,7 @@ export function Header() {
                   alt="आत्मन् Roots" 
                   className="h-8 sm:h-10 md:h-12 w-auto flex-shrink-0"
                 />
-                <span className="font-serif text-sm sm:text-base md:text-xl font-semibold text-foreground whitespace-nowrap">
+                <span className="font-serif text-sm sm:text-base md:text-xl font-semibold text-primary whitespace-nowrap">
                   Roots
                 </span>
               </motion.div>

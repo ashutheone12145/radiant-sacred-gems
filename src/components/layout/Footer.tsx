@@ -68,9 +68,9 @@ export function Footer() {
           {/* Brand Column */}
           <div className="text-center lg:text-left">
             <Link to="/" className="inline-flex items-center gap-1.5 mb-3">
-              <span className="font-serif text-sm font-semibold">आत्मन्</span>
+              <span className="font-serif text-sm font-semibold text-primary">आत्मन्</span>
               <img src={logo} alt="आत्मन् Roots" className="h-10 w-auto" />
-              <span className="font-serif text-sm font-semibold">Roots</span>
+              <span className="font-serif text-sm font-semibold text-primary">Roots</span>
             </Link>
             <p className="text-accent-foreground/70 text-sm mb-2 max-w-xs mx-auto lg:mx-0">
               Rooted in Tradition, Radiant in Spirit
