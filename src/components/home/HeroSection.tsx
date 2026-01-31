@@ -7,33 +7,36 @@ import { useIsMobile } from "@/hooks/use-mobile";
 // Import hero videos
 import heroMobileVideo from "@/assets/hero/hero-mobile.webm";
 import heroDesktopVideo from "@/assets/hero/hero-desktop.webm";
-
 export const HeroSection = () => {
   const isMobile = useIsMobile();
-
-  return (
-    <section className="bg-gradient-to-b from-background via-cream/20 to-background">
+  return <section className="bg-gradient-to-b from-background via-cream/20 to-background">
       {/* Top Section - Heading and Subheading */}
       <div className="container px-4 pt-8 sm:pt-12 md:pt-16 pb-6 sm:pb-8">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-center max-w-3xl mx-auto"
-        >
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-primary/10 text-primary text-xs sm:text-sm font-medium mb-4 sm:mb-6 border border-primary/20"
-          >
+        <motion.div initial={{
+        opacity: 0,
+        y: 30
+      }} animate={{
+        opacity: 1,
+        y: 0
+      }} transition={{
+        duration: 0.8
+      }} className="text-center max-w-3xl mx-auto">
+          <motion.div initial={{
+          opacity: 0,
+          y: 20
+        }} animate={{
+          opacity: 1,
+          y: 0
+        }} transition={{
+          delay: 0.2
+        }} className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-primary/10 text-primary text-xs sm:text-sm font-medium mb-4 sm:mb-6 border border-primary/20">
             <Sparkles className="h-3 w-3 sm:h-4 sm:w-4" />
             Rooted in Tradition, Radiant in Spirit
           </motion.div>
           
           <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight mb-4 sm:mb-6">
             Awaken Your{" "}
-            <span className="text-gradient-gold">Inner Light</span>
+            <span className="text-gradient-gold text-popover-foreground">Inner Light</span>
           </h1>
           
           <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
@@ -45,22 +48,19 @@ export const HeroSection = () => {
       
       {/* Middle Section - Image Carousel */}
       <div className="container px-4">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-          className="relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl max-w-5xl mx-auto"
-        >
+        <motion.div initial={{
+        opacity: 0,
+        scale: 0.95
+      }} animate={{
+        opacity: 1,
+        scale: 1
+      }} transition={{
+        duration: 0.8,
+        delay: 0.3
+      }} className="relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl max-w-5xl mx-auto">
           {/* Video - square on mobile, 21:9 cinematic on desktop/tablet */}
           <div className={isMobile ? "aspect-square" : "aspect-[21/9]"}>
-            <video
-              src={isMobile ? heroMobileVideo : heroDesktopVideo}
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="w-full h-full object-cover"
-            />
+            <video src={isMobile ? heroMobileVideo : heroDesktopVideo} autoPlay loop muted playsInline className="w-full h-full object-cover" />
           </div>
           
           {/* Subtle gradient overlay for aesthetics */}
@@ -70,12 +70,15 @@ export const HeroSection = () => {
       
       {/* Bottom Section - CTA and Stats */}
       <div className="container px-4 pt-8 sm:pt-12 pb-10 sm:pb-16">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6 }}
-          className="text-center"
-        >
+        <motion.div initial={{
+        opacity: 0,
+        y: 20
+      }} animate={{
+        opacity: 1,
+        y: 0
+      }} transition={{
+        delay: 0.6
+      }} className="text-center">
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mb-8 sm:mb-12">
             <Button asChild size="lg" className="btn-premium text-sm sm:text-base px-6 sm:px-8 h-11 sm:h-12">
@@ -103,6 +106,5 @@ export const HeroSection = () => {
           </div>
         </motion.div>
       </div>
-    </section>
-  );
+    </section>;
 };
