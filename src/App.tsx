@@ -4,7 +4,6 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter } from "react-router-dom";
 import { ThemeProvider } from "next-themes";
-import { CartProvider } from "@/contexts/CartContext";
 import { WishlistProvider } from "@/contexts/WishlistContext";
 import { CompareProvider } from "@/contexts/CompareContext";
 import { RecentlyViewedProvider } from "@/contexts/RecentlyViewedContext";
@@ -13,18 +12,25 @@ import { CompareBar } from "@/components/product/CompareBar";
 import { BackToTop } from "@/components/ui/back-to-top";
 import { AnimatedRoutes } from "@/components/layout/AnimatedRoutes";
 import { ScrollToTop } from "@/components/layout/ScrollToTop";
+import { useCartSync } from "@/hooks/useCartSync";
 
 const queryClient = new QueryClient();
+
+// Cart sync component to sync with Shopify on visibility change
+function CartSyncProvider({ children }: { children: React.ReactNode }) {
+  useCartSync();
+  return <>{children}</>;
+}
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
       <BrowserRouter>
         <TooltipProvider>
-          <CartProvider>
-            <WishlistProvider>
-              <CompareProvider>
-                <RecentlyViewedProvider>
+          <WishlistProvider>
+            <CompareProvider>
+              <RecentlyViewedProvider>
+                <CartSyncProvider>
                   <Toaster />
                   <Sonner />
                   <CartDrawer />
@@ -32,10 +38,10 @@ const App = () => (
                   <BackToTop />
                   <ScrollToTop />
                   <AnimatedRoutes />
-                </RecentlyViewedProvider>
-              </CompareProvider>
-            </WishlistProvider>
-          </CartProvider>
+                </CartSyncProvider>
+              </RecentlyViewedProvider>
+            </CompareProvider>
+          </WishlistProvider>
         </TooltipProvider>
       </BrowserRouter>
     </ThemeProvider>

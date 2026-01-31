@@ -8,17 +8,18 @@ import { CollectionCard } from "@/components/home/CollectionCard";
 import { FeatureShowcase } from "@/components/home/FeatureShowcase";
 import { TestimonialCard } from "@/components/home/TestimonialCard";
 import { InstagramGallery } from "@/components/home/InstagramGallery";
-import { ProductCard } from "@/components/product/ProductCard";
+import { ShopifyProductCard } from "@/components/product/ShopifyProductCard";
 import { PullToRefresh } from "@/components/ui/pull-to-refresh";
 import { ScrollAnimate, StaggerContainer, StaggerItem } from "@/components/ui/scroll-animate";
-import { products, collections, reviews } from "@/data/products";
+import { collections, reviews } from "@/data/products";
+import { useShopifyProducts } from "@/hooks/useShopifyProducts";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Loader2 } from "lucide-react";
 import { toast } from "sonner";
 
 const Index = () => {
-  const featuredProducts = products.slice(0, 4);
+  const { products: shopifyProducts, isLoading: productsLoading } = useShopifyProducts(4);
   const featuredReviews = reviews.slice(0, 3);
 
   const handleRefresh = useCallback(async () => {
@@ -84,11 +85,21 @@ const Index = () => {
               </ScrollAnimate>
               
               <StaggerContainer className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6" staggerDelay={0.08}>
-                {featuredProducts.map((product) => (
-                  <StaggerItem key={product.id}>
-                    <ProductCard product={product} />
-                  </StaggerItem>
-                ))}
+                {productsLoading ? (
+                  <div className="col-span-full flex justify-center py-12">
+                    <Loader2 className="h-8 w-8 animate-spin text-primary" />
+                  </div>
+                ) : shopifyProducts.length === 0 ? (
+                  <div className="col-span-full text-center py-12">
+                    <p className="text-muted-foreground">No products found</p>
+                  </div>
+                ) : (
+                  shopifyProducts.map((product, index) => (
+                    <StaggerItem key={product.node.id}>
+                      <ShopifyProductCard product={product} index={index} />
+                    </StaggerItem>
+                  ))
+                )}
               </StaggerContainer>
             </div>
           </section>
