@@ -25,7 +25,7 @@ interface InstagramGalleryProps {
 
 export const InstagramGallery = ({ 
   title = "Follow Our Journey",
-  subtitle = "Tag us @crystaldivinelamps for a chance to be featured"
+  subtitle = "Tag us @atmanroots for a chance to be featured"
 }: InstagramGalleryProps) => {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const [likedImages, setLikedImages] = useState<Set<number>>(new Set());
@@ -68,12 +68,17 @@ export const InstagramGallery = ({
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-pink-500/10 via-purple-500/10 to-orange-500/10 mb-4">
+          <a 
+            href="https://www.instagram.com/atmanroots" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-pink-500/10 via-purple-500/10 to-orange-500/10 mb-4 hover:from-pink-500/20 hover:via-purple-500/20 hover:to-orange-500/20 transition-colors"
+          >
             <Instagram className="h-5 w-5 text-pink-500" />
             <span className="text-sm font-medium bg-gradient-to-r from-pink-500 via-purple-500 to-orange-500 bg-clip-text text-transparent">
-              @crystaldivinelamps
+              @atmanroots
             </span>
-          </div>
+          </a>
           <h2 className="font-serif text-3xl md:text-4xl font-bold text-foreground mb-4">
             {title}
           </h2>
