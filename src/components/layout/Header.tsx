@@ -80,8 +80,8 @@ export function Header() {
       <header className="sticky top-0 z-50 bg-background/95 backdrop-blur-md border-b border-border">
         <div className="container mx-auto px-3 sm:px-4">
           <div className="flex items-center h-14 sm:h-16 md:h-20">
-            {/* Left Section - Mobile Menu or Desktop Nav */}
-            <div className="flex-1 flex items-center">
+            {/* Left Section - Mobile Menu + Logo or Desktop Nav */}
+            <div className="flex-1 flex items-center gap-2">
               {/* Mobile Menu */}
               <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
                 <SheetTrigger asChild className="lg:hidden">
@@ -131,6 +131,18 @@ export function Header() {
                 </SheetContent>
               </Sheet>
 
+              {/* Logo - Next to hamburger on mobile, hidden on desktop */}
+              <Link to="/" className="flex items-center flex-shrink-0 lg:hidden">
+                <motion.div
+                  whileHover={{ scale: 1.02 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <span className="font-serif text-lg sm:text-xl font-semibold text-primary whitespace-nowrap">
+                    आत्मन् Roots
+                  </span>
+                </motion.div>
+              </Link>
+
               {/* Desktop Navigation - Left side */}
               <nav className="hidden lg:flex items-center gap-1">
                 {navLinks.map((link) => (
@@ -150,13 +162,13 @@ export function Header() {
               </nav>
             </div>
 
-            {/* Center - Logo */}
-            <Link to="/" className="flex items-center flex-shrink-0 mx-4">
+            {/* Center - Logo (Desktop only) */}
+            <Link to="/" className="hidden lg:flex items-center flex-shrink-0 mx-4">
               <motion.div
                 whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.2 }}
               >
-                <span className="font-serif text-lg sm:text-xl md:text-2xl font-semibold text-primary whitespace-nowrap">
+                <span className="font-serif text-xl md:text-2xl font-semibold text-primary whitespace-nowrap">
                   आत्मन् Roots
                 </span>
               </motion.div>
