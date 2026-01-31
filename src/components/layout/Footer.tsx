@@ -1,42 +1,61 @@
 import { Link } from 'react-router-dom';
 import { Instagram, Facebook, Youtube, Mail, Phone, MapPin } from 'lucide-react';
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from '@/components/ui/accordion';
-
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 const footerLinks = {
-  shop: [
-    { name: 'All Products', href: '/collections' },
-    { name: 'Deity Lamps', href: '/collections/deity-lamps' },
-    { name: 'Galaxy Series', href: '/collections/galaxy-collection' },
-    { name: 'Accessories', href: '/collections/accessories' },
-    { name: 'Gift Cards', href: '/gift-cards' },
-  ],
-  support: [
-    { name: 'Contact Us', href: '/contact' },
-    { name: 'FAQ', href: '/faq' },
-    { name: 'Shipping Info', href: '/shipping' },
-    { name: 'Returns', href: '/returns' },
-    { name: 'Track Order', href: '/track-order' },
-  ],
-  company: [
-    { name: 'About Us', href: '/about' },
-    { name: 'Our Story', href: '/story' },
-    { name: 'Blog', href: '/blog' },
-    { name: 'Reviews', href: '/reviews' },
-    { name: 'Wholesale', href: '/wholesale' },
-  ],
+  shop: [{
+    name: 'All Products',
+    href: '/collections'
+  }, {
+    name: 'Deity Lamps',
+    href: '/collections/deity-lamps'
+  }, {
+    name: 'Galaxy Series',
+    href: '/collections/galaxy-collection'
+  }, {
+    name: 'Accessories',
+    href: '/collections/accessories'
+  }, {
+    name: 'Gift Cards',
+    href: '/gift-cards'
+  }],
+  support: [{
+    name: 'Contact Us',
+    href: '/contact'
+  }, {
+    name: 'FAQ',
+    href: '/faq'
+  }, {
+    name: 'Shipping Info',
+    href: '/shipping'
+  }, {
+    name: 'Returns',
+    href: '/returns'
+  }, {
+    name: 'Track Order',
+    href: '/track-order'
+  }],
+  company: [{
+    name: 'About Us',
+    href: '/about'
+  }, {
+    name: 'Our Story',
+    href: '/story'
+  }, {
+    name: 'Blog',
+    href: '/blog'
+  }, {
+    name: 'Reviews',
+    href: '/reviews'
+  }, {
+    name: 'Wholesale',
+    href: '/wholesale'
+  }]
 };
-
 export function Footer() {
-  return (
-    <footer className="bg-accent text-accent-foreground pb-mobile-nav">
+  return <footer className="bg-accent text-accent-foreground pb-mobile-nav">
       {/* Newsletter Section */}
       <div className="border-b border-accent-foreground/10">
-        <div className="container mx-auto px-4 py-8 sm:py-12 md:py-16">
+        <div className="container mx-auto px-4 py-8 sm:py-12 md:py-16 bg-muted-foreground">
           <div className="max-w-xl mx-auto text-center">
             <h3 className="text-xl sm:text-2xl md:text-3xl font-serif mb-2 sm:mb-3">
               Join the आत्मन् Roots Family
@@ -45,15 +64,8 @@ export function Footer() {
               Receive blessings, exclusive offers, and sacred inspiration for your spiritual journey.
             </p>
             <form className="flex flex-col sm:flex-row gap-2 sm:gap-3">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="flex-1 px-4 py-2.5 sm:py-3 bg-accent-foreground/10 border border-accent-foreground/20 rounded-sm text-accent-foreground placeholder:text-accent-foreground/50 focus:outline-none focus:border-primary text-sm sm:text-base"
-              />
-              <button
-                type="submit"
-                className="btn-premium whitespace-nowrap text-sm sm:text-base py-2.5 sm:py-4 px-6 sm:px-8"
-              >
+              <input type="email" placeholder="Enter your email" className="flex-1 px-4 py-2.5 sm:py-3 bg-accent-foreground/10 border border-accent-foreground/20 rounded-sm text-accent-foreground placeholder:text-accent-foreground/50 focus:outline-none focus:border-primary text-sm sm:text-base" />
+              <button type="submit" className="btn-premium whitespace-nowrap text-sm sm:text-base py-2.5 sm:py-4 px-6 sm:px-8">
                 Subscribe
               </button>
             </form>
@@ -94,13 +106,11 @@ export function Footer() {
                 </AccordionTrigger>
                 <AccordionContent>
                   <ul className="space-y-2 pb-2">
-                    {footerLinks.shop.map((link) => (
-                      <li key={link.name}>
+                    {footerLinks.shop.map(link => <li key={link.name}>
                         <Link to={link.href} className="text-sm text-accent-foreground/70 hover:text-accent-foreground transition-colors">
                           {link.name}
                         </Link>
-                      </li>
-                    ))}
+                      </li>)}
                   </ul>
                 </AccordionContent>
               </AccordionItem>
@@ -111,13 +121,11 @@ export function Footer() {
                 </AccordionTrigger>
                 <AccordionContent>
                   <ul className="space-y-2 pb-2">
-                    {footerLinks.support.map((link) => (
-                      <li key={link.name}>
+                    {footerLinks.support.map(link => <li key={link.name}>
                         <Link to={link.href} className="text-sm text-accent-foreground/70 hover:text-accent-foreground transition-colors">
                           {link.name}
                         </Link>
-                      </li>
-                    ))}
+                      </li>)}
                   </ul>
                 </AccordionContent>
               </AccordionItem>
@@ -128,13 +136,11 @@ export function Footer() {
                 </AccordionTrigger>
                 <AccordionContent>
                   <ul className="space-y-2 pb-2">
-                    {footerLinks.company.map((link) => (
-                      <li key={link.name}>
+                    {footerLinks.company.map(link => <li key={link.name}>
                         <Link to={link.href} className="text-sm text-accent-foreground/70 hover:text-accent-foreground transition-colors">
                           {link.name}
                         </Link>
-                      </li>
-                    ))}
+                      </li>)}
                   </ul>
                 </AccordionContent>
               </AccordionItem>
@@ -171,39 +177,33 @@ export function Footer() {
           <div className="hidden lg:block">
             <h4 className="font-serif font-semibold mb-3 text-sm">Shop</h4>
             <ul className="space-y-2">
-              {footerLinks.shop.map((link) => (
-                <li key={link.name}>
+              {footerLinks.shop.map(link => <li key={link.name}>
                   <Link to={link.href} className="text-sm text-accent-foreground/70 hover:text-accent-foreground transition-colors">
                     {link.name}
                   </Link>
-                </li>
-              ))}
+                </li>)}
             </ul>
           </div>
 
           <div className="hidden lg:block">
             <h4 className="font-serif font-semibold mb-3 text-sm">Support</h4>
             <ul className="space-y-2">
-              {footerLinks.support.map((link) => (
-                <li key={link.name}>
+              {footerLinks.support.map(link => <li key={link.name}>
                   <Link to={link.href} className="text-sm text-accent-foreground/70 hover:text-accent-foreground transition-colors">
                     {link.name}
                   </Link>
-                </li>
-              ))}
+                </li>)}
             </ul>
           </div>
 
           <div className="hidden lg:block">
             <h4 className="font-serif font-semibold mb-3 text-sm">Company & Contact</h4>
             <ul className="space-y-2 mb-4">
-              {footerLinks.company.slice(0, 3).map((link) => (
-                <li key={link.name}>
+              {footerLinks.company.slice(0, 3).map(link => <li key={link.name}>
                   <Link to={link.href} className="text-sm text-accent-foreground/70 hover:text-accent-foreground transition-colors">
                     {link.name}
                   </Link>
-                </li>
-              ))}
+                </li>)}
             </ul>
             <ul className="space-y-2 pt-3 border-t border-accent-foreground/10">
               <li>
@@ -239,6 +239,5 @@ export function Footer() {
           </div>
         </div>
       </div>
-    </footer>
-  );
+    </footer>;
 }
