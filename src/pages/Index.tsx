@@ -33,10 +33,10 @@ const Index = () => {
   return (
     <PullToRefresh onRefresh={handleRefresh}>
       <div className="min-h-screen bg-background">
-        <Header />
-        
         {/* Announcement Bar */}
         <AnnouncementBar />
+        
+        <Header />
         
         <main>
           {/* Hero Section */}
