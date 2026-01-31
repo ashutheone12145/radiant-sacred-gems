@@ -239,14 +239,42 @@ html {
 
   /* Card with saffron accent */
   .card-saffron {
-    @apply bg-card rounded-lg overflow-hidden transition-all duration-300;
+    @apply bg-card overflow-hidden transition-all duration-300;
     box-shadow: 0 4px 16px hsl(0 0% 0% / 0.06), 0 1px 4px hsl(var(--saffron) / 0.1);
     border: 1px solid hsl(var(--border));
   }
 
   .card-saffron:hover {
-    box-shadow: 0 12px 32px hsl(var(--saffron) / 0.12), 0 4px 12px hsl(0 0% 0% / 0.08);
+    box-shadow: 0 12px 32px hsl(var(--saffron) / 0.15), 0 4px 12px hsl(0 0% 0% / 0.08);
     border-color: hsl(var(--saffron) / 0.3);
+  }
+
+  /* Saffron glow pulse animation for featured elements */
+  .saffron-glow-pulse {
+    animation: saffron-pulse 2.5s ease-in-out infinite;
+  }
+
+  @keyframes saffron-pulse {
+    0%, 100% {
+      box-shadow: 0 4px 16px hsl(var(--saffron) / 0.15), 0 0 0 hsl(var(--saffron) / 0);
+    }
+    50% {
+      box-shadow: 0 8px 32px hsl(var(--saffron) / 0.25), 0 0 20px hsl(var(--saffron) / 0.15);
+    }
+  }
+
+  /* Featured card with pulse glow */
+  .card-saffron-featured {
+    @apply bg-card overflow-hidden transition-all duration-300;
+    box-shadow: 0 4px 16px hsl(var(--saffron) / 0.12);
+    border: 1px solid hsl(var(--saffron) / 0.2);
+    animation: saffron-pulse 2.5s ease-in-out infinite;
+  }
+
+  .card-saffron-featured:hover {
+    animation: none;
+    box-shadow: 0 16px 40px hsl(var(--saffron) / 0.2), 0 0 24px hsl(var(--saffron) / 0.12);
+    border-color: hsl(var(--saffron) / 0.4);
   }
 
   /* Trust badge styling */
