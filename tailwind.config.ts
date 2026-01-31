@@ -91,18 +91,14 @@ export default {
   				border: 'hsl(var(--sidebar-border))',
   				ring: 'hsl(var(--sidebar-ring))'
   			},
-  			gold: {
-  				DEFAULT: 'hsl(var(--primary))',
-  				glow: 'hsl(var(--gold-glow))',
-  				shimmer: 'hsl(var(--gold-shimmer))'
-  			},
-  			cream: 'hsl(var(--cream))',
-  			sand: 'hsl(var(--sand))',
-  			navy: {
-  				DEFAULT: 'hsl(var(--navy))',
-  				light: 'hsl(var(--navy-light))'
-  			}
-  		},
+			saffron: {
+				DEFAULT: 'hsl(var(--saffron))',
+				light: 'hsl(var(--saffron-light))',
+				dark: 'hsl(var(--saffron-dark))'
+			},
+			cream: 'hsl(var(--cream))',
+			sand: 'hsl(var(--sand))'
+		},
   		borderRadius: {
   			lg: 'var(--radius)',
   			md: 'calc(var(--radius) - 2px)',
