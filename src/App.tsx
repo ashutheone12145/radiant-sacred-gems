@@ -7,6 +7,7 @@ import { ThemeProvider } from "next-themes";
 import { WishlistProvider } from "@/contexts/WishlistContext";
 import { CompareProvider } from "@/contexts/CompareContext";
 import { RecentlyViewedProvider } from "@/contexts/RecentlyViewedContext";
+import { CartProvider } from "@/contexts/CartContext";
 import { CartDrawer } from "@/components/cart/CartDrawer";
 import { CompareBar } from "@/components/product/CompareBar";
 import { BackToTop } from "@/components/ui/back-to-top";
@@ -27,21 +28,23 @@ const App = () => (
     <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
       <BrowserRouter>
         <TooltipProvider>
-          <WishlistProvider>
-            <CompareProvider>
-              <RecentlyViewedProvider>
-                <CartSyncProvider>
-                  <Toaster />
-                  <Sonner />
-                  <CartDrawer />
-                  <CompareBar />
-                  <BackToTop />
-                  <ScrollToTop />
-                  <AnimatedRoutes />
-                </CartSyncProvider>
-              </RecentlyViewedProvider>
-            </CompareProvider>
-          </WishlistProvider>
+          <CartProvider>
+            <WishlistProvider>
+              <CompareProvider>
+                <RecentlyViewedProvider>
+                  <CartSyncProvider>
+                    <Toaster />
+                    <Sonner />
+                    <CartDrawer />
+                    <CompareBar />
+                    <BackToTop />
+                    <ScrollToTop />
+                    <AnimatedRoutes />
+                  </CartSyncProvider>
+                </RecentlyViewedProvider>
+              </CompareProvider>
+            </WishlistProvider>
+          </CartProvider>
         </TooltipProvider>
       </BrowserRouter>
     </ThemeProvider>
