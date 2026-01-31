@@ -34,9 +34,10 @@ export const HeroSection = () => {
             Rooted in Tradition, Radiant in Spirit
           </motion.div>
           
-          <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight mb-4 sm:mb-6">
-            Awaken Your{" "}
-            <span className="text-gradient-gold text-popover-foreground">Inner Light</span>
+          <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4 sm:mb-6">
+            <span className="bg-gradient-to-r from-foreground via-primary to-saffron-light bg-clip-text text-transparent">
+              Awaken Your Inner Light
+            </span>
           </h1>
           
           <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
