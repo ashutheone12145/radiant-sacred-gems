@@ -13,67 +13,68 @@ html {
 }
 
 /* आत्मन् Roots - Premium Spiritual Ecommerce Design System
-   Aesthetic: Luxurious, calm, devotional, modern
-   Colors: Warm neutrals (cream, sand, soft gold, deep navy)
+   Aesthetic: Bold, spiritual, devotional, modern
+   Brand Colors: Saffron #F47B20, Green #00A651, White, Black
 */
 
 @layer base {
   :root {
-    /* Core brand colors */
-    --background: 0 0% 96%; /* Warm cream */
-    --foreground: 0 0% 9%; /* Deep navy text */
+    /* Core brand colors - Light Mode */
+    --background: 0 0% 100%; /* Pure white */
+    --foreground: 0 0% 0%; /* Pure black */
 
-    --card: 0 0% 98%; /* Soft sand */
-    --card-foreground: 0 0% 9%;
+    --card: 0 0% 98%;
+    --card-foreground: 0 0% 0%;
 
-    --popover: 0 0% 89%;
-    --popover-foreground: 0 0% 9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 0%;
 
-    /* Gold accents - primary brand color */
-    --primary: 20 90% 48%; /* Rich gold */
-    --primary-foreground: 33 100% 96%;
+    /* Saffron/Orange - primary brand color #F47B20 */
+    --primary: 27 91% 54%; /* Saffron Orange */
+    --primary-foreground: 0 0% 100%;
 
-    /* Sand/cream secondary */
-    --secondary: 0 0% 32%; /* Light sand */
-    --secondary-foreground: 0 0% 98%;
+    /* Green accent #00A651 */
+    --secondary: 151 100% 33%; /* Brand Green */
+    --secondary-foreground: 0 0% 100%;
 
-    --muted: 0 0% 63%;
-    --muted-foreground: 0 0% 9%;
+    --muted: 0 0% 90%;
+    --muted-foreground: 0 0% 30%;
 
-    /* Deep navy accent */
-    --accent: 47 100% 96%; /* Deep navy */
-    --accent-foreground: 37 92% 50%;
+    /* Green accent for highlights */
+    --accent: 151 100% 33%; /* Brand Green */
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 72% 50%;
-    --destructive-foreground: 0 85% 97%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 0 0% 83%;
-    --input: 0 0% 83%;
-    --ring: 20 90% 48%;
+    --border: 0 0% 85%;
+    --input: 0 0% 85%;
+    --ring: 27 91% 54%;
 
     --radius: 0.75rem;
 
     /* Custom brand tokens */
-    --gold-glow: 43 90% 60%;
-    --gold-shimmer: 43 100% 75%;
-    --cream: 40 33% 98%;
-    --sand: 40 25% 92%;
-    --navy: 220 40% 20%;
-    --navy-light: 220 30% 35%;
+    --saffron: 27 91% 54%; /* #F47B20 */
+    --saffron-light: 27 91% 65%;
+    --saffron-dark: 27 91% 44%;
+    --brand-green: 151 100% 33%; /* #00A651 */
+    --brand-green-light: 151 100% 43%;
+    --cream: 0 0% 98%;
+    --sand: 30 20% 94%;
 
     /* Sidebar tokens */
-    --sidebar-background: 40 25% 96%;
-    --sidebar-foreground: 0 0% 9%;
-    --sidebar-primary: 20 90% 48%;
-    --sidebar-primary-foreground: 33 100% 96%;
-    --sidebar-accent: 0 0% 32%;
-    --sidebar-accent-foreground: 0 0% 98%;
-    --sidebar-border: 0 0% 83%;
-    --sidebar-ring: 20 90% 48%;
-    --chart-1: 27 95% 60%;
-    --chart-2: 43 96% 56%;
-    --chart-3: 47 95% 53%;
-    --chart-4: 24 94% 53%;
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 0 0% 0%;
+    --sidebar-primary: 27 91% 54%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 151 100% 33%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 0 0% 85%;
+    --sidebar-ring: 27 91% 54%;
+    --chart-1: 27 91% 54%;
+    --chart-2: 151 100% 33%;
+    --chart-3: 27 91% 65%;
+    --chart-4: 151 100% 43%;
     --chart-5: 0 0% 45%;
     --sidebar: 0 0% 98%;
     --font-sans: 'Roboto', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
@@ -92,59 +93,63 @@ html {
   }
 
   .dark {
-    --background: 0 0% 9%; /* Deep navy background */
-    --foreground: 0 0% 98%; /* Cream text */
+    --background: 0 0% 5%; /* Near black */
+    --foreground: 0 0% 98%; /* Off-white text */
 
-    --card: 0 0% 14%;
+    --card: 0 0% 10%;
     --card-foreground: 0 0% 98%;
 
-    --popover: 0 0% 25%;
+    --popover: 0 0% 12%;
     --popover-foreground: 0 0% 98%;
 
-    --primary: 27 95% 60%; /* Brighter gold for dark mode */
-    --primary-foreground: 12 81% 14%;
+    /* Saffron/Orange - brighter for dark mode */
+    --primary: 27 91% 58%;
+    --primary-foreground: 0 0% 0%;
 
-    --secondary: 0 0% 45%;
-    --secondary-foreground: 0 0% 98%;
+    /* Green accent */
+    --secondary: 151 100% 38%;
+    --secondary-foreground: 0 0% 100%;
 
-    --muted: 0 0% 45%;
-    --muted-foreground: 0 0% 98%;
+    --muted: 0 0% 20%;
+    --muted-foreground: 0 0% 70%;
 
-    --accent: 20 91% 14%;
-    --accent-foreground: 43 96% 56%;
+    --accent: 151 100% 38%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
-    --destructive-foreground: 0 85% 97%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 0 0% 32%;
-    --input: 0 0% 32%;
-    --ring: 27 95% 60%;
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 27 91% 58%;
 
-    --gold-glow: 43 90% 65%;
-    --gold-shimmer: 43 100% 80%;
+    --saffron: 27 91% 58%;
+    --saffron-light: 27 91% 68%;
+    --brand-green: 151 100% 38%;
+    --brand-green-light: 151 100% 48%;
 
-    --sidebar-background: 220 30% 10%;
+    --sidebar-background: 0 0% 8%;
     --sidebar-foreground: 0 0% 98%;
-    --sidebar-primary: 27 95% 60%;
-    --sidebar-primary-foreground: 12 81% 14%;
-    --sidebar-accent: 43 96% 56%;
-    --sidebar-accent-foreground: 20 91% 14%;
-    --sidebar-border: 0 0% 32%;
-    --sidebar-ring: 27 95% 60%;
-    --chart-1: 30 97% 72%;
-    --chart-2: 45 96% 64%;
-    --chart-3: 48 96% 76%;
-    --chart-4: 27 95% 60%;
-    --chart-5: 0 0% 45%;
-    --sidebar: 0 0% 14%;
-    --shadow-2xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
-    --shadow-xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
-    --shadow-sm: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 1px 2px -1px hsl(0 0% 0% / 0.1);
-    --shadow: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 1px 2px -1px hsl(0 0% 0% / 0.1);
-    --shadow-md: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 2px 4px -1px hsl(0 0% 0% / 0.1);
-    --shadow-lg: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 4px 6px -1px hsl(0 0% 0% / 0.1);
-    --shadow-xl: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 8px 10px -1px hsl(0 0% 0% / 0.1);
-    --shadow-2xl: 0 1px 3px 0px hsl(0 0% 0% / 0.25);
+    --sidebar-primary: 27 91% 58%;
+    --sidebar-primary-foreground: 0 0% 0%;
+    --sidebar-accent: 151 100% 38%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 0 0% 20%;
+    --sidebar-ring: 27 91% 58%;
+    --chart-1: 27 91% 58%;
+    --chart-2: 151 100% 38%;
+    --chart-3: 27 91% 68%;
+    --chart-4: 151 100% 48%;
+    --chart-5: 0 0% 50%;
+    --sidebar: 0 0% 10%;
+    --shadow-2xs: 0 1px 3px 0px hsl(0 0% 0% / 0.1);
+    --shadow-xs: 0 1px 3px 0px hsl(0 0% 0% / 0.1);
+    --shadow-sm: 0 1px 3px 0px hsl(0 0% 0% / 0.15), 0 1px 2px -1px hsl(0 0% 0% / 0.15);
+    --shadow: 0 1px 3px 0px hsl(0 0% 0% / 0.15), 0 1px 2px -1px hsl(0 0% 0% / 0.15);
+    --shadow-md: 0 1px 3px 0px hsl(0 0% 0% / 0.15), 0 2px 4px -1px hsl(0 0% 0% / 0.15);
+    --shadow-lg: 0 1px 3px 0px hsl(0 0% 0% / 0.15), 0 4px 6px -1px hsl(0 0% 0% / 0.15);
+    --shadow-xl: 0 1px 3px 0px hsl(0 0% 0% / 0.15), 0 8px 10px -1px hsl(0 0% 0% / 0.15);
+    --shadow-2xl: 0 1px 3px 0px hsl(0 0% 0% / 0.35);
   }
 }
 
