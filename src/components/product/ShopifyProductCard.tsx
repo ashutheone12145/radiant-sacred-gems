@@ -70,7 +70,7 @@ export function ShopifyProductCard({ product, index = 0 }: ShopifyProductCardPro
       }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="product-card group transition-shadow duration-300 hover:shadow-xl hover:shadow-primary/10"
+      className="card-saffron group rounded-lg overflow-hidden"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >

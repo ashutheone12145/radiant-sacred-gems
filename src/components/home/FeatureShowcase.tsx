@@ -129,7 +129,7 @@ export const FeatureShowcase = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
-                  className="flex gap-4 card-saffron p-4 rounded-xl"
+                  className="flex gap-4 card-saffron-featured p-4 rounded-xl"
                 >
                   <div className="flex-shrink-0 h-12 w-12 rounded-xl bg-primary/15 flex items-center justify-center">
                     <feature.icon className="h-6 w-6 text-primary" />
