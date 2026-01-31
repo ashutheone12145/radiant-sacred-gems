@@ -8,7 +8,6 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { products } from '@/data/products';
-import logo from '@/assets/logo.png';
 import { cn } from '@/lib/utils';
 
 const navLinks = [
@@ -92,18 +91,10 @@ export function Header() {
                   </Button>
                 </SheetTrigger>
                 <SheetContent side="left" className="w-[85vw] max-w-80 bg-background p-0">
-                  {/* Mobile menu header with brand - same as top nav */}
-                  <div className="flex items-center justify-center gap-1.5 p-4 border-b border-border">
-                    <span className="font-serif text-sm font-semibold text-primary whitespace-nowrap">
-                      आत्मन्
-                    </span>
-                    <img 
-                      src={logo} 
-                      alt="आत्मन् Roots" 
-                      className="h-10 w-auto"
-                    />
-                    <span className="font-serif text-sm font-semibold text-primary whitespace-nowrap">
-                      Roots
+                  {/* Mobile menu header with brand */}
+                  <div className="flex items-center justify-center gap-2 p-4 border-b border-border">
+                    <span className="font-serif text-lg font-semibold text-primary whitespace-nowrap">
+                      आत्मन् Roots
                     </span>
                   </div>
                   <nav className="flex flex-col gap-1 p-4">
@@ -160,22 +151,13 @@ export function Header() {
             </div>
 
             {/* Center - Logo */}
-            <Link to="/" className="flex items-center gap-1 sm:gap-1.5 flex-shrink-0 mx-4">
+            <Link to="/" className="flex items-center flex-shrink-0 mx-4">
               <motion.div
-                className="flex items-center gap-1 sm:gap-1.5"
                 whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.2 }}
               >
-                <span className="font-serif text-sm sm:text-base md:text-xl font-semibold text-primary whitespace-nowrap">
-                  आत्मन्
-                </span>
-                <img 
-                  src={logo} 
-                  alt="आत्मन् Roots" 
-                  className="h-8 sm:h-10 md:h-12 w-auto flex-shrink-0"
-                />
-                <span className="font-serif text-sm sm:text-base md:text-xl font-semibold text-primary whitespace-nowrap">
-                  Roots
+                <span className="font-serif text-lg sm:text-xl md:text-2xl font-semibold text-primary whitespace-nowrap">
+                  आत्मन् Roots
                 </span>
               </motion.div>
             </Link>

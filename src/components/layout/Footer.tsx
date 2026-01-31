@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import { Instagram, Facebook, Youtube, Mail, Phone, MapPin } from 'lucide-react';
-import logo from '@/assets/logo.png';
 import {
   Accordion,
   AccordionContent,
@@ -67,10 +66,8 @@ export function Footer() {
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
           {/* Brand Column */}
           <div className="text-center lg:text-left">
-            <Link to="/" className="inline-flex items-center gap-1.5 mb-3">
-              <span className="font-serif text-sm font-semibold text-primary">आत्मन्</span>
-              <img src={logo} alt="आत्मन् Roots" className="h-10 w-auto" />
-              <span className="font-serif text-sm font-semibold text-primary">Roots</span>
+            <Link to="/" className="inline-block mb-3">
+              <span className="font-serif text-xl font-semibold text-primary">आत्मन् Roots</span>
             </Link>
             <p className="text-accent-foreground/70 text-sm mb-2 max-w-xs mx-auto lg:mx-0">
               Rooted in Tradition, Radiant in Spirit
