@@ -18,7 +18,7 @@ export const CollectionCard = ({ collection, index = 0 }: CollectionCardProps) =
     >
       <Link
         to={`/collections/${collection.slug}`}
-        className="group relative block aspect-[4/5] sm:aspect-[4/5] overflow-hidden rounded-xl sm:rounded-2xl"
+        className="group relative block aspect-[4/5] sm:aspect-[4/5] overflow-hidden rounded-xl sm:rounded-2xl card-saffron"
       >
         {/* Collection image background */}
         <img
