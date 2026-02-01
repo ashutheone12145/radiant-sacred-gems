@@ -35,7 +35,7 @@ export const HeroSection = () => {
           </motion.div>
           
           <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4 sm:mb-6">
-            <span className="bg-gradient-to-r from-foreground via-primary to-saffron-light bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-foreground via-primary to-saffron bg-clip-text text-transparent">
               Awaken Your Inner Light
             </span>
           </h1>
