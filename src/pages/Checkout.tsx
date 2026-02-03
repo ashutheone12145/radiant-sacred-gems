@@ -152,10 +152,10 @@ const Checkout = () => {
   }
 
   return (
-    <div className="min-h-screen bg-background pb-mobile-nav">
+    <div className="flex flex-col min-h-screen bg-background">
       <Header />
       
-      <main className="container px-4 py-4 sm:py-8">
+      <main className="flex-1 container px-4 py-4 sm:py-8 pb-mobile-nav">
         {/* Breadcrumb */}
         <Breadcrumb className="mb-4 sm:mb-8">
           <BreadcrumbList className="text-xs sm:text-sm">
