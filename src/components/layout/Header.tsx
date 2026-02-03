@@ -132,15 +132,10 @@ export function Header() {
               </Sheet>
 
               {/* Logo - Next to hamburger on mobile, hidden on desktop */}
-              <Link to="/" className="flex items-center flex-shrink-0 lg:hidden">
-                <motion.div
-                  whileHover={{ scale: 1.02 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <span className="font-serif text-lg sm:text-xl font-semibold text-primary whitespace-nowrap">
-                    आत्मन् Roots
-                  </span>
-                </motion.div>
+              <Link to="/" className="flex items-center flex-shrink-0 lg:hidden hover:opacity-80 transition-opacity">
+                <span className="font-serif text-lg sm:text-xl font-semibold text-primary whitespace-nowrap">
+                  आत्मन् Roots
+                </span>
               </Link>
 
               {/* Desktop Navigation - Left side */}
@@ -163,15 +158,10 @@ export function Header() {
             </div>
 
             {/* Center - Logo (Desktop only) */}
-            <Link to="/" className="hidden lg:flex items-center flex-shrink-0 mx-4">
-              <motion.div
-                whileHover={{ scale: 1.02 }}
-                transition={{ duration: 0.2 }}
-              >
-                <span className="font-serif text-xl md:text-2xl font-semibold text-primary whitespace-nowrap">
-                  आत्मन् Roots
-                </span>
-              </motion.div>
+            <Link to="/" className="hidden lg:flex items-center flex-shrink-0 mx-4 hover:opacity-80 transition-opacity">
+              <span className="font-serif text-xl md:text-2xl font-semibold text-primary whitespace-nowrap">
+                आत्मन् Roots
+              </span>
             </Link>
 
             {/* Right Section - Actions */}
