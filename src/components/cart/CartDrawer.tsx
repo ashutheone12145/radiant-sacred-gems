@@ -1,10 +1,11 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Plus, Minus, ShoppingBag, ExternalLink, Loader2 } from 'lucide-react';
+import { useLocation } from 'react-router-dom';
 import { useCartStore } from '@/stores/cartStore';
 import { useCart } from '@/contexts/CartContext';
 import { Button } from '@/components/ui/button';
 import { CartSuggestions } from './CartSuggestions';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 
 export function CartDrawer() {
   // Shopify cart (Zustand store)
@@ -20,6 +21,18 @@ export function CartDrawer() {
 
   // Local cart (CartContext for mock products)
   const { items: localItems, removeItem: removeLocalItem, updateQuantity: updateLocalQuantity } = useCart();
+
+  // Track route changes to close drawer when navigating
+  const location = useLocation();
+  const prevLocationRef = useRef(location.pathname);
+  
+  // Close drawer when route changes (e.g., clicking logo)
+  useEffect(() => {
+    if (prevLocationRef.current !== location.pathname && isOpen) {
+      closeCart();
+    }
+    prevLocationRef.current = location.pathname;
+  }, [location.pathname, isOpen, closeCart]);
 
   // Sync cart with Shopify when drawer opens
   useEffect(() => { 
