@@ -23,7 +23,7 @@ export const TestimonialCard = ({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay: index * 0.15 }}
-      className="relative card-saffron rounded-2xl p-6 md:p-8"
+      className="relative card-saffron rounded-2xl p-6 md:p-8 mt-4"
     >
       {/* Quote icon */}
       <div className="absolute -top-4 left-6 h-8 w-8 rounded-full bg-primary flex items-center justify-center">
