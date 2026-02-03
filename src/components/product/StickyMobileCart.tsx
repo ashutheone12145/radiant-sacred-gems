@@ -1,9 +1,10 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Minus, Plus, ShoppingCart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Product } from "@/types/product";
 import { useCart } from "@/contexts/CartContext";
+import { useCartStore } from "@/stores/cartStore";
 
 interface StickyMobileCartProps {
   product: Product;
@@ -14,6 +15,7 @@ export const StickyMobileCart = ({ product, triggerRef }: StickyMobileCartProps)
   const [isVisible, setIsVisible] = useState(false);
   const [quantity, setQuantity] = useState(1);
   const { addItem, openCart } = useCart();
+  const isCartOpen = useCartStore(state => state.isOpen);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -46,7 +48,7 @@ export const StickyMobileCart = ({ product, triggerRef }: StickyMobileCartProps)
 
   return (
     <AnimatePresence>
-      {isVisible && (
+      {isVisible && !isCartOpen && (
         <motion.div
           initial={{ y: 100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
