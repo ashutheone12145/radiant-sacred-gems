@@ -3,6 +3,7 @@ import { X, Plus, Minus, ShoppingBag, ExternalLink, Loader2 } from 'lucide-react
 import { useCartStore } from '@/stores/cartStore';
 import { useCart } from '@/contexts/CartContext';
 import { Button } from '@/components/ui/button';
+import { CartSuggestions } from './CartSuggestions';
 import { useEffect } from 'react';
 
 export function CartDrawer() {
@@ -62,16 +63,22 @@ export function CartDrawer() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
             className="fixed inset-0 bg-foreground/30 backdrop-blur-sm z-50"
             onClick={closeCart}
           />
 
           {/* Drawer */}
           <motion.div
-            initial={{ x: '100%' }}
-            animate={{ x: 0 }}
-            exit={{ x: '100%' }}
-            transition={{ type: 'spring', damping: 30, stiffness: 300 }}
+            initial={{ x: '100%', opacity: 0.8 }}
+            animate={{ x: 0, opacity: 1 }}
+            exit={{ x: '100%', opacity: 0.8 }}
+            transition={{ 
+              type: 'spring', 
+              damping: 28, 
+              stiffness: 350,
+              mass: 0.8
+            }}
             className="fixed right-0 top-0 h-full w-full max-w-md bg-background shadow-2xl z-50 flex flex-col"
           >
             {/* Header */}
@@ -88,34 +95,47 @@ export function CartDrawer() {
             {/* Cart Items */}
             <div className="flex-1 overflow-y-auto px-6 py-4">
               {!hasItems ? (
-                <div className="flex flex-col items-center justify-center h-full text-center">
-                  <ShoppingBag className="h-16 w-16 text-muted-foreground/30 mb-4" />
-                  <p className="text-lg font-serif text-muted-foreground">Your cart is empty</p>
-                  <p className="text-sm text-muted-foreground/70 mt-1">Add divine lamps to illuminate your space</p>
-                  <Button onClick={closeCart} className="mt-6 btn-premium">
-                    Continue Shopping
-                  </Button>
+                <div className="flex flex-col text-center pt-8">
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    className="flex flex-col items-center mb-8"
+                  >
+                    <ShoppingBag className="h-16 w-16 text-muted-foreground/30 mb-4" />
+                    <p className="text-lg font-serif text-muted-foreground">Your cart is empty</p>
+                    <p className="text-sm text-muted-foreground/70 mt-1">Add divine lamps to illuminate your space</p>
+                    <Button onClick={closeCart} className="mt-6 btn-premium">
+                      Continue Shopping
+                    </Button>
+                  </motion.div>
+                  
+                  {/* Suggestions for empty cart */}
+                  <CartSuggestions maxItems={4} />
                 </div>
               ) : (
                 <div className="space-y-6">
                   {/* Local cart items (mock products) */}
-                  {localItems.map((item) => (
+                  {localItems.map((item, index) => (
                     <motion.div
                       key={`local-${item.product.id}`}
                       layout
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, x: -100 }}
+                      transition={{ delay: index * 0.05 }}
                       className="flex gap-4 pb-6 border-b border-border"
                     >
                       {/* Product Image */}
-                      <div className="w-24 h-24 bg-secondary rounded-lg overflow-hidden flex-shrink-0">
+                      <motion.div 
+                        className="w-24 h-24 bg-secondary rounded-lg overflow-hidden flex-shrink-0"
+                        whileHover={{ scale: 1.02 }}
+                      >
                         <img
                           src={item.product.images.day}
                           alt={item.product.name}
                           className="w-full h-full object-cover"
                         />
-                      </div>
+                      </motion.div>
 
                       {/* Product Details */}
                       <div className="flex-1 min-w-0">
@@ -159,17 +179,21 @@ export function CartDrawer() {
                   ))}
 
                   {/* Shopify cart items */}
-                  {shopifyItems.map((item) => (
+                  {shopifyItems.map((item, index) => (
                     <motion.div
                       key={item.variantId}
                       layout
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, x: -100 }}
+                      transition={{ delay: (localItems.length + index) * 0.05 }}
                       className="flex gap-4 pb-6 border-b border-border"
                     >
                       {/* Product Image */}
-                      <div className="w-24 h-24 bg-secondary rounded-lg overflow-hidden flex-shrink-0">
+                      <motion.div 
+                        className="w-24 h-24 bg-secondary rounded-lg overflow-hidden flex-shrink-0"
+                        whileHover={{ scale: 1.02 }}
+                      >
                         {item.product.node.images?.edges?.[0]?.node && (
                           <img
                             src={item.product.node.images.edges[0].node.url}
@@ -177,7 +201,7 @@ export function CartDrawer() {
                             className="w-full h-full object-cover"
                           />
                         )}
-                      </div>
+                      </motion.div>
 
                       {/* Product Details */}
                       <div className="flex-1 min-w-0">
@@ -224,6 +248,9 @@ export function CartDrawer() {
                       </div>
                     </motion.div>
                   ))}
+
+                  {/* Add More Products Suggestions */}
+                  <CartSuggestions maxItems={4} />
                 </div>
               )}
             </div>
