@@ -2,12 +2,13 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Star, ShoppingBag, Shield, Truck, RotateCcw } from "lucide-react";
-import shivjiCloseup from "@/assets/products/shivji-closeup.png";
-import shivjiFrame from "@/assets/hero/shivji-led-frame.png";
-import familyRoom from "@/assets/lifestyle/family-room.png";
+import heroImg from "@/assets/hero/shivji-led-frame.png";
+import poojaImg from "@/assets/lifestyle/pooja-room.png";
+import meditationImg from "@/assets/products/shivji-closeup.png";
 import { useState } from "react";
 
-const productImages = [shivjiCloseup, shivjiFrame, familyRoom];
+const productImages = [heroImg, poojaImg, meditationImg];
+const imageLabels = ["Product View", "In Pooja Room", "Meditation Setup"];
 
 export const FeaturedProduct = () => {
   const [selectedImage, setSelectedImage] = useState(0);
@@ -41,7 +42,7 @@ export const FeaturedProduct = () => {
             <div className="relative rounded-2xl overflow-hidden bg-card mb-3">
               <img
                 src={productImages[selectedImage]}
-                alt="Lord Shiva LED Photo Frame - Featured Product"
+                alt={`Lord Shiva LED Photo Frame - ${imageLabels[selectedImage]}`}
                 className="w-full aspect-square object-cover"
               />
               {/* Sale badge */}
@@ -61,7 +62,7 @@ export const FeaturedProduct = () => {
                       : "border-transparent opacity-60 hover:opacity-100"
                   }`}
                 >
-                  <img src={img} alt="" className="w-full h-full object-cover" />
+                  <img src={img} alt={imageLabels[idx]} className="w-full h-full object-cover" />
                 </button>
               ))}
             </div>
@@ -87,8 +88,8 @@ export const FeaturedProduct = () => {
 
             <p className="text-muted-foreground text-sm sm:text-base mb-6 leading-relaxed">
               A masterfully crafted LED backlit photo frame featuring Lord Shiva, 
-              with warm golden illumination that creates a divine atmosphere in any room. 
-              Premium quality frame with energy-efficient LEDs.
+              with glowing blue illumination that creates a divine atmosphere in any room. 
+              Perfect for pooja rooms, meditation spaces, and living areas.
             </p>
 
             {/* Price */}
