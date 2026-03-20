@@ -178,9 +178,9 @@ export default {
   			float: 'float 3s ease-in-out infinite'
   		},
   		boxShadow: {
-  			gold: '0 10px 40px hsl(43 74% 49% / 0.2)',
-  			'gold-lg': '0 20px 60px hsl(43 74% 49% / 0.25)',
-  			'gold-glow': '0 0 30px hsl(43 90% 60% / 0.4)',
+  			gold: '0 10px 40px hsl(27 91% 54% / 0.2)',
+  			'gold-lg': '0 20px 60px hsl(27 91% 54% / 0.25)',
+  			'gold-glow': '0 0 30px hsl(27 91% 60% / 0.4)',
   			'2xs': 'var(--shadow-2xs)',
   			xs: 'var(--shadow-xs)',
   			sm: 'var(--shadow-sm)',
