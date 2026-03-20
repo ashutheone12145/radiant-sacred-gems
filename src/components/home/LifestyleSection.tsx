@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import poojaRoomImg from "@/assets/lifestyle/pooja-room.png";
-import livingRoomImg from "@/assets/lifestyle/living-room.png";
+import familyRoomImg from "@/assets/lifestyle/family-room.png";
 
 export const LifestyleSection = () => {
   return (
@@ -24,7 +24,7 @@ export const LifestyleSection = () => {
             See It In Your Home
           </h2>
           <p className="text-muted-foreground max-w-xl mx-auto text-sm sm:text-base">
-            From sacred pooja rooms to modern living spaces — our LED décor brings warm, divine energy everywhere.
+            From sacred pooja rooms to warm family gatherings — our LED décor brings divine energy everywhere.
           </p>
         </motion.div>
 
@@ -41,7 +41,7 @@ export const LifestyleSection = () => {
             <div className="aspect-[4/3] overflow-hidden">
               <img
                 src={poojaRoomImg}
-                alt="Modern pooja room with LED deity photo frames and crystal lamps"
+                alt="Traditional pooja mandir setup with Lord Shiva LED frame, diyas and incense"
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
             </div>
@@ -54,7 +54,7 @@ export const LifestyleSection = () => {
                 Pooja Room Décor
               </h3>
               <p className="text-white/70 text-sm mb-4 max-w-sm">
-                Create a serene and devotional atmosphere with warm golden LED frames and crystal lamps.
+                Create a serene and devotional atmosphere with glowing LED deity frames, diyas, and divine accents.
               </p>
               <Button
                 asChild
@@ -69,7 +69,7 @@ export const LifestyleSection = () => {
             </div>
           </motion.div>
 
-          {/* Living Room */}
+          {/* Family Living Room */}
           <motion.div
             initial={{ opacity: 0, x: 24 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -79,21 +79,21 @@ export const LifestyleSection = () => {
           >
             <div className="aspect-[4/3] overflow-hidden">
               <img
-                src={livingRoomImg}
-                alt="Modern living room with spiritual crystal lamp creating warm light patterns"
+                src={familyRoomImg}
+                alt="Indian family enjoying warm evening with Lord Shiva LED frame in living room"
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
             </div>
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
             <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-8">
               <p className="text-primary text-xs font-medium tracking-wider uppercase mb-2">
-                Modern Living
+                Family Moments
               </p>
               <h3 className="font-serif text-2xl sm:text-3xl font-bold text-white mb-2">
                 Living Room Accent
               </h3>
               <p className="text-white/70 text-sm mb-4 max-w-sm">
-                A crystal lamp that doubles as sculptural art — warm light patterns on your walls every evening.
+                A divine LED frame that brings warmth and spiritual energy to your family's everyday moments.
               </p>
               <Button
                 asChild
@@ -102,7 +102,7 @@ export const LifestyleSection = () => {
                 className="border-white/30 text-white hover:bg-white/10 bg-transparent"
               >
                 <Link to="/collections/galaxy-collection" className="gap-2">
-                  Shop Crystal Lamps <ArrowRight className="h-3.5 w-3.5" />
+                  Shop Wall Décor <ArrowRight className="h-3.5 w-3.5" />
                 </Link>
               </Button>
             </div>

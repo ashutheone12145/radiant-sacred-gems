@@ -1,29 +1,29 @@
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import ledFramesImg from "@/assets/hero/shivji-led-frame.png";
-import crystalLampsImg from "@/assets/products/shivji-closeup.png";
-import giftingImg from "@/assets/lifestyle/diwali-festive.png";
+import ledFrameImg from "@/assets/hero/shivji-led-frame.png";
+import livingRoomImg from "@/assets/lifestyle/living-room.png";
+import diwaliImg from "@/assets/lifestyle/diwali-festive.png";
 
 const categories = [
   {
     title: "LED Photo Frames",
-    description: "Divine deity frames with warm golden backlighting",
-    image: ledFramesImg,
+    description: "Divine deity frames with glowing LED backlighting",
+    image: ledFrameImg,
     href: "/collections/deity-lamps",
     count: "12 Products",
   },
   {
-    title: "3D Crystal Lamps",
-    description: "Laser-engraved K9 crystal with multi-color LED",
-    image: crystalLampsImg,
+    title: "Wall Décor Lamps",
+    description: "Statement LED wall art for modern living spaces",
+    image: livingRoomImg,
     href: "/collections/galaxy-collection",
     count: "8 Products",
   },
   {
     title: "Gifting Collection",
-    description: "Beautifully packaged spiritual gift sets",
-    image: giftingImg,
+    description: "Beautifully packaged spiritual gifts for every occasion",
+    image: diwaliImg,
     href: "/collections/accessories",
     count: "6 Products",
   },
@@ -84,7 +84,6 @@ export const CategoryGrid = () => {
                   </div>
                 </div>
 
-                {/* Subtle border on hover */}
                 <div className="absolute inset-0 rounded-xl border border-transparent group-hover:border-primary/20 transition-colors duration-500" />
               </Link>
             </motion.div>
