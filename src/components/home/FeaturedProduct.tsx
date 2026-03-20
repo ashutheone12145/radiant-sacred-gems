@@ -7,7 +7,7 @@ import shivjiFrame from "@/assets/hero/shivji-led-frame.png";
 import familyRoom from "@/assets/lifestyle/family-room.png";
 import { useState } from "react";
 
-const productImages = [shivjiCloseup, shivjiFrame];
+const productImages = [shivjiCloseup, shivjiFrame, familyRoom];
 
 export const FeaturedProduct = () => {
   const [selectedImage, setSelectedImage] = useState(0);
