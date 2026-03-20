@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { ArrowRight, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
-import heroImage from "@/assets/hero/shivji-led-frame.png";
+import heroImage from "@/assets/hero/shiva-led-glow.png";
 
 export const HeroSection = () => {
   return (
