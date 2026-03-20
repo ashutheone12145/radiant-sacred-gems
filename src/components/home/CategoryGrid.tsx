@@ -7,22 +7,22 @@ import diwaliImg from "@/assets/lifestyle/diwali-festive.png";
 
 const categories = [
   {
-    title: "Sacred Deity Collection",
-    description: "Sacred crystal lamps featuring beloved Hindu deities",
+    title: "Divine LED Frames",
+    description: "Handcrafted LED photo frames featuring sacred Hindu deities",
     image: ledFrameImg,
     href: "/collections/deity-lamps",
     count: "12 Products",
   },
   {
-    title: "Cosmic Galaxy Series",
-    description: "Mesmerizing galaxy crystal balls that bring the cosmos home",
+    title: "Home Ambiance",
+    description: "Transform your living space with divine crystal lamp lighting",
     image: livingRoomImg,
     href: "/collections/galaxy-collection",
     count: "6 Products",
   },
   {
-    title: "Bases & Accessories",
-    description: "Premium wooden LED bases and USB cables",
+    title: "Festive Gifting",
+    description: "Perfect spiritual gifts for Diwali, housewarming & celebrations",
     image: diwaliImg,
     href: "/collections/accessories",
     count: "8 Products",
