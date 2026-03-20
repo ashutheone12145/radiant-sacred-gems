@@ -39,29 +39,22 @@ const Index = () => {
         <Header />
         
         <main>
-          {/* Hero Section */}
           <HeroSection />
-          
-          {/* Trust Badges */}
           <TrustBadges />
-
-          {/* Category Grid */}
           <CategoryGrid />
-          
-          {/* Featured Product */}
           <FeaturedProduct />
           
-          {/* Bestsellers from Shopify */}
-          <section className="py-16 sm:py-20 md:py-28">
+          {/* Bestsellers */}
+          <section className="py-16 sm:py-20 md:py-28 bg-background">
             <div className="container px-4 sm:px-6">
               <ScrollAnimate animation="fadeUp" className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 sm:mb-12 gap-3">
                 <div>
-                  <p className="text-primary font-medium tracking-[0.15em] uppercase text-xs mb-3">
-                    Most Loved
-                  </p>
                   <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-foreground">
                     Bestselling Lamps
                   </h2>
+                  <p className="text-muted-foreground text-sm sm:text-base mt-2">
+                    Our most loved crystal lamps, chosen by thousands of happy customers
+                  </p>
                 </div>
                 <Button asChild variant="ghost" className="text-primary hover:text-primary/80 self-start sm:self-auto">
                   <Link to="/collections" className="flex items-center gap-2 text-sm">
@@ -95,24 +88,18 @@ const Index = () => {
             <FeatureShowcase />
           </ScrollAnimate>
 
-          {/* Lifestyle Sections */}
           <LifestyleSection />
-
-          {/* Festive Banner */}
           <FestiveBanner />
           
           {/* Testimonials */}
           <section className="py-16 sm:py-20 md:py-28 bg-secondary/30">
             <div className="container px-4 sm:px-6">
               <ScrollAnimate animation="fadeUp" className="text-center mb-10 sm:mb-14">
-                <p className="text-primary font-medium tracking-[0.15em] uppercase text-xs mb-3">
-                  Loved By Thousands
-                </p>
                 <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4">
                   What Our Customers Say
                 </h2>
                 <p className="text-muted-foreground max-w-xl mx-auto text-sm sm:text-base">
-                  Join thousands of happy customers who've transformed their homes with sacred light.
+                  Join thousands of satisfied customers who have transformed their spaces
                 </p>
               </ScrollAnimate>
               
@@ -131,15 +118,15 @@ const Index = () => {
             </div>
           </section>
           
-          {/* CTA Section */}
-          <section className="py-16 sm:py-20 md:py-28">
+          {/* CTA */}
+          <section className="py-16 sm:py-20 md:py-28 bg-background">
             <div className="container px-4 sm:px-6">
               <ScrollAnimate animation="scale" className="text-center max-w-3xl mx-auto">
                 <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4 sm:mb-6">
                   Ready to Illuminate Your Space?
                 </h2>
                 <p className="text-muted-foreground text-sm sm:text-base mb-8 max-w-xl mx-auto">
-                  Browse our complete collection of divine LED décor and find the perfect 
+                  Browse our complete collection of divine crystal lamps and find the perfect 
                   piece to transform your home into a sacred sanctuary.
                 </p>
                 <Button asChild size="lg" className="btn-premium text-sm px-8 h-12 sm:h-14">
