@@ -7,31 +7,31 @@ import diwaliImg from "@/assets/lifestyle/diwali-festive.png";
 
 const categories = [
   {
-    title: "LED Photo Frames",
-    description: "Divine deity frames with glowing LED backlighting",
+    title: "Sacred Deity Collection",
+    description: "Sacred crystal lamps featuring beloved Hindu deities",
     image: ledFrameImg,
     href: "/collections/deity-lamps",
     count: "12 Products",
   },
   {
-    title: "Wall Décor Lamps",
-    description: "Statement LED wall art for modern living spaces",
+    title: "Cosmic Galaxy Series",
+    description: "Mesmerizing galaxy crystal balls that bring the cosmos home",
     image: livingRoomImg,
     href: "/collections/galaxy-collection",
-    count: "8 Products",
+    count: "6 Products",
   },
   {
-    title: "Gifting Collection",
-    description: "Beautifully packaged spiritual gifts for every occasion",
+    title: "Bases & Accessories",
+    description: "Premium wooden LED bases and USB cables",
     image: diwaliImg,
     href: "/collections/accessories",
-    count: "6 Products",
+    count: "8 Products",
   },
 ];
 
 export const CategoryGrid = () => {
   return (
-    <section className="py-16 sm:py-20 md:py-28">
+    <section className="py-16 sm:py-20 md:py-28 bg-background">
       <div className="container px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -40,12 +40,12 @@ export const CategoryGrid = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-10 sm:mb-14"
         >
-          <p className="text-primary font-medium tracking-[0.15em] uppercase text-xs mb-3">
-            Our Collections
-          </p>
-          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-foreground">
-            Shop by Category
+          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-3">
+            Explore Our Collections
           </h2>
+          <p className="text-muted-foreground max-w-lg mx-auto text-sm sm:text-base">
+            Discover handcrafted crystal lamps featuring divine deities and celestial designs
+          </p>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
@@ -79,7 +79,7 @@ export const CategoryGrid = () => {
                     {cat.description}
                   </p>
                   <div className="inline-flex items-center gap-2 text-primary text-sm font-medium group-hover:gap-3 transition-all duration-300">
-                    Explore
+                    Explore Collection
                     <ArrowRight className="h-4 w-4" />
                   </div>
                 </div>

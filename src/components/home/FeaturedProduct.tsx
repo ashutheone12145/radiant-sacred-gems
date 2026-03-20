@@ -8,13 +8,13 @@ import meditationImg from "@/assets/products/shivji-closeup.png";
 import { useState } from "react";
 
 const productImages = [heroImg, poojaImg, meditationImg];
-const imageLabels = ["Product View", "In Pooja Room", "Meditation Setup"];
+const imageLabels = ["Product View", "In Pooja Room", "Close-up Detail"];
 
 export const FeaturedProduct = () => {
   const [selectedImage, setSelectedImage] = useState(0);
 
   return (
-    <section className="py-16 sm:py-20 md:py-28 bg-secondary/40">
+    <section className="py-16 sm:py-20 md:py-28 bg-secondary/30">
       <div className="container px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -45,12 +45,10 @@ export const FeaturedProduct = () => {
                 alt={`Lord Shiva LED Photo Frame - ${imageLabels[selectedImage]}`}
                 className="w-full aspect-square object-cover"
               />
-              {/* Sale badge */}
               <div className="absolute top-4 left-4 px-3 py-1 bg-primary text-primary-foreground text-xs font-medium rounded-full">
                 30% OFF
               </div>
             </div>
-            {/* Thumbnail strip */}
             <div className="flex gap-2">
               {productImages.map((img, idx) => (
                 <button
@@ -92,14 +90,12 @@ export const FeaturedProduct = () => {
               Perfect for pooja rooms, meditation spaces, and living areas.
             </p>
 
-            {/* Price */}
             <div className="flex items-baseline gap-3 mb-6">
               <span className="text-3xl sm:text-4xl font-serif font-bold text-foreground">₹2,699</span>
               <span className="text-lg text-muted-foreground line-through">₹3,799</span>
               <span className="text-sm text-primary font-medium">Save ₹1,100</span>
             </div>
 
-            {/* CTA */}
             <div className="flex flex-col sm:flex-row gap-3 mb-8">
               <Button asChild size="lg" className="btn-premium flex-1 h-12 sm:h-14 text-sm">
                 <Link to="/product/shiva-crystal-lamp" className="gap-2">
@@ -107,21 +103,20 @@ export const FeaturedProduct = () => {
                   Add to Cart
                 </Link>
               </Button>
-              <Button asChild variant="outline" size="lg" className="h-12 sm:h-14 text-sm border-primary/25 hover:bg-primary/5">
+              <Button asChild variant="outline" size="lg" className="h-12 sm:h-14 text-sm border-border hover:bg-secondary">
                 <Link to="/product/shiva-crystal-lamp">
                   View Details
                 </Link>
               </Button>
             </div>
 
-            {/* Trust indicators */}
             <div className="grid grid-cols-3 gap-3">
               {[
                 { icon: Truck, label: "Free Shipping", sub: "Orders ₹999+" },
                 { icon: Shield, label: "Secure Payment", sub: "100% Protected" },
                 { icon: RotateCcw, label: "Easy Returns", sub: "30-Day Policy" },
               ].map(({ icon: Icon, label, sub }) => (
-                <div key={label} className="text-center p-3 rounded-lg bg-background border border-border/50">
+                <div key={label} className="text-center p-3 rounded-lg bg-background border border-border">
                   <Icon className="h-4 w-4 text-primary mx-auto mb-1.5" />
                   <p className="text-xs font-medium text-foreground">{label}</p>
                   <p className="text-[10px] text-muted-foreground">{sub}</p>

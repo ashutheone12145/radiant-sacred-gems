@@ -29,9 +29,9 @@ const footerLinks = {
 export function Footer() {
   return (
     <footer className="bg-foreground text-background pb-mobile-nav">
-      {/* Newsletter Section */}
+      {/* Newsletter */}
       <div className="border-b border-background/10">
-        <div className="container mx-auto px-4 py-10 sm:py-14 md:py-18">
+        <div className="container mx-auto px-4 py-10 sm:py-14">
           <div className="max-w-xl mx-auto text-center">
             <p className="text-primary font-medium tracking-[0.15em] uppercase text-xs mb-3">
               Stay Connected
@@ -59,7 +59,7 @@ export function Footer() {
       {/* Main Footer */}
       <div className="container mx-auto px-4 py-8 sm:py-12">
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
-          {/* Brand Column */}
+          {/* Brand */}
           <div className="text-center lg:text-left">
             <Link to="/" className="inline-block mb-3">
               <span className="font-serif text-xl font-semibold text-primary tracking-tight">
@@ -85,7 +85,7 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Accordion Links - Mobile */}
+          {/* Mobile Accordion */}
           <div className="lg:hidden col-span-1">
             <Accordion type="multiple" className="w-full">
               {[
@@ -101,10 +101,7 @@ export function Footer() {
                     <ul className="space-y-2 pb-2">
                       {links.map((link) => (
                         <li key={link.name}>
-                          <Link
-                            to={link.href}
-                            className="text-sm text-background/50 hover:text-primary transition-colors"
-                          >
+                          <Link to={link.href} className="text-sm text-background/50 hover:text-primary transition-colors">
                             {link.name}
                           </Link>
                         </li>
@@ -122,19 +119,16 @@ export function Footer() {
                   <ul className="space-y-2.5 pb-2">
                     <li>
                       <a href="mailto:support@aatmanroots.com" className="flex items-center gap-2 text-sm text-background/50 hover:text-primary transition-colors">
-                        <Mail className="h-3.5 w-3.5" />
-                        support@aatmanroots.com
+                        <Mail className="h-3.5 w-3.5" /> support@aatmanroots.com
                       </a>
                     </li>
                     <li>
                       <a href="tel:+919876543210" className="flex items-center gap-2 text-sm text-background/50 hover:text-primary transition-colors">
-                        <Phone className="h-3.5 w-3.5" />
-                        +91 98765 43210
+                        <Phone className="h-3.5 w-3.5" /> +91 98765 43210
                       </a>
                     </li>
                     <li className="flex items-center gap-2 text-sm text-background/50">
-                      <MapPin className="h-3.5 w-3.5" />
-                      Mumbai, Maharashtra, India
+                      <MapPin className="h-3.5 w-3.5" /> Mumbai, Maharashtra, India
                     </li>
                   </ul>
                 </AccordionContent>
@@ -148,16 +142,13 @@ export function Footer() {
             { title: 'Support', links: footerLinks.support },
           ].map(({ title, links }) => (
             <div key={title} className="hidden lg:block">
-              <h4 className="font-serif font-semibold mb-4 text-sm text-background/80 tracking-wide uppercase text-xs">
+              <h4 className="font-serif font-semibold mb-4 text-background/80 tracking-wide uppercase text-xs">
                 {title}
               </h4>
               <ul className="space-y-2.5">
                 {links.map((link) => (
                   <li key={link.name}>
-                    <Link
-                      to={link.href}
-                      className="text-sm text-background/50 hover:text-primary transition-colors"
-                    >
+                    <Link to={link.href} className="text-sm text-background/50 hover:text-primary transition-colors">
                       {link.name}
                     </Link>
                   </li>
@@ -167,16 +158,13 @@ export function Footer() {
           ))}
 
           <div className="hidden lg:block">
-            <h4 className="font-serif font-semibold mb-4 text-sm text-background/80 tracking-wide uppercase text-xs">
+            <h4 className="font-serif font-semibold mb-4 text-background/80 tracking-wide uppercase text-xs">
               Company & Contact
             </h4>
             <ul className="space-y-2.5 mb-5">
               {footerLinks.company.slice(0, 3).map((link) => (
                 <li key={link.name}>
-                  <Link
-                    to={link.href}
-                    className="text-sm text-background/50 hover:text-primary transition-colors"
-                  >
+                  <Link to={link.href} className="text-sm text-background/50 hover:text-primary transition-colors">
                     {link.name}
                   </Link>
                 </li>
@@ -185,14 +173,12 @@ export function Footer() {
             <ul className="space-y-2.5 pt-4 border-t border-background/10">
               <li>
                 <a href="mailto:support@aatmanroots.com" className="flex items-center gap-2 text-sm text-background/50 hover:text-primary transition-colors">
-                  <Mail className="h-3.5 w-3.5" />
-                  support@aatmanroots.com
+                  <Mail className="h-3.5 w-3.5" /> support@aatmanroots.com
                 </a>
               </li>
               <li>
                 <a href="tel:+919876543210" className="flex items-center gap-2 text-sm text-background/50 hover:text-primary transition-colors">
-                  <Phone className="h-3.5 w-3.5" />
-                  +91 98765 43210
+                  <Phone className="h-3.5 w-3.5" /> +91 98765 43210
                 </a>
               </li>
             </ul>
@@ -206,12 +192,8 @@ export function Footer() {
           <div className="flex flex-col sm:flex-row justify-between items-center gap-3 text-xs text-background/40">
             <p>© 2024 आत्मन् Roots. Crafted with devotion ✨</p>
             <div className="flex gap-5">
-              <Link to="/privacy" className="hover:text-primary transition-colors">
-                Privacy Policy
-              </Link>
-              <Link to="/terms" className="hover:text-primary transition-colors">
-                Terms of Service
-              </Link>
+              <Link to="/privacy" className="hover:text-primary transition-colors">Privacy Policy</Link>
+              <Link to="/terms" className="hover:text-primary transition-colors">Terms of Service</Link>
             </div>
           </div>
         </div>
