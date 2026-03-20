@@ -1,9 +1,9 @@
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import ledFramesImg from "@/assets/categories/led-photo-frames.png";
-import crystalLampsImg from "@/assets/categories/3d-crystal-lamps.png";
-import giftingImg from "@/assets/categories/gifting-items.png";
+import ledFramesImg from "@/assets/hero/shivji-led-frame.png";
+import crystalLampsImg from "@/assets/products/shivji-closeup.png";
+import giftingImg from "@/assets/lifestyle/diwali-festive.png";
 
 const categories = [
   {
