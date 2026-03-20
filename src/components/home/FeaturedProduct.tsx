@@ -2,11 +2,12 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Star, ShoppingBag, Shield, Truck, RotateCcw } from "lucide-react";
-import shivjiCloseup from "@/assets/products/shivji-closeup.jpg";
-import shivjiFrame from "@/assets/hero/shivji-led-frame.jpg";
+import shivjiCloseup from "@/assets/products/shivji-closeup.png";
+import shivjiFrame from "@/assets/hero/shivji-led-frame.png";
+import familyRoom from "@/assets/lifestyle/family-room.png";
 import { useState } from "react";
 
-const productImages = [shivjiCloseup, shivjiFrame];
+const productImages = [shivjiCloseup, shivjiFrame, familyRoom];
 
 export const FeaturedProduct = () => {
   const [selectedImage, setSelectedImage] = useState(0);
