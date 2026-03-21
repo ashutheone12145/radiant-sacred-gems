@@ -1,11 +1,18 @@
 import { Product, Collection, Review } from '@/types/product';
 
-// Product images - User uploaded
-import ganeshaDay from '@/assets/products/ganesha-lamp-1.jpg';
-import ganeshaNight from '@/assets/products/ganesha-lamp-2.jpg';
-import krishnaDay from '@/assets/products/krishna-lamp.jpg';
-import krishnaNight from '@/assets/products/krishna-lamp.jpg';
-import heroLamp from '@/assets/products/hero-lamp.jpg';
+// Product images - Crystal Lamp photos
+import ganeshaDay from '@/assets/products/crystal-ganesha-temple.png';
+import ganeshaNight from '@/assets/products/crystal-ganesha-purple.png';
+import krishnaDay from '@/assets/products/crystal-radha-krishna-day.png';
+import krishnaNight from '@/assets/products/crystal-radha-krishna-warm.png';
+import heroLamp from '@/assets/products/crystal-shiva-diya.png';
+
+// Additional crystal lamp images
+import lakshmDay from '@/assets/products/crystal-lakshmi-day.png';
+import lakshmNight from '@/assets/products/crystal-lakshmi-dark.webp';
+import radhKrishna2 from '@/assets/products/crystal-radha-krishna-2.png';
+import radhKrishnaGarden from '@/assets/products/crystal-radha-krishna-garden.png';
+import ganeshaGarden from '@/assets/products/crystal-ganesha-dark.png';
 
 // Reuse images for other products
 const shivaDay = heroLamp;
@@ -14,8 +21,8 @@ const hanumanDay = ganeshaDay;
 const hanumanNight = ganeshaNight;
 const galaxyDay = krishnaDay;
 const galaxyNight = krishnaNight;
-const woodenBaseDay = ganeshaDay;
-const woodenBaseNight = ganeshaNight;
+const woodenBaseDay = lakshmDay;
+const woodenBaseNight = lakshmNight;
 
 export const collections: Collection[] = [
   {
@@ -56,7 +63,7 @@ export const products: Product[] = [
     images: {
       day: ganeshaDay,
       night: ganeshaNight,
-      gallery: [ganeshaDay, ganeshaNight, ganeshaDay, ganeshaNight],
+      gallery: [ganeshaDay, ganeshaNight, ganeshaGarden, ganeshaDay],
     },
     category: 'deity',
     deity: 'ganesha',
@@ -91,7 +98,7 @@ export const products: Product[] = [
     images: {
       day: krishnaDay,
       night: krishnaNight,
-      gallery: [krishnaDay, krishnaNight, krishnaDay, krishnaNight],
+      gallery: [krishnaDay, krishnaNight, radhKrishna2, radhKrishnaGarden],
     },
     category: 'deity',
     deity: 'krishna',
@@ -126,7 +133,7 @@ export const products: Product[] = [
     images: {
       day: shivaDay,
       night: shivaNight,
-      gallery: [shivaDay, shivaNight, shivaDay, shivaNight],
+      gallery: [shivaDay, shivaNight, ganeshaGarden, shivaDay],
     },
     category: 'deity',
     deity: 'shiva',
@@ -194,9 +201,9 @@ export const products: Product[] = [
     price: 2599,
     compareAtPrice: 3599,
     images: {
-      day: ganeshaDay,
-      night: ganeshaNight,
-      gallery: [ganeshaDay, ganeshaNight, ganeshaDay, ganeshaNight],
+      day: lakshmDay,
+      night: lakshmNight,
+      gallery: [lakshmDay, lakshmNight, lakshmDay, lakshmNight],
     },
     category: 'deity',
     deity: 'lakshmi',

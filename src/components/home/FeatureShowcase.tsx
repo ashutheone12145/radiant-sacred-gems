@@ -2,8 +2,8 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Sun, Moon, Sparkles, Zap, Palette } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import ganeshaLampDay from "@/assets/products/hero-lamp.png";
-import ganeshaLampNight from "@/assets/products/hero-lamp-night.png";
+import ganeshaLampDay from "@/assets/products/crystal-ganesha-temple.png";
+import ganeshaLampNight from "@/assets/products/crystal-ganesha-purple.png";
 
 export const FeatureShowcase = () => {
   const [isNightMode, setIsNightMode] = useState(false);
