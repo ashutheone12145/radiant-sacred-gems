@@ -80,7 +80,7 @@ export const LifestyleSection = () => {
             <div className="aspect-[4/3] overflow-hidden">
               <img
                 src={familyRoomImg}
-                alt="Indian family enjoying warm evening with Lord Shiva LED frame in living room"
+                alt="Indian family sitting together in living room with Lord Shiva LED photo frame on wall"
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
             </div>

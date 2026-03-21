@@ -19,8 +19,8 @@ export const FestiveBanner = () => {
           <div className="relative">
             <img
               src={diwaliImg}
-              alt="Diwali festive display with LED deity frames, crystal lamps, diyas and marigold garlands"
-              className="w-full aspect-[16/7] sm:aspect-[21/9] object-cover"
+              alt="Family gifting Ganesha LED photo frame during Diwali celebration with diyas and festive lights"
+              className="w-full aspect-[4/3] sm:aspect-[16/7] md:aspect-[21/9] object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/30 to-transparent" />
           </div>

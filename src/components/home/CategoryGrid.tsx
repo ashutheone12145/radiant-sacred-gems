@@ -8,7 +8,7 @@ import giftingImg from "@/assets/categories/gifting-items.png";
 const categories = [
   {
     title: "LED Photo Frames",
-    description: "Glowing LED backlit deity frames with marigold-adorned sacred designs",
+    description: "Divine deity LED frames with warm golden glow for meditation & devotion",
     image: ledFrameImg,
     href: "/collections/deity-lamps",
     count: "12 Products",
