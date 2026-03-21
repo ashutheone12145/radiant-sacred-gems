@@ -41,10 +41,10 @@ export const CategoryGrid = () => {
           className="text-center mb-10 sm:mb-14"
         >
           <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-3">
-            Explore Our Collections
+            Shop By Category
           </h2>
           <p className="text-muted-foreground max-w-lg mx-auto text-sm sm:text-base">
-            Discover handcrafted crystal lamps featuring divine deities and celestial designs
+            From glowing LED deity frames to 3D crystal lamps & premium gift sets
           </p>
         </motion.div>
 

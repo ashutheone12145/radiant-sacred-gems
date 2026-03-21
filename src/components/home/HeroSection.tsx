@@ -56,7 +56,7 @@ export const HeroSection = () => {
             <img
               src={heroImage}
               alt="Lord Shiva LED Photo Frame glowing with divine light"
-              className="w-full aspect-[4/3] sm:aspect-[3/2] md:aspect-[16/9] object-cover"
+              className="w-full aspect-square sm:aspect-[3/2] md:aspect-[16/9] object-cover"
             />
           </div>
         </motion.div>
