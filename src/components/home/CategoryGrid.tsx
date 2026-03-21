@@ -1,14 +1,14 @@
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import ledFrameImg from "@/assets/categories/led-photo-frames.png";
+import ledFrameImg from "@/assets/categories/led-photo-frames.jpg";
 import crystalLampImg from "@/assets/categories/3d-crystal-lamps.png";
 import giftingImg from "@/assets/categories/gifting-items.png";
 
 const categories = [
   {
     title: "LED Photo Frames",
-    description: "Glowing LED backlit deity frames with marigold-adorned sacred designs",
+    description: "Divine deity LED frames with warm golden glow for meditation & devotion",
     image: ledFrameImg,
     href: "/collections/deity-lamps",
     count: "12 Products",

@@ -2,14 +2,14 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Star, ShoppingBag, Shield, Truck, RotateCcw } from "lucide-react";
-import mainImg from "@/assets/hero/shiva-led-glow.png";
-import poojaImg from "@/assets/lifestyle/pooja-room.png";
-import closeupImg from "@/assets/products/shivji-closeup.png";
-import nightImg from "@/assets/products/shiva-night.png";
+import mainImg from "@/assets/hero/shiva-led-frame-glow.jpg";
+import poojaImg from "@/assets/lifestyle/pooja-room.jpg";
+import hanumanImg from "@/assets/products/hanuman-living-room.jpg";
+import ramImg from "@/assets/products/ram-pooja-frame.jpg";
 import { useState } from "react";
 
-const productImages = [mainImg, closeupImg, poojaImg, nightImg];
-const imageLabels = ["Front View", "Close-up Detail", "In Pooja Room", "Night Glow"];
+const productImages = [mainImg, poojaImg, hanumanImg, ramImg];
+const imageLabels = ["Night Glow", "In Pooja Room", "Living Room Setup", "Sacred Display"];
 
 export const FeaturedProduct = () => {
   const [selectedImage, setSelectedImage] = useState(0);

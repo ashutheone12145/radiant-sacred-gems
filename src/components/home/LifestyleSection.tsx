@@ -2,8 +2,8 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
-import poojaRoomImg from "@/assets/lifestyle/pooja-room.png";
-import familyRoomImg from "@/assets/lifestyle/family-room.png";
+import poojaRoomImg from "@/assets/lifestyle/pooja-room.jpg";
+import familyRoomImg from "@/assets/lifestyle/family-room.jpg";
 
 export const LifestyleSection = () => {
   return (
@@ -41,7 +41,7 @@ export const LifestyleSection = () => {
             <div className="aspect-[4/3] overflow-hidden">
               <img
                 src={poojaRoomImg}
-                alt="Traditional pooja mandir setup with Lord Shiva LED frame, diyas and incense"
+                alt="Lord Shiva LED photo frame glowing above traditional pooja mandir with diyas, idols and marigold garlands"
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
             </div>
@@ -80,7 +80,7 @@ export const LifestyleSection = () => {
             <div className="aspect-[4/3] overflow-hidden">
               <img
                 src={familyRoomImg}
-                alt="Indian family enjoying warm evening with Lord Shiva LED frame in living room"
+                alt="Indian family sitting together in living room with Lord Shiva LED photo frame on wall"
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
             </div>
