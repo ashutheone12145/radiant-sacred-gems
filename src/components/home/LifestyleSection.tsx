@@ -2,8 +2,8 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
-import poojaRoomImg from "@/assets/lifestyle/pooja-room.png";
-import familyRoomImg from "@/assets/lifestyle/family-room.png";
+import poojaRoomImg from "@/assets/lifestyle/pooja-room.jpg";
+import familyRoomImg from "@/assets/lifestyle/family-room.jpg";
 
 export const LifestyleSection = () => {
   return (
