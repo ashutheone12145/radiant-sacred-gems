@@ -4,18 +4,23 @@ import { X, ChevronLeft, ChevronRight, Instagram, Heart, ShoppingBag } from "luc
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import ganeshaLampDay from "@/assets/products/hero-lamp.png";
-import ganeshaLampNight from "@/assets/products/hero-lamp-night.png";
+import shivaFamilyRoom from "@/assets/lifestyle/shiva-family-room.jpg";
+import shivaPoojaRoom from "@/assets/lifestyle/shiva-pooja-room.jpg";
+import shivaDarkFrame from "@/assets/lifestyle/shiva-dark-frame.jpg";
+import ganeshaGiftFrame from "@/assets/lifestyle/ganesha-gift-frame.jpg";
+import krishnaFrame from "@/assets/lifestyle/krishna-frame.jpg";
+import ramPoojaFrame from "@/assets/lifestyle/ram-pooja-frame.jpg";
+import hanumanLivingRoom from "@/assets/lifestyle/hanuman-living-room.jpg";
 
 const galleryImages = [
-  { src: ganeshaLampDay, alt: "Lord Ganesha Crystal Lamp", likes: 1247, productSlug: "ganesha-crystal-lamp" },
-  { src: ganeshaLampNight, alt: "Ganesha Lamp Night Glow", likes: 982, productSlug: "ganesha-crystal-lamp" },
-  { src: ganeshaLampDay, alt: "Divine Ganesha Blessing", likes: 1456, productSlug: "ganesha-crystal-lamp" },
-  { src: ganeshaLampNight, alt: "Ganesha Lamp Illuminated", likes: 867, productSlug: "ganesha-crystal-lamp" },
-  { src: ganeshaLampDay, alt: "Crystal Ganesha Daylight", likes: 1123, productSlug: "ganesha-crystal-lamp" },
-  { src: ganeshaLampNight, alt: "Ganesha Spiritual Ambiance", likes: 934, productSlug: "ganesha-crystal-lamp" },
-  { src: ganeshaLampDay, alt: "Ganesha Blessing Pose", likes: 1089, productSlug: "ganesha-crystal-lamp" },
-  { src: ganeshaLampNight, alt: "Ganesha Night Crystal Glow", likes: 756, productSlug: "ganesha-crystal-lamp" },
+  { src: shivaDarkFrame, alt: "Lord Shiva LED Photo Frame", likes: 1247, productSlug: "ganesha-crystal-lamp" },
+  { src: shivaPoojaRoom, alt: "Shiva LED Frame in Pooja Room", likes: 982, productSlug: "ganesha-crystal-lamp" },
+  { src: krishnaFrame, alt: "Lord Krishna LED Photo Frame", likes: 1456, productSlug: "ganesha-crystal-lamp" },
+  { src: ganeshaGiftFrame, alt: "Ganesha LED Frame — Perfect Gift", likes: 867, productSlug: "ganesha-crystal-lamp" },
+  { src: ramPoojaFrame, alt: "Lord Ram LED Frame in Pooja Room", likes: 1123, productSlug: "ganesha-crystal-lamp" },
+  { src: hanumanLivingRoom, alt: "Hanuman LED Frame in Living Room", likes: 934, productSlug: "ganesha-crystal-lamp" },
+  { src: shivaFamilyRoom, alt: "Shiva LED Frame with Family", likes: 1089, productSlug: "ganesha-crystal-lamp" },
+  { src: shivaDarkFrame, alt: "Shiva LED Frame Glowing", likes: 756, productSlug: "ganesha-crystal-lamp" },
 ];
 
 interface InstagramGalleryProps {
