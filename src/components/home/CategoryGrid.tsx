@@ -1,29 +1,29 @@
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import ledFrameImg from "@/assets/hero/shivji-led-frame.png";
-import livingRoomImg from "@/assets/lifestyle/living-room.png";
-import diwaliImg from "@/assets/lifestyle/diwali-festive.png";
+import ledFrameImg from "@/assets/categories/led-photo-frames.png";
+import crystalLampImg from "@/assets/categories/3d-crystal-lamps.png";
+import giftingImg from "@/assets/categories/gifting-items.png";
 
 const categories = [
   {
-    title: "Divine LED Frames",
-    description: "Handcrafted LED photo frames featuring sacred Hindu deities",
+    title: "LED Photo Frames",
+    description: "Glowing LED backlit deity frames with marigold-adorned sacred designs",
     image: ledFrameImg,
     href: "/collections/deity-lamps",
     count: "12 Products",
   },
   {
-    title: "Home Ambiance",
-    description: "Transform your living space with divine crystal lamp lighting",
-    image: livingRoomImg,
+    title: "3D Crystal Lamps",
+    description: "Precision-engraved deity crystal lamps with illuminated LED bases",
+    image: crystalLampImg,
     href: "/collections/galaxy-collection",
     count: "6 Products",
   },
   {
-    title: "Festive Gifting",
-    description: "Perfect spiritual gifts for Diwali, housewarming & celebrations",
-    image: diwaliImg,
+    title: "Premium Gift Sets",
+    description: "Curated Diwali & festive gift boxes with LED frames, crystals & more",
+    image: giftingImg,
     href: "/collections/accessories",
     count: "8 Products",
   },
