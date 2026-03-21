@@ -41,7 +41,7 @@ export const LifestyleSection = () => {
             <div className="aspect-[4/3] overflow-hidden">
               <img
                 src={poojaRoomImg}
-                alt="Traditional pooja mandir setup with Lord Shiva LED frame, diyas and incense"
+                alt="Lord Shiva LED photo frame glowing above traditional pooja mandir with diyas, idols and marigold garlands"
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
             </div>
