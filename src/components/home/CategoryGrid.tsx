@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import shivaDarkFrame from "@/assets/lifestyle/shiva-dark-frame.jpg";
-import crystalLampImg from "@/assets/products/crystal-ganesha-temple.png";
+import crystalLampImg from "@assets/Gemini_Generated_Image_8dzrhm8dzrhm8dzr_1774099982885.png";
 import giftingImg from "@/assets/categories/gift-sets.png";
 
 const categories = [
