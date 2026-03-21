@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { ArrowRight, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
-import heroImage from "@/assets/hero/shiva-led-glow.png";
+import heroImage from "@/assets/hero/shiva-led-frame-glow.png";
 
 export const HeroSection = () => {
   return (
@@ -56,7 +56,7 @@ export const HeroSection = () => {
             <img
               src={heroImage}
               alt="Lord Shiva LED Photo Frame glowing with divine light"
-              className="w-full aspect-[4/3] sm:aspect-[3/2] md:aspect-[16/9] object-cover"
+              className="w-full aspect-square sm:aspect-[3/2] md:aspect-[16/9] object-cover"
             />
           </div>
         </motion.div>
