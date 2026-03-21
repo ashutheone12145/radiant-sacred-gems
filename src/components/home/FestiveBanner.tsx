@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Gift, ArrowRight } from "lucide-react";
-import diwaliImg from "@/assets/lifestyle/diwali-festive.png";
+import diwaliImg from "@/assets/lifestyle/diwali-festive.jpg";
 
 export const FestiveBanner = () => {
   return (
