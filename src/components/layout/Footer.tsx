@@ -5,9 +5,9 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 const footerLinks = {
   shop: [
     { name: 'All Products', href: '/collections' },
-    { name: 'Deity Lamps', href: '/collections/deity-lamps' },
-    { name: 'Galaxy Series', href: '/collections/galaxy-collection' },
-    { name: 'Accessories', href: '/collections/accessories' },
+    { name: 'LED Photo Frames', href: '/collections/led-frames' },
+    { name: '3D Crystal Lamps', href: '/collections/crystal-lamps' },
+    { name: 'Premium Gift Sets', href: '/collections/gift-sets' },
     { name: 'Gift Cards', href: '/gift-cards' },
   ],
   support: [

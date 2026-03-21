@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { ArrowRight, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
-import heroImage from "@/assets/hero/shiva-led-frame-glow.jpg";
+import heroImage from "@/assets/lifestyle/shiva-dark-frame.jpg";
 
 export const HeroSection = () => {
   return (
@@ -40,8 +40,8 @@ export const HeroSection = () => {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="text-muted-foreground text-base sm:text-lg md:text-xl max-w-xl mx-auto mb-8 leading-relaxed"
           >
-            Discover sacred crystal lamps handcrafted with devotion, featuring divine 
-            deities to bring peace, prosperity, and spiritual energy to your home.
+            Sacred LED photo frames and 3D crystal lamps handcrafted with devotion — 
+            bring peace, prosperity, and divine energy into your home.
           </motion.p>
         </div>
 
@@ -55,7 +55,7 @@ export const HeroSection = () => {
           <div className="rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl">
             <img
               src={heroImage}
-              alt="Lord Shiva LED Photo Frame glowing with divine golden light in dark room"
+              alt="Lord Shiva LED Photo Frame glowing with divine golden light"
               className="w-full aspect-square object-cover sm:aspect-[3/2] md:aspect-[16/9]"
             />
           </div>
@@ -73,8 +73,8 @@ export const HeroSection = () => {
             size="lg"
             className="btn-premium text-sm px-8 h-12 sm:h-14"
           >
-            <Link to="/collections">
-              Shop Collection
+            <Link to="/collections/led-frames">
+              Shop LED Frames
               <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
           </Button>
@@ -84,7 +84,7 @@ export const HeroSection = () => {
             size="lg"
             className="text-sm px-8 h-12 sm:h-14 border-border text-foreground hover:bg-secondary hover:text-foreground"
           >
-            <Link to="/collections/deity-lamps">Explore Deities</Link>
+            <Link to="/collections/crystal-lamps">Explore Crystal Lamps</Link>
           </Button>
         </motion.div>
 

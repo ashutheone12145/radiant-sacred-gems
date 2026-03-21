@@ -12,9 +12,9 @@ import { cn } from '@/lib/utils';
 
 const navLinks = [
   { name: 'Shop All', href: '/collections' },
-  { name: 'Deity Lamps', href: '/collections/deity-lamps' },
-  { name: 'Galaxy Series', href: '/collections/galaxy-collection' },
-  { name: 'Accessories', href: '/collections/accessories' },
+  { name: 'LED Photo Frames', href: '/collections/led-frames' },
+  { name: '3D Crystal Lamps', href: '/collections/crystal-lamps' },
+  { name: 'Gift Sets', href: '/collections/gift-sets' },
   { name: 'About', href: '/about' },
 ];
 

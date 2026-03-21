@@ -62,8 +62,8 @@ export const LifestyleSection = () => {
                 size="sm"
                 className="border-white/30 text-white hover:bg-white/10 bg-transparent"
               >
-                <Link to="/collections/deity-lamps" className="gap-2">
-                  Shop Pooja Décor <ArrowRight className="h-3.5 w-3.5" />
+                <Link to="/collections/led-frames" className="gap-2">
+                  Shop LED Frames <ArrowRight className="h-3.5 w-3.5" />
                 </Link>
               </Button>
             </div>
@@ -101,7 +101,7 @@ export const LifestyleSection = () => {
                 size="sm"
                 className="border-white/30 text-white hover:bg-white/10 bg-transparent"
               >
-                <Link to="/collections/galaxy-collection" className="gap-2">
+                <Link to="/collections/led-frames" className="gap-2">
                   Shop Wall Décor <ArrowRight className="h-3.5 w-3.5" />
                 </Link>
               </Button>

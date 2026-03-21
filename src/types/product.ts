@@ -11,8 +11,8 @@ export interface Product {
     night: string;
     gallery: string[];
   };
-  category: 'deity' | 'galaxy' | 'accessories';
-  deity?: 'ganesha' | 'krishna' | 'shiva' | 'hanuman' | 'lakshmi' | 'durga' | 'saraswati';
+  category: 'deity' | 'galaxy' | 'accessories' | 'led-frame' | 'gift-set';
+  deity?: 'ganesha' | 'krishna' | 'shiva' | 'hanuman' | 'lakshmi' | 'durga' | 'saraswati' | 'ram';
   features: string[];
   specifications: {
     size: string;

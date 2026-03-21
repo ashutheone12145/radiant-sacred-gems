@@ -1,45 +1,79 @@
 import { Product, Collection, Review } from '@/types/product';
 
-// Product images - Crystal Lamp photos
+// 3D Crystal Lamp images
 import ganeshaDay from '@/assets/products/crystal-ganesha-temple.png';
 import ganeshaNight from '@/assets/products/crystal-ganesha-purple.png';
 import krishnaDay from '@/assets/products/crystal-radha-krishna-day.png';
 import krishnaNight from '@/assets/products/crystal-radha-krishna-warm.png';
-import heroLamp from '@/assets/products/crystal-shiva-diya.png';
-
-// Additional crystal lamp images
+import shivaLamp from '@/assets/products/crystal-shiva-diya.png';
 import lakshmDay from '@/assets/products/crystal-lakshmi-day.png';
 import lakshmNight from '@/assets/products/crystal-lakshmi-dark.webp';
 import radhKrishna2 from '@/assets/products/crystal-radha-krishna-2.png';
 import radhKrishnaGarden from '@/assets/products/crystal-radha-krishna-garden.png';
 import ganeshaGarden from '@/assets/products/crystal-ganesha-dark.png';
 
-// Reuse images for other products
-const shivaDay = heroLamp;
-const shivaNight = heroLamp;
+// LED Photo Frame images
+import shivaDarkFrame from '@/assets/lifestyle/shiva-dark-frame.jpg';
+import shivaPoojaRoom from '@/assets/lifestyle/shiva-pooja-room.jpg';
+import shivaFamilyRoom from '@/assets/lifestyle/shiva-family-room.jpg';
+import ramPoojaFrame from '@/assets/lifestyle/ram-pooja-frame.jpg';
+import krishnaFrame from '@/assets/lifestyle/krishna-frame.jpg';
+import hanumanFrame from '@/assets/lifestyle/hanuman-living-room.jpg';
+import ganeshaGiftFrame from '@/assets/lifestyle/ganesha-gift-frame.jpg';
+
+// Gift Set image
+import giftSetImg from '@/assets/categories/gift-sets.png';
+
+// Crystal lamp aliases
+const shivaDay = shivaLamp;
+const shivaNight = shivaLamp;
 const hanumanDay = ganeshaDay;
 const hanumanNight = ganeshaNight;
-const galaxyDay = krishnaDay;
-const galaxyNight = krishnaNight;
+const galaxyDay = radhKrishna2;
+const galaxyNight = radhKrishnaGarden;
 const woodenBaseDay = lakshmDay;
 const woodenBaseNight = lakshmNight;
 
 export const collections: Collection[] = [
+  {
+    id: 'led-frames',
+    name: 'LED Photo Frames',
+    slug: 'led-frames',
+    description: 'Divine deity LED photo frames with warm golden glow for meditation & devotion',
+    image: shivaDarkFrame,
+    productCount: 5,
+  },
+  {
+    id: 'crystal-lamps',
+    name: '3D Crystal Lamps',
+    slug: 'crystal-lamps',
+    description: 'Precision-engraved deity crystal lamps with illuminated LED bases',
+    image: ganeshaDay,
+    productCount: 10,
+  },
+  {
+    id: 'gift-sets',
+    name: 'Premium Gift Sets',
+    slug: 'gift-sets',
+    description: 'Curated Diwali & festive gift boxes with LED frames, crystals & more',
+    image: giftSetImg,
+    productCount: 3,
+  },
   {
     id: 'deity-lamps',
     name: 'Sacred Deity Collection',
     slug: 'deity-lamps',
     description: 'Sacred crystal lamps featuring beloved Hindu deities',
     image: ganeshaNight,
-    productCount: 12,
+    productCount: 10,
   },
   {
     id: 'galaxy-collection',
     name: 'Cosmic Galaxy Series',
     slug: 'galaxy-collection',
-    description: 'Mesmerizing galaxy crystal balls that bring the cosmos home',
+    description: 'Mesmerizing deity crystal balls in premium K9 optical glass',
     image: galaxyNight,
-    productCount: 6,
+    productCount: 3,
   },
   {
     id: 'accessories',
@@ -47,7 +81,7 @@ export const collections: Collection[] = [
     slug: 'accessories',
     description: 'Premium wooden LED bases and USB cables',
     image: woodenBaseNight,
-    productCount: 8,
+    productCount: 3,
   },
 ];
 
@@ -236,9 +270,9 @@ export const products: Product[] = [
     price: 2799,
     compareAtPrice: 3899,
     images: {
-      day: heroLamp,
-      night: heroLamp,
-      gallery: [heroLamp, heroLamp, heroLamp, heroLamp],
+      day: shivaLamp,
+      night: shivaLamp,
+      gallery: [shivaLamp, shivaLamp, shivaLamp, shivaLamp],
     },
     category: 'deity',
     deity: 'durga',
@@ -297,6 +331,288 @@ export const products: Product[] = [
     reviewCount: 87,
     tags: ['education', 'saraswati', 'deity', 'wisdom', 'students'],
   },
+
+  // ── LED Photo Frame Products ──────────────────────────────────────
+  {
+    id: 'shiva-led-frame',
+    name: 'Lord Shiva LED Photo Frame',
+    slug: 'shiva-led-frame',
+    description: 'A masterfully crafted LED backlit photo frame featuring Lord Shiva in deep meditation. The warm golden LED glow creates a divine atmosphere, making it the perfect centrepiece for your pooja room, meditation space, or living area. Premium black frame with fade-resistant print.',
+    shortDescription: 'Majestic Lord Shiva LED backlit photo frame with golden glow',
+    price: 2699,
+    compareAtPrice: 3799,
+    images: {
+      day: shivaDarkFrame,
+      night: shivaPoojaRoom,
+      gallery: [shivaDarkFrame, shivaPoojaRoom, shivaFamilyRoom, shivaDarkFrame],
+    },
+    category: 'led-frame',
+    deity: 'shiva',
+    features: [
+      'Premium black wooden frame',
+      'High-resolution devotional print',
+      'Warm LED backlight — USB powered',
+      'Colour temperature: 3000K warm white',
+      'Perfect for pooja rooms & living areas',
+      'Ideal gift for all occasions',
+    ],
+    specifications: {
+      size: '12" × 16" (frame), 10" × 14" (print)',
+      weight: '850g',
+      material: 'MDF frame, acrylic front',
+      power: 'USB 5V DC',
+      ledType: 'Warm white LED strip',
+    },
+    inStock: true,
+    rating: 4.9,
+    reviewCount: 156,
+    tags: ['bestseller', 'shiva', 'led-frame', 'pooja', 'gift'],
+  },
+  {
+    id: 'ram-led-frame',
+    name: 'Lord Ram LED Photo Frame',
+    slug: 'ram-led-frame',
+    description: 'Bring the divine energy of Maryada Purushottam Shri Ram into your home with this stunning LED photo frame. The glowing blue-white illumination highlights every detail of the engraved artwork, creating a sacred and serene atmosphere in any room.',
+    shortDescription: 'Divine Lord Ram LED photo frame with glowing blue-white light',
+    price: 2499,
+    compareAtPrice: 3499,
+    images: {
+      day: ramPoojaFrame,
+      night: shivaPoojaRoom,
+      gallery: [ramPoojaFrame, shivaPoojaRoom, ramPoojaFrame, shivaPoojaRoom],
+    },
+    category: 'led-frame',
+    deity: 'ram',
+    features: [
+      'Premium black wooden frame',
+      'High-resolution devotional print',
+      'Cool LED backlight — USB powered',
+      'Perfect for Ramnavami and housewarming',
+      'Ready to hang — includes wall mounts',
+      'Ideal spiritual gift',
+    ],
+    specifications: {
+      size: '12" × 16" (frame), 10" × 14" (print)',
+      weight: '850g',
+      material: 'MDF frame, acrylic front',
+      power: 'USB 5V DC',
+      ledType: 'Cool white LED strip',
+    },
+    inStock: true,
+    rating: 4.8,
+    reviewCount: 98,
+    tags: ['ram', 'led-frame', 'pooja', 'spiritual'],
+  },
+  {
+    id: 'krishna-led-frame',
+    name: 'Lord Krishna LED Photo Frame',
+    slug: 'krishna-led-frame',
+    description: 'Experience the divine melody of Shri Krishna with this beautifully illuminated LED photo frame. The golden glow complements the intricate artwork, bringing peaceful energy and spiritual joy to meditation corners, pooja rooms, and living spaces.',
+    shortDescription: 'Lord Krishna LED photo frame with warm golden illumination',
+    price: 2499,
+    compareAtPrice: 3499,
+    images: {
+      day: krishnaFrame,
+      night: krishnaFrame,
+      gallery: [krishnaFrame, krishnaFrame, shivaDarkFrame, krishnaFrame],
+    },
+    category: 'led-frame',
+    deity: 'krishna',
+    features: [
+      'Premium black wooden frame',
+      'High-resolution devotional print',
+      'Warm golden LED backlight',
+      'Perfect for Janmashtami celebrations',
+      'Ready to hang — includes wall mounts',
+      'Creates peaceful meditation ambience',
+    ],
+    specifications: {
+      size: '12" × 16" (frame), 10" × 14" (print)',
+      weight: '850g',
+      material: 'MDF frame, acrylic front',
+      power: 'USB 5V DC',
+      ledType: 'Warm white LED strip',
+    },
+    inStock: true,
+    rating: 4.8,
+    reviewCount: 112,
+    tags: ['krishna', 'led-frame', 'pooja', 'janmashtami'],
+  },
+  {
+    id: 'hanuman-led-frame',
+    name: 'Lord Hanuman LED Photo Frame',
+    slug: 'hanuman-led-frame',
+    description: "Invoke the strength and devotion of Bajrangbali with this powerful LED photo frame. The vibrant illumination brings out the glory of Lord Hanuman's form, filling your space with courage, protection, and positive energy. A perfect addition to home, gym, or study.",
+    shortDescription: 'Powerful Lord Hanuman LED photo frame for strength & protection',
+    price: 2699,
+    compareAtPrice: 3799,
+    images: {
+      day: hanumanFrame,
+      night: hanumanFrame,
+      gallery: [hanumanFrame, shivaFamilyRoom, hanumanFrame, shivaDarkFrame],
+    },
+    category: 'led-frame',
+    deity: 'hanuman',
+    features: [
+      'Premium black wooden frame',
+      'High-resolution devotional print',
+      'Warm golden LED backlight',
+      'Perfect for Hanuman Jayanti',
+      'Inspires strength and devotion daily',
+      'Ready to hang — includes wall mounts',
+    ],
+    specifications: {
+      size: '12" × 16" (frame), 10" × 14" (print)',
+      weight: '850g',
+      material: 'MDF frame, acrylic front',
+      power: 'USB 5V DC',
+      ledType: 'Warm white LED strip',
+    },
+    inStock: true,
+    rating: 4.9,
+    reviewCount: 134,
+    tags: ['hanuman', 'led-frame', 'pooja', 'strength'],
+  },
+  {
+    id: 'ganesha-led-frame',
+    name: 'Lord Ganesha LED Photo Frame',
+    slug: 'ganesha-led-frame',
+    description: "Welcome new beginnings with our auspicious Lord Ganesha LED Photo Frame. The warm glow highlights every blessed detail of Vighnharta's form, making it the ideal gift for housewarmings, Diwali, and all sacred occasions. Remove obstacles — invite prosperity.",
+    shortDescription: 'Auspicious Lord Ganesha LED photo frame — perfect housewarming gift',
+    price: 2499,
+    compareAtPrice: 3499,
+    images: {
+      day: ganeshaGiftFrame,
+      night: ganeshaGiftFrame,
+      gallery: [ganeshaGiftFrame, shivaPoojaRoom, ganeshaGiftFrame, shivaFamilyRoom],
+    },
+    category: 'led-frame',
+    deity: 'ganesha',
+    features: [
+      'Premium black wooden frame',
+      'High-resolution devotional print',
+      'Warm golden LED backlight',
+      'Perfect housewarming & Diwali gift',
+      'Beautifully packaged in gift box',
+      'Ready to hang — includes wall mounts',
+    ],
+    specifications: {
+      size: '12" × 16" (frame), 10" × 14" (print)',
+      weight: '850g',
+      material: 'MDF frame, acrylic front',
+      power: 'USB 5V DC',
+      ledType: 'Warm white LED strip',
+    },
+    inStock: true,
+    rating: 4.9,
+    reviewCount: 178,
+    tags: ['bestseller', 'ganesha', 'led-frame', 'gift', 'housewarming', 'diwali'],
+  },
+
+  // ── Premium Gift Sets ─────────────────────────────────────────────
+  {
+    id: 'premium-diwali-gift-set',
+    name: 'Premium Diwali Gift Set',
+    slug: 'premium-diwali-gift-set',
+    description: 'Curate the perfect Diwali celebration with our Premium Gift Set. Includes a Goddess Lakshmi LED Photo Frame, a 3D crystal lamp, and premium packaging with ribbon. A thoughtful, luxurious gift that radiates devotion and prosperity for your loved ones.',
+    shortDescription: 'LED frame + crystal lamp in luxury Diwali gift packaging',
+    price: 4999,
+    compareAtPrice: 6999,
+    images: {
+      day: giftSetImg,
+      night: giftSetImg,
+      gallery: [giftSetImg, ganeshaGiftFrame, giftSetImg, lakshmDay],
+    },
+    category: 'gift-set',
+    features: [
+      'Lakshmi LED Photo Frame (12"×16")',
+      'Ganesha 3D Crystal Lamp (80mm)',
+      'Premium gift box with ribbon',
+      'Handwritten personalisation card',
+      'Diwali packaging with shredded paper fill',
+      'Free gift wrapping included',
+    ],
+    specifications: {
+      size: 'Gift box: 35cm × 25cm × 15cm',
+      weight: '1.8kg',
+      material: 'Assorted (see individual items)',
+      power: 'USB 5V DC (both items)',
+      ledType: 'Warm white + RGB',
+    },
+    inStock: true,
+    rating: 4.9,
+    reviewCount: 89,
+    tags: ['bestseller', 'diwali', 'gift-set', 'festival', 'luxury'],
+  },
+  {
+    id: 'housewarming-gift-set',
+    name: 'Sacred Housewarming Gift Set',
+    slug: 'housewarming-gift-set',
+    description: 'Bless a new home with our Sacred Housewarming Gift Set. Contains a Lord Ganesha LED Frame and a Lakshmi Crystal Lamp to invite prosperity, peace, and divine protection into the new space. Presented in a premium gift box.',
+    shortDescription: 'Ganesha LED frame + Lakshmi crystal lamp in gift box',
+    price: 4499,
+    compareAtPrice: 5999,
+    images: {
+      day: giftSetImg,
+      night: giftSetImg,
+      gallery: [giftSetImg, ganeshaGiftFrame, lakshmDay, giftSetImg],
+    },
+    category: 'gift-set',
+    features: [
+      'Ganesha LED Photo Frame (12"×16")',
+      'Lakshmi 3D Crystal Lamp (80mm)',
+      'Premium kraft gift box',
+      'Personalisation card included',
+      'Ready to give — beautifully packed',
+      'Free gift wrapping',
+    ],
+    specifications: {
+      size: 'Gift box: 35cm × 25cm × 15cm',
+      weight: '1.7kg',
+      material: 'Assorted (see individual items)',
+      power: 'USB 5V DC (both items)',
+      ledType: 'Warm white + RGB',
+    },
+    inStock: true,
+    rating: 4.8,
+    reviewCount: 67,
+    tags: ['housewarming', 'gift-set', 'ganesha', 'lakshmi'],
+  },
+  {
+    id: 'corporate-gift-set',
+    name: 'Corporate Festive Gift Set',
+    slug: 'corporate-gift-set',
+    description: 'Make a lasting impression with our Corporate Festive Gift Set. A premium 3D crystal lamp in a branded gift box — ideal for Diwali corporate gifting, client appreciation, and employee rewards. Bulk discounts available.',
+    shortDescription: 'Premium crystal lamp in branded box — ideal for corporate gifting',
+    price: 3499,
+    compareAtPrice: 4499,
+    images: {
+      day: giftSetImg,
+      night: giftSetImg,
+      gallery: [giftSetImg, ganeshaDay, giftSetImg, lakshmDay],
+    },
+    category: 'gift-set',
+    features: [
+      'Lakshmi or Ganesha crystal lamp (choice)',
+      'Premium branded gift box',
+      'Custom company card slot',
+      'Bulk order discounts up to 30%',
+      'Same-day dispatch before 2 PM',
+      'Free gift wrapping',
+    ],
+    specifications: {
+      size: 'Gift box: 20cm × 20cm × 20cm',
+      weight: '900g',
+      material: 'K9 Crystal + Natural Wood',
+      power: 'USB 5V DC',
+      ledType: 'RGB with remote',
+    },
+    inStock: true,
+    rating: 4.7,
+    reviewCount: 43,
+    tags: ['corporate', 'gift-set', 'bulk', 'diwali', 'business'],
+  },
+
   {
     id: 'galaxy-crystal-ball',
     name: 'Galaxy Crystal Ball Lamp',

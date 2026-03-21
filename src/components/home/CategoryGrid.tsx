@@ -1,31 +1,31 @@
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import ledFrameImg from "@/assets/categories/led-photo-frames.jpg";
-import crystalLampImg from "@/assets/categories/3d-crystal-lamps.png";
-import giftingImg from "@/assets/categories/gifting-items.png";
+import shivaDarkFrame from "@/assets/lifestyle/shiva-dark-frame.jpg";
+import crystalLampImg from "@/assets/products/crystal-ganesha-temple.png";
+import giftingImg from "@/assets/categories/gift-sets.png";
 
 const categories = [
   {
     title: "LED Photo Frames",
     description: "Divine deity LED frames with warm golden glow for meditation & devotion",
-    image: ledFrameImg,
-    href: "/collections/deity-lamps",
-    count: "12 Products",
+    image: shivaDarkFrame,
+    href: "/collections/led-frames",
+    count: "5 Products",
   },
   {
     title: "3D Crystal Lamps",
     description: "Precision-engraved deity crystal lamps with illuminated LED bases",
     image: crystalLampImg,
-    href: "/collections/galaxy-collection",
-    count: "6 Products",
+    href: "/collections/crystal-lamps",
+    count: "10 Products",
   },
   {
     title: "Premium Gift Sets",
     description: "Curated Diwali & festive gift boxes with LED frames, crystals & more",
     image: giftingImg,
-    href: "/collections/accessories",
-    count: "8 Products",
+    href: "/collections/gift-sets",
+    count: "3 Products",
   },
 ];
 

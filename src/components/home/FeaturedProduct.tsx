@@ -2,14 +2,14 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Star, ShoppingBag, Shield, Truck, RotateCcw } from "lucide-react";
-import mainImg from "@/assets/hero/shiva-led-frame-glow.jpg";
-import poojaImg from "@/assets/lifestyle/pooja-room.jpg";
-import hanumanImg from "@/assets/products/hanuman-living-room.jpg";
-import ramImg from "@/assets/products/ram-pooja-frame.jpg";
+import shivaDarkFrame from "@/assets/lifestyle/shiva-dark-frame.jpg";
+import shivaPoojaRoom from "@/assets/lifestyle/shiva-pooja-room.jpg";
+import shivaFamilyRoom from "@/assets/lifestyle/shiva-family-room.jpg";
+import ramPoojaFrame from "@/assets/lifestyle/ram-pooja-frame.jpg";
 import { useState } from "react";
 
-const productImages = [mainImg, poojaImg, hanumanImg, ramImg];
-const imageLabels = ["Night Glow", "In Pooja Room", "Living Room Setup", "Sacred Display"];
+const productImages = [shivaDarkFrame, shivaPoojaRoom, shivaFamilyRoom, ramPoojaFrame];
+const imageLabels = ["Night Glow", "In Pooja Room", "Family Room", "Ram Frame"];
 
 export const FeaturedProduct = () => {
   const [selectedImage, setSelectedImage] = useState(0);
@@ -86,9 +86,9 @@ export const FeaturedProduct = () => {
             </h3>
 
             <p className="text-muted-foreground text-sm sm:text-base mb-6 leading-relaxed">
-              A masterfully crafted LED backlit photo frame featuring Lord Shiva, 
-              with glowing blue illumination that creates a divine atmosphere in any room. 
-              Perfect for pooja rooms, meditation spaces, and living areas.
+              A masterfully crafted LED backlit photo frame featuring Lord Shiva in deep meditation. 
+              The warm golden glow creates a divine atmosphere — perfect for pooja rooms, 
+              meditation spaces, and living areas.
             </p>
 
             <div className="flex items-baseline gap-3 mb-6">
@@ -99,13 +99,13 @@ export const FeaturedProduct = () => {
 
             <div className="flex flex-col sm:flex-row gap-3 mb-8">
               <Button asChild size="lg" className="btn-premium flex-1 h-12 sm:h-14 text-sm">
-                <Link to="/product/shiva-crystal-lamp" className="gap-2">
+                <Link to="/product/shiva-led-frame" className="gap-2">
                   <ShoppingBag className="h-4 w-4" />
                   Add to Cart
                 </Link>
               </Button>
               <Button asChild variant="outline" size="lg" className="h-12 sm:h-14 text-sm border-border hover:bg-secondary">
-                <Link to="/product/shiva-crystal-lamp">
+                <Link to="/product/shiva-led-frame">
                   View Details
                 </Link>
               </Button>

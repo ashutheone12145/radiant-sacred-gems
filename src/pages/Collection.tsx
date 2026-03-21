@@ -40,6 +40,7 @@ const deityOptions = [
   { value: "ganesha", label: "Lord Ganesha" },
   { value: "krishna", label: "Lord Krishna" },
   { value: "shiva", label: "Lord Shiva" },
+  { value: "ram", label: "Lord Ram" },
   { value: "hanuman", label: "Lord Hanuman" },
   { value: "lakshmi", label: "Goddess Lakshmi" },
   { value: "durga", label: "Goddess Durga" },
@@ -78,9 +79,12 @@ const Collection = () => {
   const collectionName = collection?.name || "All Products";
   const collectionDescription = collection?.description || "Browse our complete collection of sacred crystal lamps";
 
-  // Map collection slugs to product categories
-  const collectionToCategoryMap: Record<string, string> = {
-    'deity-lamps': 'deity',
+  // Map collection slugs to one or more product categories
+  const collectionToCategoryMap: Record<string, string | string[]> = {
+    'led-frames': 'led-frame',
+    'crystal-lamps': ['deity', 'galaxy'],
+    'gift-sets': 'gift-set',
+    'deity-lamps': ['deity', 'led-frame'],
     'galaxy-collection': 'galaxy',
     'accessories': 'accessories',
   };
@@ -91,8 +95,12 @@ const Collection = () => {
     
     // Filter by collection/category
     if (slug && slug !== "all") {
-      const category = collectionToCategoryMap[slug] || slug;
-      result = result.filter((p) => p.category === category);
+      const mapped = collectionToCategoryMap[slug] || slug;
+      if (Array.isArray(mapped)) {
+        result = result.filter((p) => mapped.includes(p.category));
+      } else {
+        result = result.filter((p) => p.category === mapped);
+      }
     }
     
     // Filter by deity
