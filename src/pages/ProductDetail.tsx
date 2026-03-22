@@ -76,6 +76,14 @@ const ProductDetail = () => {
     ? reviews.reduce((sum, r) => sum + r.rating, 0) / reviews.length
     : product.rating;
 
+  // Map product category to its collection
+  const categoryToCollection: Record<string, { slug: string; name: string }> = {
+    'led-frame': { slug: 'led-frames', name: 'LED Photo Frames' },
+    'deity': { slug: 'crystal-lamps', name: '3D Crystal Lamps' },
+    'gift-set': { slug: 'gift-sets', name: 'Gift Sets' },
+  };
+  const productCollection = categoryToCollection[product.category] || { slug: 'all', name: 'Collections' };
+
   const formatPrice = (price: number) => {
     return new Intl.NumberFormat("en-IN", {
       style: "currency",
@@ -109,7 +117,7 @@ const ProductDetail = () => {
             <BreadcrumbSeparator className="hidden md:inline-flex" />
             <BreadcrumbItem>
               <BreadcrumbLink asChild>
-                <Link to="/collections">Collections</Link>
+                <Link to={`/collections/${productCollection.slug}`}>{productCollection.name}</Link>
               </BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbSeparator />

@@ -326,7 +326,7 @@ export function Header() {
                   >
                     <p className="text-sm text-muted-foreground mb-3 sm:mb-4">Popular searches</p>
                     <div className="flex flex-wrap justify-center gap-2">
-                      {['Ganesha Lamp', 'Galaxy Collection', 'Krishna', 'LED Crystal'].map((term) => (
+                      {['Ganesha Lamp', 'Lakshmi Crystal', 'Krishna Lamp', 'LED Frame'].map((term) => (
                         <Button
                           key={term}
                           variant="outline"

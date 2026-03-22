@@ -12,6 +12,16 @@ import Checkout from "@/pages/Checkout";
 import Search from "@/pages/Search";
 import Wishlist from "@/pages/Wishlist";
 import Compare from "@/pages/Compare";
+import Shipping from "@/pages/Shipping";
+import Returns from "@/pages/Returns";
+import TrackOrder from "@/pages/TrackOrder";
+import Privacy from "@/pages/Privacy";
+import Terms from "@/pages/Terms";
+import Story from "@/pages/Story";
+import GiftCards from "@/pages/GiftCards";
+import Blog from "@/pages/Blog";
+import Reviews from "@/pages/Reviews";
+import Wholesale from "@/pages/Wholesale";
 import NotFound from "@/pages/NotFound";
 
 export const AnimatedRoutes = () => {
@@ -108,6 +118,16 @@ export const AnimatedRoutes = () => {
             </PageTransition>
           }
         />
+        <Route path="/shipping" element={<PageTransition><Shipping /></PageTransition>} />
+        <Route path="/returns" element={<PageTransition><Returns /></PageTransition>} />
+        <Route path="/track-order" element={<PageTransition><TrackOrder /></PageTransition>} />
+        <Route path="/privacy" element={<PageTransition><Privacy /></PageTransition>} />
+        <Route path="/terms" element={<PageTransition><Terms /></PageTransition>} />
+        <Route path="/story" element={<PageTransition><Story /></PageTransition>} />
+        <Route path="/gift-cards" element={<PageTransition><GiftCards /></PageTransition>} />
+        <Route path="/blog" element={<PageTransition><Blog /></PageTransition>} />
+        <Route path="/reviews" element={<PageTransition><Reviews /></PageTransition>} />
+        <Route path="/wholesale" element={<PageTransition><Wholesale /></PageTransition>} />
         <Route
           path="*"
           element={
