@@ -1,17 +1,16 @@
 import { Product, Collection, Review } from '@/types/product';
 
 // 3D Crystal Lamp images
-import ganeshaDay from '@assets/Gemini_Generated_Image_8dzrhm8dzrhm8dzr_1774099982885.png';
-import ganeshaNight from '@assets/Gemini_Generated_Image_2vc8yt2vc8yt2vc8_1774099982888.png';
-import ganeshaGarden from '@assets/Gemini_Generated_Image_ifmulwifmulwifmu_1774099982886.png';
-import ganeshaBlue from '@assets/Gemini_Generated_Image_1bbbwl1bbbwl1bbb_1774099982885.png';
-import ganeshaClassic from '@assets/ganesh-ji-crystal-ball-night-light-1000x1000_1774099982890.webp';
-import krishnaDay from '@assets/Gemini_Generated_Image_jfqzbljfqzbljfqz_1774099982881.png';
-import krishnaNight from '@assets/generated_image_cc67c238-aeed-4a7e-9025-9628be15ae5e_1774099982887.png';
-import radhKrishna2 from '@assets/51ddLg-0MNL._SX342_SY445_QL70_FMwebp__1774099982889.webp';
-import radhKrishnaGarden from '@assets/71vIhTq82EL._SX522__1774099982891.jpg';
+import ganeshaDay from '@assets/Gemini_Generated_Image_8dzrhm8dzrhm8dzr_1774192989588.png';
+import ganeshaNight from '@assets/Gemini_Generated_Image_1bbbwl1bbbwl1bbb_1774192989588.png';
+import ganeshaGarden from '@assets/Gemini_Generated_Image_ifmulwifmulwifmu_1774192989589.png';
+import ganeshaBlue from '@assets/Gemini_Generated_Image_1bbbwl1bbbwl1bbb_1774192989588.png';
+import krishnaDay from '@assets/Gemini_Generated_Image_jfqzbljfqzbljfqz_1774192989585.png';
+import krishnaNight from '@assets/generated_image_cc67c238-aeed-4a7e-9025-9628be15ae5e_1774192989590.png';
+import radhKrishnaGarden from '@assets/Gemini_Generated_Image_67x2q467x2q467x2_1774193025040.png';
+import radhKrishna2 from '@assets/71vIhTq82EL._SX522__1774193025041.jpg';
 import shivaLamp from '@assets/Gemini_Generated_Image_ed7qkmed7qkmed7q_1774099982880.png';
-import lakshmDay from '@assets/Gemini_Generated_Image_lxdikelxdikelxdi_1774099982884.png';
+import lakshmDay from '@assets/Gemini_Generated_Image_lxdikelxdikelxdi_1774192989587.png';
 
 // LED Photo Frame images
 import shivaDarkFrame from '@/assets/lifestyle/shiva-dark-frame.jpg';
@@ -69,7 +68,7 @@ export const products: Product[] = [
     images: {
       day: ganeshaDay,
       night: ganeshaNight,
-      gallery: [ganeshaDay, ganeshaNight, ganeshaGarden, ganeshaBlue, ganeshaClassic],
+      gallery: [ganeshaDay, ganeshaNight, ganeshaGarden, ganeshaBlue],
     },
     category: 'deity',
     deity: 'ganesha',
