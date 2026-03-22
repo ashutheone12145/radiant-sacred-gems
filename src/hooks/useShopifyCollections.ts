@@ -1,34 +1,40 @@
 import { useState, useEffect, useMemo } from 'react';
 import { fetchProducts, ShopifyProduct } from '@/lib/shopify';
+import { collections as localCollections } from '@/data/products';
 import type { Collection } from '@/types/product';
 
-// Static collection definitions that map to Shopify product types/tags
 const COLLECTION_DEFINITIONS = [
   {
-    id: 'deity-lamps',
-    name: 'Sacred Deity Collection',
-    slug: 'deity-lamps',
-    description: 'Sacred crystal lamps featuring beloved Hindu deities',
-    query: 'product_type:deity OR tag:deity',
+    id: 'led-frames',
+    name: 'LED Photo Frames',
+    slug: 'led-frames',
+    description: 'Illuminated crystal photo frames with sacred deity artwork',
+    query: 'product_type:led-frame OR tag:led-frame',
+    matchFn: (title: string, handle: string) =>
+      title.includes('led') || title.includes('frame') || handle.includes('frame'),
   },
   {
-    id: 'galaxy-collection',
-    name: 'Cosmic Galaxy Series',
-    slug: 'galaxy-collection',
-    description: 'Mesmerizing galaxy crystal balls that bring the cosmos home',
-    query: 'product_type:galaxy OR tag:galaxy',
+    id: 'crystal-lamps',
+    name: '3D Crystal Lamps',
+    slug: 'crystal-lamps',
+    description: 'Handcrafted 3D crystal ball lamps with deity engravings',
+    query: 'product_type:deity OR tag:crystal-lamp',
+    matchFn: (title: string, handle: string) =>
+      title.includes('crystal') || title.includes('lamp') || handle.includes('crystal'),
   },
   {
-    id: 'accessories',
-    name: 'Bases & Accessories',
-    slug: 'accessories',
-    description: 'Premium wooden LED bases and USB cables',
-    query: 'product_type:accessories OR tag:accessory',
+    id: 'gift-sets',
+    name: 'Gift Sets',
+    slug: 'gift-sets',
+    description: 'Curated spiritual gift sets for every sacred occasion',
+    query: 'product_type:gift-set OR tag:gift-set',
+    matchFn: (title: string, handle: string) =>
+      title.includes('gift') || title.includes('set') || handle.includes('gift'),
   },
 ];
 
 export function useShopifyCollections() {
-  const [products, setProducts] = useState<ShopifyProduct[]>([]);
+  const [shopifyProducts, setShopifyProducts] = useState<ShopifyProduct[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -36,10 +42,10 @@ export function useShopifyCollections() {
     async function loadProducts() {
       setIsLoading(true);
       setError(null);
-      
+
       try {
         const data = await fetchProducts(50);
-        setProducts(data);
+        setShopifyProducts(data);
       } catch (err) {
         setError(err instanceof Error ? err.message : 'Failed to load collections');
         console.error('Failed to fetch products for collections:', err);
@@ -52,60 +58,22 @@ export function useShopifyCollections() {
   }, []);
 
   const collections = useMemo<Collection[]>(() => {
-    if (products.length === 0) {
-      // Return collection definitions with 0 counts when no products
-      return COLLECTION_DEFINITIONS.map(def => ({
-        id: def.id,
-        name: def.name,
-        slug: def.slug,
-        description: def.description,
-        image: '/placeholder.svg',
-        productCount: 0,
-      }));
+    if (shopifyProducts.length === 0) {
+      return localCollections;
     }
 
     return COLLECTION_DEFINITIONS.map(def => {
-      // Count products that match this collection based on tags or product type
-      const matchingProducts = products.filter(p => {
-        const product = p.node;
-        const title = product.title.toLowerCase();
-        const handle = product.handle.toLowerCase();
-        
-        // Match based on collection type
-        if (def.id === 'deity-lamps') {
-          return title.includes('ganesha') || 
-                 title.includes('krishna') || 
-                 title.includes('shiva') ||
-                 title.includes('hanuman') ||
-                 title.includes('lakshmi') ||
-                 title.includes('durga') ||
-                 title.includes('saraswati') ||
-                 title.includes('deity') ||
-                 handle.includes('deity');
-        }
-        if (def.id === 'galaxy-collection') {
-          return title.includes('galaxy') || 
-                 title.includes('cosmos') || 
-                 title.includes('solar') ||
-                 title.includes('moon') ||
-                 title.includes('nebula') ||
-                 handle.includes('galaxy');
-        }
-        if (def.id === 'accessories') {
-          return title.includes('base') || 
-                 title.includes('accessory') || 
-                 title.includes('cable') ||
-                 title.includes('stand') ||
-                 handle.includes('base') ||
-                 handle.includes('accessory');
-        }
-        return false;
+      const matching = shopifyProducts.filter(p => {
+        const title = p.node.title.toLowerCase();
+        const handle = p.node.handle.toLowerCase();
+        return def.matchFn(title, handle);
       });
 
-      // Use first matching product image or fallback
-      const firstImage = matchingProducts[0]?.node.images?.edges?.[0]?.node.url || 
-                         products[0]?.node.images?.edges?.[0]?.node.url ||
-                         '/placeholder.svg';
+      const local = localCollections.find(c => c.slug === def.slug);
+      const firstImage =
+        matching[0]?.node.images?.edges?.[0]?.node.url ||
+        local?.image ||
+        '/placeholder.svg';
 
       return {
         id: def.id,
@@ -113,15 +81,14 @@ export function useShopifyCollections() {
         slug: def.slug,
         description: def.description,
         image: firstImage,
-        productCount: matchingProducts.length || products.length, // Show all products count if no specific matches
+        productCount: matching.length || local?.productCount || 0,
       };
     });
-  }, [products]);
+  }, [shopifyProducts]);
 
-  return { collections, products, isLoading, error };
+  return { collections, products: shopifyProducts, isLoading, error };
 }
 
-// Hook to get products for a specific collection
 export function useCollectionProducts(collectionSlug: string) {
   const [products, setProducts] = useState<ShopifyProduct[]>([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -131,45 +98,18 @@ export function useCollectionProducts(collectionSlug: string) {
     async function loadProducts() {
       setIsLoading(true);
       setError(null);
-      
+
       try {
         const allProducts = await fetchProducts(50);
-        
-        // Filter products based on collection
+
         const filtered = allProducts.filter(p => {
-          const product = p.node;
-          const title = product.title.toLowerCase();
-          const handle = product.handle.toLowerCase();
+          const title = p.node.title.toLowerCase();
+          const handle = p.node.handle.toLowerCase();
 
           if (collectionSlug === 'all') return true;
-          
-          if (collectionSlug === 'deity-lamps') {
-            return title.includes('ganesha') || 
-                   title.includes('krishna') || 
-                   title.includes('shiva') ||
-                   title.includes('hanuman') ||
-                   title.includes('lakshmi') ||
-                   title.includes('durga') ||
-                   title.includes('saraswati') ||
-                   title.includes('deity') ||
-                   handle.includes('deity');
-          }
-          if (collectionSlug === 'galaxy-collection') {
-            return title.includes('galaxy') || 
-                   title.includes('cosmos') || 
-                   title.includes('solar') ||
-                   title.includes('moon') ||
-                   title.includes('nebula') ||
-                   handle.includes('galaxy');
-          }
-          if (collectionSlug === 'accessories') {
-            return title.includes('base') || 
-                   title.includes('accessory') || 
-                   title.includes('cable') ||
-                   title.includes('stand') ||
-                   handle.includes('base') ||
-                   handle.includes('accessory');
-          }
+
+          const def = COLLECTION_DEFINITIONS.find(d => d.slug === collectionSlug);
+          if (def) return def.matchFn(title, handle);
           return true;
         });
 

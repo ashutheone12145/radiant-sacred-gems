@@ -82,11 +82,8 @@ const Collection = () => {
   // Map collection slugs to one or more product categories
   const collectionToCategoryMap: Record<string, string | string[]> = {
     'led-frames': 'led-frame',
-    'crystal-lamps': ['deity', 'galaxy'],
+    'crystal-lamps': 'deity',
     'gift-sets': 'gift-set',
-    'deity-lamps': ['deity', 'led-frame'],
-    'galaxy-collection': 'galaxy',
-    'accessories': 'accessories',
   };
 
   // Filter products
